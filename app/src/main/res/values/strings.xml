@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TrickyAlarm</string>
+    <string name="app_name">For rv</string>
+    <string name="p1">"@drawable/p3"</string>
 </resources>
