@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">For rv</string>
+    <string name="app_name">Tricky Alarm</string>
+    <string name="action_add_alarm">Add alarm</string>
     <string name="p1">"@drawable/p3"</string>
+
+    <!-- Weekday's letters -->
+    <string name="monday_letter">M</string>
+    <string name="tuesday_letter">T</string>
+    <string name="wednesday_letter">W</string>
+    <string name="thursday_letter">Th</string>
+    <string name="friday_letter">F</string>
+    <string name="saturday_letter">S</string>
+    <string name="sunday_letter">Sn</string>
 </resources>

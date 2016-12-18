@@ -5,10 +5,12 @@ package com.example.trickyalarm;
  */
 
 
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -46,23 +48,22 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
 
     @Override public void onBindViewHolder(ViewHolder holder, int position){
 
-
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
-        Switch switch1 = (Switch) cardView.findViewById(R.id.switch1);
-        switch1.setChecked(checkers[position]);
+//        Switch switch1 = (Switch) cardView.findViewById(R.id.switch1);
+//        switch1.setChecked(checkers[position]);
+//
+//        TextView time = (TextView) cardView.findViewById(R.id.time_main);
+//        time.setText(dates[position]);
+//
+//        TextView daysView = (TextView) cardView.findViewById(R.id.days);
+//        daysView.setText(days[position]);
+//
+//        TextView timeLeftView = (TextView) cardView.findViewById(R.id.timeLeft);
+//        timeLeftView.setText(timeLeft[position]);
 
-        TextView time = (TextView) cardView.findViewById(R.id.time_main);
-        time.setText(dates[position]);
-
-        TextView daysView = (TextView) cardView.findViewById(R.id.days);
-        daysView.setText(days[position]);
-
-        TextView timeLeftView = (TextView) cardView.findViewById(R.id.timeLeft);
-        timeLeftView.setText(timeLeft[position]);
-
-        RelativeLayout relativeLayout = (RelativeLayout) cardView.findViewById(R.id.layout);
+        LinearLayout relativeLayout = (LinearLayout) cardView.findViewById(R.id.layout);
 
 
         if (dates[position] == "01:20"){
@@ -80,6 +81,5 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     @Override public int getItemCount()
     {
         return dates.length;
-
     }
 }
