@@ -42,3 +42,9 @@ captures/
 *.jks
 
 app/libs/
+app/src/main/res/drawable/drawable-hdpi/
+app/src/main/res/drawable/drawable-ldpi/
+app/src/main/res/drawable/drawable-mdpi/
+app/src/main/res/drawable/drawable-xhdpi/
+app/src/main/res/drawable/drawable-xxhdpi/
+app/src/main/res/drawable/drawable-xxxhdpi/
