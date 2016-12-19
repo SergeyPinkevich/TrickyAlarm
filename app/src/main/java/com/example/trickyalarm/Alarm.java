@@ -18,6 +18,7 @@ public class Alarm {
     private int onSunday;
     private int isRepeated;
     private int repeatInterval;
+    private boolean[] weekdays;
 
     /**
      * Single alarm (without scheduler depending on weekdays)
