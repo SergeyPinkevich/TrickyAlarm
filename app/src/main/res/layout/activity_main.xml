@@ -11,14 +11,14 @@
     <include
         layout="@layout/toolbar"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:overScrollMode="never"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/alarm_list"/>
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:overScrollMode="never"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:id="@+id/alarm_list"/>-->
 
 </RelativeLayout>
