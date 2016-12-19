@@ -10,18 +10,14 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>{
     //Предоставляет ссылку на представления, используемые в RecyclerView
-
-    private String[] dates;
-    private boolean[] checkers;
-    private String[] days;
-    private String[] timeLeft;
+    private ArrayList<Alarm> mAlarms;
+    private Typeface mFontForText;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
@@ -32,11 +28,9 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         }
     }
 
-    public CardAlarmAdapter (String[] dates, boolean[] checkers, String[] days, String[] timeLeft){
-        this.dates = dates;
-        this.checkers = checkers;
-        this.days = days;
-        this.timeLeft = timeLeft;
+    public CardAlarmAdapter (ArrayList<Alarm> alarms, Typeface typeface){
+        this.mAlarms = alarms;
+        mFontForText = typeface;
     }
 
     @Override
@@ -51,35 +45,22 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
-//        Switch switch1 = (Switch) cardView.findViewById(R.id.switch1);
-//        switch1.setChecked(checkers[position]);
-//
-//        TextView time = (TextView) cardView.findViewById(R.id.time_main);
-//        time.setText(dates[position]);
-//
-//        TextView daysView = (TextView) cardView.findViewById(R.id.days);
-//        daysView.setText(days[position]);
-//
-//        TextView timeLeftView = (TextView) cardView.findViewById(R.id.timeLeft);
-//        timeLeftView.setText(timeLeft[position]);
 
-        LinearLayout relativeLayout = (LinearLayout) cardView.findViewById(R.id.layout);
+        TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
+        String time = longToString(mAlarms.get(position).getTime());
+        alarmTime.setText(String.valueOf(time));
+        alarmTime.setTypeface(mFontForText);
+    }
 
+    public String longToString(long time) {
+        long minute = (time % (1000 * 60)) % 60;
+        long hour = (time % (1000 * 60 * 60)) % 24;
 
-        if (dates[position] == "01:20"){
-            relativeLayout.setBackgroundResource(R.drawable.p1);
-        }
-        if (dates[position] == "9:00"){
-            relativeLayout.setBackgroundResource(R.drawable.p2);
-        }
-        if (dates[position] == "13:20"){
-            relativeLayout.setBackgroundResource(R.drawable.p3);
-        }
-
+        return String.format("%02d:%02d", hour, minute);
     }
 
     @Override public int getItemCount()
     {
-        return dates.length;
+        return mAlarms.size();
     }
 }

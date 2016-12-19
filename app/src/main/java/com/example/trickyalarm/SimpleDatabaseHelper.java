@@ -17,7 +17,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "alarms.db";
     private static final int DB_VERSION = 1;
-    private static final String TABLE_NAME = "ALARMS";
+    public static final String TABLE_NAME = "ALARMS";
     private Context mContext;
 
     SimpleDatabaseHelper(Context context) {
@@ -39,7 +39,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         if (oldVersion < 1) {
             db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "IS_ENABLE INTEGER, "
-                    + "TIME TEXT, "
+                    + "TIME INTEGER, "
                     + "BIAS INTEGER, "
                     + "ON_MONDAY INTEGER, "
                     + "ON_TUESDAY INTEGER, "
@@ -50,32 +50,27 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + "ON_SUNDAY INTEGER, "
                     + "IS_REPEATED INTEGER, "
                     + "REPEAT_INTERVAL INTEGER);");
-            Calendar calendar = Calendar.getInstance();
-            insertAlarm(db, false, calendar, 10, true, true, true, true, true, false, false, true, 5);
+            insertAlarm(db, 0, System.currentTimeMillis() + 10000, 10, 1, 1, 1, 1, 1, 0, 0, 0, 5);
         }
     }
 
-    public void insertAlarm(SQLiteDatabase db, boolean isEnable, Calendar time, int bias,
-                            boolean onMonday, boolean onTuesday, boolean onWednesday,
-                            boolean onThursday, boolean onFriday, boolean onSaturday,
-                            boolean onSunday, boolean isRepeated, int repeatInterval) {
+    public void insertAlarm(SQLiteDatabase db, int isEnable, long time, int bias,
+                            int onMonday, int onTuesday, int onWednesday,
+                            int onThursday, int onFriday, int onSaturday,
+                            int onSunday, int isRepeated, int repeatInterval) {
         ContentValues alarmValues = new ContentValues();
-        alarmValues.put("IS_ENABLE", booleanToInt(isEnable));
-        alarmValues.put("TIME", time.toString());
+        alarmValues.put("IS_ENABLE", isEnable);
+        alarmValues.put("TIME", time);
         alarmValues.put("BIAS", bias);
-        alarmValues.put("ON_MONDAY", booleanToInt(onMonday));
-        alarmValues.put("ON_TUESDAY", booleanToInt(onTuesday));
-        alarmValues.put("ON_WEDNESDAY", booleanToInt(onWednesday));
-        alarmValues.put("ON_THURSDAY", booleanToInt(onThursday));
-        alarmValues.put("ON_FRIDAY", booleanToInt(onFriday));
-        alarmValues.put("ON_SATURDAY", booleanToInt(onSaturday));
-        alarmValues.put("ON_SUNDAY", booleanToInt(onSunday));
-        alarmValues.put("IS_REPEATED", booleanToInt(isRepeated));
+        alarmValues.put("ON_MONDAY", onMonday);
+        alarmValues.put("ON_TUESDAY", onTuesday);
+        alarmValues.put("ON_WEDNESDAY", onWednesday);
+        alarmValues.put("ON_THURSDAY", onThursday);
+        alarmValues.put("ON_FRIDAY", onFriday);
+        alarmValues.put("ON_SATURDAY", onSaturday);
+        alarmValues.put("ON_SUNDAY", onSunday);
+        alarmValues.put("IS_REPEATED", isRepeated);
         alarmValues.put("REPEAT_INTERVAL", repeatInterval);
         db.insert(TABLE_NAME, null, alarmValues);
-    }
-
-    public int booleanToInt(boolean input) {
-        return input ? 1 : 0;
     }
 }
