@@ -1,5 +1,7 @@
 package com.example.trickyalarm;
 
+import java.util.Calendar;
+
 /**
  * Created by Сергей Пинкевич on 09.11.2016.
  */
@@ -7,7 +9,7 @@ package com.example.trickyalarm;
 public class Alarm {
 
     private int isEnable;
-    private long time;
+    private Calendar time;
     private int bias;
     private int onMonday;
     private int onTuesday;
@@ -28,7 +30,7 @@ public class Alarm {
      * @param isRepeated
      * @param repeatInterval
      */
-    public Alarm(int isEnable, long time, int bias, int isRepeated, int repeatInterval) {
+    public Alarm(int isEnable, Calendar time, int bias, int isRepeated, int repeatInterval) {
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -51,7 +53,7 @@ public class Alarm {
      * @param isRepeated
      * @param repeatInterval
      */
-    public Alarm(int isEnable, long time, int bias, int onMonday, int onTuesday,
+    public Alarm(int isEnable, Calendar time, int bias, int onMonday, int onTuesday,
                  int onWednesday, int onThursday, int onFriday, int onSaturday,
                  int onSunday, int isRepeated, int repeatInterval) {
         this.isEnable = isEnable;
@@ -76,11 +78,11 @@ public class Alarm {
         this.isEnable = isEnable;
     }
 
-    public long getTime() {
+    public Calendar getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Calendar time) {
         this.time = time;
     }
 

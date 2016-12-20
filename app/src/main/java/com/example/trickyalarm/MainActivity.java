@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Thin.ttf");
-        Typeface fontForCard = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
+        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
+//        Typeface fontForCard = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, fontForCard);
+        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, mCustomFont);
 
         recyclerView.setAdapter(adapter);
 
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
-                    Alarm temp = new Alarm(mCursor.getInt(0), mCursor.getLong(1), mCursor.getInt(2),
+                    long milliseconds = mCursor.getLong(1);
+                    Alarm temp = new Alarm(mCursor.getInt(0), getCalendarFromMilliseconds(milliseconds), mCursor.getInt(2),
                             mCursor.getInt(3), mCursor.getInt(4), mCursor.getInt(5), mCursor.getInt(6),
                             mCursor.getInt(7), mCursor.getInt(8), mCursor.getInt(9), mCursor.getInt(10),
                             mCursor.getInt(11));
@@ -71,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database is unavailable", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public Calendar getCalendarFromMilliseconds(long milliseconds) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliseconds);
+        return calendar;
     }
 
     public void close() {
