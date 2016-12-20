@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#242834</color>
+    <color name="colorPrimaryDark">#181B23</color>
+    <color name="colorAccent">#DEC3BE</color>
+
+    <color name="main_background">#395e7a</color>
+    <color name="card_background">#4a708c</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="toolbar_title">#828692</color>
+
+    <color name="card_color_01">#D2D383</color>
+    <color name="card_color_02">#BEBEBE</color>
+    <color name="card_color_03">#cbe6df</color>
+    <color name="card_color_04">#a5c3cd</color>
 </resources>
