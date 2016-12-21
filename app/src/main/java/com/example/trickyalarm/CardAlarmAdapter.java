@@ -20,6 +20,7 @@ import android.widget.ToggleButton;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>{
     //Предоставляет ссылку на представления, используемые в RecyclerView
@@ -54,6 +55,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
+        cardView.setBackgroundColor(getRandomColor());
 
         TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
         String time = calendarToString(mAlarms.get(position).getTime());
@@ -94,6 +96,11 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     public String calendarToString(Calendar time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
         return dateFormat.format(time.getTime());
+    }
+
+    public int getRandomColor() {
+        int colors[] = mContext.getResources().getIntArray(R.array.randomColors);
+        return colors[new Random().nextInt(colors.length)];
     }
 
     @Override public int getItemCount()
