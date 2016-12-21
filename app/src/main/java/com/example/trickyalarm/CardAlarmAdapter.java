@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>{
     //Предоставляет ссылку на представления, используемые в RecyclerView
@@ -47,16 +49,14 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         cardView.setCardElevation(0);
 
         TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
-        String time = longToString(mAlarms.get(position).getTime());
-        alarmTime.setText(String.valueOf(time));
+        String time = calendarToString(mAlarms.get(position).getTime());
+        alarmTime.setText(time);
         alarmTime.setTypeface(mFontForText);
     }
 
-    public String longToString(long time) {
-        long minute = (time % (1000 * 60)) % 60;
-        long hour = (time % (1000 * 60 * 60)) % 24;
-
-        return String.format("%02d:%02d", hour, minute);
+    public String calendarToString(Calendar time) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+        return dateFormat.format(time.getTime());
     }
 
     @Override public int getItemCount()

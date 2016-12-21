@@ -5,7 +5,7 @@
 
     <dimen name="toolbar_size">56dp</dimen>
     <dimen name="toolbar_title">24sp</dimen>
-    <dimen name="card_height">100dp</dimen>
+    <dimen name="card_height">130dp</dimen>
     <dimen name="alarms_list_padding">17dp</dimen>
     <dimen name="weekday_letter">15sp</dimen>
 </resources>

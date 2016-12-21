@@ -30,42 +30,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_cfff083240b553c0292a8c1d89ab59c96f8684f9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_03d43f829672a5190994e5a9b3d678f05ceb4c6f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_0ba78339ec298c8398856cc87c0c3f810c92db4a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_f66ab71b25354c27a52131b8e4dceaf07fd444c3.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -75,12 +39,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_cfff083240b553c0292a8c1d89ab59c96f8684f9.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.0"
         sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
         <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_f62982dd88b85ad309249fadfda18586ac6439db.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="f4d7a07120e76988f3a15403838d323c2400db83">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_55e5316e4ba52fb185bde9d7fe3d68e1f50c8429.jar" />
     </item>
     <item
         is-multidex="false"
@@ -102,12 +84,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_03d43f829672a5190994e5a9b3d678f05ceb4c6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_0ba78339ec298c8398856cc87c0c3f810c92db4a.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.0"
         sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
         <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_28d40f61cc60701b0737950603b5ddfdd11bcf24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="5ddf5f4817565c9db82613c16093f76640a54e15">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-v13-23.1.1_ebe15a700ef99bb5dd8a24ebcee3757ce87fad21.jar" />
     </item>
     <item
         is-multidex="false"
@@ -135,6 +144,24 @@
         revision="24.0.0"
         sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
         <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_41711640370909d50f3f8318d71372345366f041.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.github.citux\datetimepicker\0.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="47a72d25966129c3260bf7d4b05fd8795032b749">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.github.citux-datetimepicker-0.2.0_dd7b1f76943b489eb1651dd7e9fec70c5adfabbc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_f66ab71b25354c27a52131b8e4dceaf07fd444c3.jar" />
     </item>
     <item
         is-multidex="false"
