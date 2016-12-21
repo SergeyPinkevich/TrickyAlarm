@@ -2615,7 +2615,8 @@
     <MESSAGE value="cardView udated" />
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="random color" />
-    <option name="LAST_COMMIT_MESSAGE" value="random color" />
+    <MESSAGE value="gitignore updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore updated" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
