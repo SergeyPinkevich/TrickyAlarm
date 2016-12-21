@@ -81,6 +81,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
 
         TextView biasTime = (TextView) cardView.findViewById(R.id.bias_time);
         biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
+        biasTime.setTypeface(mFontForText);
     }
 
     public void setColorText(Button button, boolean condition) {

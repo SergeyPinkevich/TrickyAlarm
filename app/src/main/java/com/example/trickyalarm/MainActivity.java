@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
-                    long milliseconds = mCursor.getLong(1);
-                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(0)), getCalendarFromMilliseconds(milliseconds),
-                            mCursor.getInt(2), intToBoolean(mCursor.getInt(3)),
+                    long milliseconds = mCursor.getLong(2);
+                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(1)), getCalendarFromMilliseconds(milliseconds),
+                            mCursor.getInt(3), intToBoolean(mCursor.getInt(3)),
                             intToBoolean(mCursor.getInt(4)), intToBoolean(mCursor.getInt(5)),
                             intToBoolean(mCursor.getInt(6)), intToBoolean(mCursor.getInt(7)),
                             intToBoolean(mCursor.getInt(8)), intToBoolean(mCursor.getInt(9)),
