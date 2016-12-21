@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, mCustomFont);
+        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, mCustomFont, this);
 
         recyclerView.setAdapter(adapter);
 
@@ -60,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
                     long milliseconds = mCursor.getLong(1);
-                    Alarm temp = new Alarm(mCursor.getInt(0), getCalendarFromMilliseconds(milliseconds), mCursor.getInt(2),
-                            mCursor.getInt(3), mCursor.getInt(4), mCursor.getInt(5), mCursor.getInt(6),
-                            mCursor.getInt(7), mCursor.getInt(8), mCursor.getInt(9), mCursor.getInt(10),
-                            mCursor.getInt(11));
+                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(0)), getCalendarFromMilliseconds(milliseconds),
+                            mCursor.getInt(2), intToBoolean(mCursor.getInt(3)),
+                            intToBoolean(mCursor.getInt(4)), intToBoolean(mCursor.getInt(5)),
+                            intToBoolean(mCursor.getInt(6)), intToBoolean(mCursor.getInt(7)),
+                            intToBoolean(mCursor.getInt(8)), intToBoolean(mCursor.getInt(9)),
+                            intToBoolean(mCursor.getInt(10)), mCursor.getInt(11));
                     alarms.add(temp);
                     mCursor.moveToNext();
                 }
@@ -72,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database is unavailable", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean intToBoolean(int number) {
+        return number > 0 ? true : false;
     }
 
     public Calendar getCalendarFromMilliseconds(long milliseconds) {

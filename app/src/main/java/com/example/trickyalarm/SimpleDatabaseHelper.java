@@ -50,7 +50,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + "ON_SUNDAY INTEGER, "
                     + "IS_REPEATED INTEGER, "
                     + "REPEAT_INTERVAL INTEGER);");
-            insertAlarm(db, 0, System.currentTimeMillis() + 10000, 10, 1, 1, 1, 1, 1, 0, 0, 0, 5);
+            insertAlarm(db, 0, System.currentTimeMillis() + 10000, 25, 1, 1, 1, 1, 1, 0, 0, 0, 5);
         }
     }
 

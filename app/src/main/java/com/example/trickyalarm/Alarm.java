@@ -8,17 +8,17 @@ import java.util.Calendar;
 
 public class Alarm {
 
-    private int isEnable;
+    private boolean isEnable;
     private Calendar time;
     private int bias;
-    private int onMonday;
-    private int onTuesday;
-    private int onWednesday;
-    private int onThursday;
-    private int onFriday;
-    private int onSaturday;
-    private int onSunday;
-    private int isRepeated;
+    private boolean onMonday;
+    private boolean onTuesday;
+    private boolean onWednesday;
+    private boolean onThursday;
+    private boolean onFriday;
+    private boolean onSaturday;
+    private boolean onSunday;
+    private boolean isRepeated;
     private int repeatInterval;
 
     /**
@@ -29,19 +29,19 @@ public class Alarm {
      * @param isRepeated
      * @param repeatInterval
      */
-    public Alarm(int isEnable, Calendar time, int bias, int isRepeated, int repeatInterval) {
+    public Alarm(boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
-        this.isEnable = isRepeated;
+        this.isRepeated = isRepeated;
         this.repeatInterval = repeatInterval;
-        this.onMonday = 0;
-        this.onTuesday = 0;
-        this.onWednesday = 0;
-        this.onThursday = 0;
-        this.onFriday = 0;
-        this.onSaturday = 0;
-        this.onSunday = 0;
+        this.onMonday = false;
+        this.onTuesday = false;
+        this.onWednesday = false;
+        this.onThursday = false;
+        this.onFriday = false;
+        this.onSaturday = false;
+        this.onSunday = false;
     }
 
     /**
@@ -59,9 +59,9 @@ public class Alarm {
      * @param isRepeated
      * @param repeatInterval
      */
-    public Alarm(int isEnable, Calendar time, int bias, int onMonday, int onTuesday,
-                 int onWednesday, int onThursday, int onFriday, int onSaturday,
-                 int onSunday, int isRepeated, int repeatInterval) {
+    public Alarm(boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
+                 boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
+                 boolean onSunday, boolean isRepeated, int repeatInterval) {
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -72,15 +72,11 @@ public class Alarm {
         this.onFriday = onFriday;
         this.onSaturday = onSaturday;
         this.onSunday = onSunday;
-        this.isEnable = isRepeated;
+        this.isRepeated = isRepeated;
         this.repeatInterval = repeatInterval;
     }
 
-    public int getIsEnable() {
-        return isEnable;
-    }
-
-    public void setIsEnable(int isEnable) {
+    public void setIsEnable(boolean isEnable) {
         this.isEnable = isEnable;
     }
 
@@ -100,67 +96,67 @@ public class Alarm {
         this.bias = bias;
     }
 
-    public int getOnMonday() {
+    public boolean getOnMonday() {
         return onMonday;
     }
 
-    public void setOnMonday(int onMonday) {
+    public void setOnMonday(boolean onMonday) {
         this.onMonday = onMonday;
     }
 
-    public int getOnTuesday() {
+    public boolean getOnTuesday() {
         return onTuesday;
     }
 
-    public void setOnTuesday(int onTuesday) {
+    public void setOnTuesday(boolean onTuesday) {
         this.onTuesday = onTuesday;
     }
 
-    public int getOnWednesday() {
+    public boolean getOnWednesday() {
         return onWednesday;
     }
 
-    public void setOnWednesday(int onWednesday) {
+    public void setOnWednesday(boolean onWednesday) {
         this.onWednesday = onWednesday;
     }
 
-    public int getOnThursday() {
+    public boolean getOnThursday() {
         return onThursday;
     }
 
-    public void setOnThursday(int onThursday) {
+    public void setOnThursday(boolean onThursday) {
         this.onThursday = onThursday;
     }
 
-    public int getOnFriday() {
+    public boolean getOnFriday() {
         return onFriday;
     }
 
-    public void setOnFriday(int onFriday) {
+    public void setOnFriday(boolean onFriday) {
         this.onFriday = onFriday;
     }
 
-    public int getOnSaturday() {
+    public boolean getOnSaturday() {
         return onSaturday;
     }
 
-    public void setOnSaturday(int onSaturday) {
+    public void setOnSaturday(boolean onSaturday) {
         this.onSaturday = onSaturday;
     }
 
-    public int getOnSunday() {
+    public boolean getOnSunday() {
         return onSunday;
     }
 
-    public void setOnSunday(int onSunday) {
+    public void setOnSunday(boolean onSunday) {
         this.onSunday = onSunday;
     }
 
-    public int getIsRepeated() {
+    public boolean getIsRepeated() {
         return isRepeated;
     }
 
-    public void setIsRepeated(int isRepeated) {
+    public void setIsRepeated(boolean isRepeated) {
         this.isRepeated = isRepeated;
     }
 
@@ -170,5 +166,13 @@ public class Alarm {
 
     public void setRepeatInterval(int repeatInterval) {
         this.repeatInterval = repeatInterval;
+    }
+
+    public boolean isEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(boolean enable) {
+        isEnable = enable;
     }
 }
