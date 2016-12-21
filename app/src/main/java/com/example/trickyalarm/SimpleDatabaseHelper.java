@@ -73,4 +73,8 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         alarmValues.put("REPEAT_INTERVAL", repeatInterval);
         db.insert(TABLE_NAME, null, alarmValues);
     }
+
+    public void deleteAlarm(SQLiteDatabase db, Alarm alarm) {
+        db.delete(TABLE_NAME, "_id = ?", new String[] {});
+    }
 }

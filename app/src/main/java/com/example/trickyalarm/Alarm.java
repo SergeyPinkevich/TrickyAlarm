@@ -20,7 +20,6 @@ public class Alarm {
     private int onSunday;
     private int isRepeated;
     private int repeatInterval;
-    private boolean[] weekdays;
 
     /**
      * Single alarm (without scheduler depending on weekdays)
@@ -36,6 +35,13 @@ public class Alarm {
         this.bias = bias;
         this.isEnable = isRepeated;
         this.repeatInterval = repeatInterval;
+        this.onMonday = 0;
+        this.onTuesday = 0;
+        this.onWednesday = 0;
+        this.onThursday = 0;
+        this.onFriday = 0;
+        this.onSaturday = 0;
+        this.onSunday = 0;
     }
 
     /**

@@ -25,32 +25,40 @@
             <TextView
                 android:id="@+id/alarm_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="7:30"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:textSize="40sp"
+                android:textSize="@dimen/list_time_size"
                 android:textColor="@color/white_color"/>
+
+            <TextView
+                android:id="@+id/bias_time"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:textSize="25sp"
+                android:textColor="@color/white_color"
+                android:layout_marginLeft="20dp"
+                android:layout_alignBottom="@+id/alarm_time"
+                android:layout_toRightOf="@+id/alarm_time"
+                android:text="20"/>
 
             <ToggleButton
                 android:id="@+id/toggle_button"
                 android:layout_width="50dp"
                 android:layout_height="17dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="18dp"
                 android:background="@drawable/toggle_switch"
                 android:textOff=""
                 android:textOn=""/>
-
         </RelativeLayout>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="60dp"
+            android:gravity="bottom"
             android:weightSum="7">
 
             <Button
