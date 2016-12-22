@@ -79,9 +79,13 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     public void addAlarm(SQLiteDatabase db, Alarm alarm) {
         insertAlarm(db, booleanToInt(alarm.isEnable()), alarm.getTime().getTime().getTime(), alarm.getBias(),
-                booleanToInt(alarm.getOnMonday()), booleanToInt(alarm.getOnTuesday()), booleanToInt(alarm.getOnWednesday()),
-                        booleanToInt(alarm.getOnThursday()), booleanToInt(alarm.getOnFriday()), booleanToInt(alarm.getOnSaturday()),
-                booleanToInt(alarm.getOnSunday()), booleanToInt(alarm.getIsRepeated()), alarm.getRepeatInterval());
+                booleanToInt(alarm.isOnMonday()), booleanToInt(alarm.isOnTuesday()), booleanToInt(alarm.isOnWednesday()),
+                        booleanToInt(alarm.isOnThursday()), booleanToInt(alarm.isOnFriday()), booleanToInt(alarm.isOnSaturday()),
+                booleanToInt(alarm.isOnSunday()), booleanToInt(alarm.isRepeated()), alarm.getRepeatInterval());
+    }
+
+    public void updateAlarm(SQLiteDatabase db, Alarm alarm, int position) {
+        
     }
 
     public int booleanToInt(boolean value) {

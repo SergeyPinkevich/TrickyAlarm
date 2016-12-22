@@ -5,15 +5,18 @@ package com.example.trickyalarm;
  */
 
 
-import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -27,6 +30,8 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
+    private SimpleDatabaseHelper mHelper;
+    private SQLiteDatabase mDatabase;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
@@ -44,14 +49,12 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     }
 
     @Override
-    public CardAlarmAdapter.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType){
+    public CardAlarmAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         CardView cv = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.alarm_card, parent, false);
         return new ViewHolder(cv);
     }
 
-    @Override public void onBindViewHolder(ViewHolder holder, int position){
-
+    @Override public void onBindViewHolder(ViewHolder holder, final int position){
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
@@ -70,20 +73,34 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         Button onSaturday = (Button) cardView.findViewById(R.id.saturday_letter);
         Button onSunday = (Button) cardView.findViewById(R.id.sunday_letter);
 
-        setColorText(onMonday, mAlarms.get(position).getOnMonday());
-        setColorText(onTuesday, mAlarms.get(position).getOnTuesday());
-        setColorText(onWednesday, mAlarms.get(position).getOnWednesday());
-        setColorText(onThursday, mAlarms.get(position).getOnThursday());
-        setColorText(onFriday, mAlarms.get(position).getOnFriday());
-        setColorText(onSaturday, mAlarms.get(position).getOnSaturday());
-        setColorText(onSunday, mAlarms.get(position).getOnSunday());
+        setColorText(onMonday, mAlarms.get(position).isOnMonday());
+        setColorText(onTuesday, mAlarms.get(position).isOnTuesday());
+        setColorText(onWednesday, mAlarms.get(position).isOnWednesday());
+        setColorText(onThursday, mAlarms.get(position).isOnThursday());
+        setColorText(onFriday, mAlarms.get(position).isOnFriday());
+        setColorText(onSaturday, mAlarms.get(position).isOnSaturday());
+        setColorText(onSunday, mAlarms.get(position).isOnSunday());
 
         ToggleButton toggleButton = (ToggleButton) cardView.findViewById(R.id.toggle_button);
         toggleButton.setChecked(mAlarms.get(position).isEnable());
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Alarm alarm = mAlarms.get(position);
+                alarm.setEnable(b);
+                updateDatabase(alarm, position);
+            }
+        });
 
         TextView biasTime = (TextView) cardView.findViewById(R.id.bias_time);
         biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
         biasTime.setTypeface(mFontForText);
+    }
+
+    public void updateDatabase(Alarm alarm, int position) {
+        mHelper = new SimpleDatabaseHelper(mContext);
+        mDatabase = mHelper.getWritableDatabase();
+        mHelper.updateAlarm(mDatabase, alarm, position);
     }
 
     public void setColorText(Button button, boolean condition) {

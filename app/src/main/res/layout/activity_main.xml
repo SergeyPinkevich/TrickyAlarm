@@ -8,9 +8,6 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.trickyalarm.MainActivity">
 
-    <include
-        layout="@layout/toolbar"/>
-
     <android.support.v7.widget.RecyclerView
         android:overScrollMode="never"
         android:scrollbars="vertical"
@@ -21,5 +18,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:id="@+id/alarm_list"/>
+
+    <include
+        layout="@layout/toolbar"/>
 
 </RelativeLayout>
