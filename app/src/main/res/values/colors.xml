@@ -13,4 +13,6 @@
     <color name="card_color_02">#BEBEBE</color>
     <color name="card_color_03">#cbe6df</color>
     <color name="card_color_04">#a5c3cd</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
