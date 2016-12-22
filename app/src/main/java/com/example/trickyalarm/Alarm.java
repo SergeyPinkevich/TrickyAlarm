@@ -76,8 +76,12 @@ public class Alarm {
         this.repeatInterval = repeatInterval;
     }
 
-    public void setIsEnable(boolean isEnable) {
-        this.isEnable = isEnable;
+    public boolean isEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(boolean enable) {
+        isEnable = enable;
     }
 
     public Calendar getTime() {
@@ -96,7 +100,7 @@ public class Alarm {
         this.bias = bias;
     }
 
-    public boolean getOnMonday() {
+    public boolean isOnMonday() {
         return onMonday;
     }
 
@@ -104,7 +108,7 @@ public class Alarm {
         this.onMonday = onMonday;
     }
 
-    public boolean getOnTuesday() {
+    public boolean isOnTuesday() {
         return onTuesday;
     }
 
@@ -112,7 +116,7 @@ public class Alarm {
         this.onTuesday = onTuesday;
     }
 
-    public boolean getOnWednesday() {
+    public boolean isOnWednesday() {
         return onWednesday;
     }
 
@@ -120,7 +124,7 @@ public class Alarm {
         this.onWednesday = onWednesday;
     }
 
-    public boolean getOnThursday() {
+    public boolean isOnThursday() {
         return onThursday;
     }
 
@@ -128,7 +132,7 @@ public class Alarm {
         this.onThursday = onThursday;
     }
 
-    public boolean getOnFriday() {
+    public boolean isOnFriday() {
         return onFriday;
     }
 
@@ -136,7 +140,7 @@ public class Alarm {
         this.onFriday = onFriday;
     }
 
-    public boolean getOnSaturday() {
+    public boolean isOnSaturday() {
         return onSaturday;
     }
 
@@ -144,7 +148,7 @@ public class Alarm {
         this.onSaturday = onSaturday;
     }
 
-    public boolean getOnSunday() {
+    public boolean isOnSunday() {
         return onSunday;
     }
 
@@ -152,12 +156,12 @@ public class Alarm {
         this.onSunday = onSunday;
     }
 
-    public boolean getIsRepeated() {
+    public boolean isRepeated() {
         return isRepeated;
     }
 
-    public void setIsRepeated(boolean isRepeated) {
-        this.isRepeated = isRepeated;
+    public void setRepeated(boolean repeated) {
+        isRepeated = repeated;
     }
 
     public int getRepeatInterval() {
@@ -166,13 +170,5 @@ public class Alarm {
 
     public void setRepeatInterval(int repeatInterval) {
         this.repeatInterval = repeatInterval;
-    }
-
-    public boolean isEnable() {
-        return isEnable;
-    }
-
-    public void setEnable(boolean enable) {
-        isEnable = enable;
     }
 }

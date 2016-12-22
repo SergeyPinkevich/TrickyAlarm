@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
-            SQLiteOpenHelper databaseHelper = new SimpleDatabaseHelper(this);
+            SimpleDatabaseHelper databaseHelper = new SimpleDatabaseHelper(this);
             mDatabase = databaseHelper.getReadableDatabase();
 
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
