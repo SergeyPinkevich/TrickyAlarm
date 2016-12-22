@@ -10,15 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79a70a79-d50d-4b64-a000-477e1bb90502" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java" />
     </list>
     <ignored path="TrickyAlarm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,8 +106,8 @@
       <file leaf-file-name="AlarmReceiver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+            <state relative-caret-position="272">
+              <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2556,7 +2548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482413470043</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Merge branch 'development' of https://github.com/SergeyPinkevich/TrickyAlarm into Almaz&#10;&#10;# Conflicts:&#10;#&#9;.gradle/2.14.1/taskArtifacts/cache.properties.lock&#10;#&#9;.gradle/2.14.1/taskArtifacts/fileHashes.bin&#10;#&#9;.gradle/2.14.1/taskArtifacts/fileSnapshots.bin&#10;#&#9;.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin&#10;#&#9;.gradle/2.14.1/taskArtifacts/taskArtifacts.bin&#10;#&#9;.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin&#10;#&#9;.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock&#10;#&#9;.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin&#10;#&#9;.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/build.gradle&#10;#&#9;app/src/main/java/com/example/trickyalarm/MainActivity.java&#10;#&#9;app/src/main/res/values/colors.xml&#10;#&#9;build/intermediates/dex-cache/cache.xml&#10;#&#9;local.properties&#10;">
+      <created>1482434241303</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1482434241303</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2570,7 +2569,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="66" y="-8" width="1308" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2976,8 +2975,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        <state relative-caret-position="272">
+          <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
