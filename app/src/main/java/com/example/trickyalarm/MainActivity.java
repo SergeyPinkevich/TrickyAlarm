@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         AlarmReceiver alarmReceiver = new AlarmReceiver();
         alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 5 * 1000));
 
-        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
+        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Thin.ttf");
+        Typeface fontForCard = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, mCustomFont, this);
+        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, fontForCard);
 
         recyclerView.setAdapter(adapter);
 
@@ -53,22 +53,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
     }
 
+
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
-            SimpleDatabaseHelper databaseHelper = new SimpleDatabaseHelper(this);
+            SQLiteOpenHelper databaseHelper = new SimpleDatabaseHelper(this);
             mDatabase = databaseHelper.getReadableDatabase();
 
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
-                    long milliseconds = mCursor.getLong(2);
-                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(1)), getCalendarFromMilliseconds(milliseconds),
-                            mCursor.getInt(3), intToBoolean(mCursor.getInt(3)),
-                            intToBoolean(mCursor.getInt(4)), intToBoolean(mCursor.getInt(5)),
-                            intToBoolean(mCursor.getInt(6)), intToBoolean(mCursor.getInt(7)),
-                            intToBoolean(mCursor.getInt(8)), intToBoolean(mCursor.getInt(9)),
-                            intToBoolean(mCursor.getInt(10)), mCursor.getInt(11));
+                    Alarm temp = new Alarm(mCursor.getInt(0), mCursor.getLong(1), mCursor.getInt(2),
+                            mCursor.getInt(3), mCursor.getInt(4), mCursor.getInt(5), mCursor.getInt(6),
+                            mCursor.getInt(7), mCursor.getInt(8), mCursor.getInt(9), mCursor.getInt(10),
+                            mCursor.getInt(11));
                     alarms.add(temp);
                     mCursor.moveToNext();
                 }
@@ -77,16 +75,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database is unavailable", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public boolean intToBoolean(int number) {
-        return number > 0 ? true : false;
-    }
-
-    public Calendar getCalendarFromMilliseconds(long milliseconds) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(milliseconds);
-        return calendar;
     }
 
     public void close() {
@@ -121,4 +109,5 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
+    
 }
