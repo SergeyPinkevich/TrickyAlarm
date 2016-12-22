@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         AlarmReceiver alarmReceiver = new AlarmReceiver();
         alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 5 * 1000));
 
-        /*mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Thin.ttf");
+        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Thin.ttf");
         Typeface fontForCard = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);*/
+        recyclerView.setLayoutManager(layoutManager);
     }
 
-    /*
+
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
@@ -101,6 +101,5 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
-
-    */
+    
 }
