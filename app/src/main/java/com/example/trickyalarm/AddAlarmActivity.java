@@ -49,10 +49,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     }
 
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnTimePicker:
-                TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
-                break;
+        if (view.getId() == R.id.btnTimePicker) {
+            TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
         }
     }
 
@@ -74,5 +72,4 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
-
 }

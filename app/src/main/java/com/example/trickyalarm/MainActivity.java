@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AlarmReceiver alarmReceiver = new AlarmReceiver();
-        alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 5 * 1000));
-
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
@@ -56,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
-            SimpleDatabaseHelper databaseHelper = new SimpleDatabaseHelper(this);
+            SQLiteOpenHelper databaseHelper = new SimpleDatabaseHelper(this);
             mDatabase = databaseHelper.getReadableDatabase();
 
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
-                    long milliseconds = mCursor.getLong(2);
-                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(1)), getCalendarFromMilliseconds(milliseconds),
-                            mCursor.getInt(3), intToBoolean(mCursor.getInt(3)),
+                    long milliseconds = mCursor.getLong(1);
+                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(0)), getCalendarFromMilliseconds(milliseconds),
+                            mCursor.getInt(2), intToBoolean(mCursor.getInt(3)),
                             intToBoolean(mCursor.getInt(4)), intToBoolean(mCursor.getInt(5)),
                             intToBoolean(mCursor.getInt(6)), intToBoolean(mCursor.getInt(7)),
                             intToBoolean(mCursor.getInt(8)), intToBoolean(mCursor.getInt(9)),
