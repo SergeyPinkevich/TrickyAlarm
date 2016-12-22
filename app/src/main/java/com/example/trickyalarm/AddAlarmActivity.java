@@ -43,10 +43,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
-//        numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
-//
-//        numberPicker.setMaxValue(10);
-//        numberPicker.setMinValue(0);
+
 
 
         lblTime = (TextView) findViewById(R.id.lblTime);
