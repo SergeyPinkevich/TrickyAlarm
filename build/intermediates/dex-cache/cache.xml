@@ -75,6 +75,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_f62982dd88b85ad309249fadfda18586ac6439db.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.1\jars\libs\internal_impl-23.1.1.jar"
         jumboMode="false"
         optimize="true"
@@ -102,6 +111,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_28d40f61cc60701b0737950603b5ddfdd11bcf24.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -120,48 +138,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_41711640370909d50f3f8318d71372345366f041.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_87abb5858d9d6a0b1cc014d9cb2276737982d5c8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_f62982dd88b85ad309249fadfda18586ac6439db.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.0"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_28d40f61cc60701b0737950603b5ddfdd11bcf24.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.0"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
         <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_65654f3dfd618c66e4fa174725dee377889952e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_41711640370909d50f3f8318d71372345366f041.jar" />
     </item>
     <item
         is-multidex="false"
@@ -180,6 +171,15 @@
         revision="24.0.0"
         sha1="47a72d25966129c3260bf7d4b05fd8795032b749">
         <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.github.citux-datetimepicker-0.2.0_dd7b1f76943b489eb1651dd7e9fec70c5adfabbc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.0"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_87abb5858d9d6a0b1cc014d9cb2276737982d5c8.jar" />
     </item>
 
 </items>
