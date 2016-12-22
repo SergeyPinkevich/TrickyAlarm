@@ -18,16 +18,159 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
         android:layout_below="@+id/toolbar">
 
-        <TextView
-            android:id="@+id/lblTime"
-            style="@style/DTP.Label"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeContainer">
 
-        <Button
-            android:id="@+id/btnTimePicker"
-            android:text="Время"
-            style="@style/DTP.Button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/lblTextTime"
+                style="@style/DTP.Label"
+                android:textSize="60dp"
+                android:text="@string/time"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/lblTime"
+                style="@style/DTP.Label"
+                android:textSize="60dp"
+                android:text="Test"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/lblTextRepeat"
+                style="@style/DTP.Label"
+                android:textSize="60dp"
+                android:text="@string/repeat"/>
+
+            <ToggleButton
+                android:id="@+id/toggle_button"
+                android:layout_width="50dp"
+                android:layout_height="17dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/toggle_switch"
+                android:textOff=""
+                android:textOn=""
+                android:layout_marginEnd="18dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="bottom"
+            android:weightSum="7">
+
+            <Button
+                android:id="@+id/monday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/monday_letter"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/tuesday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/tuesday_letter"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/wednesday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/wednesday_letter"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/thursday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/thursday_letter"
+                android:textAllCaps="false"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/friday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/friday_letter"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/saturday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/saturday_letter"
+                android:textSize="@dimen/weekday_letter"/>
+
+            <Button
+                android:id="@+id/sunday_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="@color/white_color"
+                android:text="@string/sunday_letter"
+                android:textAllCaps="false"
+                android:textSize="@dimen/weekday_letter"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/lblTextInterval"
+                style="@style/DTP.Label"
+                android:textSize="60dp"
+                android:text="@string/repeat"/>
+
+        </RelativeLayout>
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/discreteSeekBar"
+            android:theme="@style/AppTheme.Base" />
+
 
     </LinearLayout>
 

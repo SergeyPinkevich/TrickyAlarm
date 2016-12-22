@@ -5,11 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.NumberPicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
+
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,10 +26,14 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
     private Typeface mCustomFont;
+    private RelativeLayout timeContainer;
 
     private TextView lblTime;
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
+
+    private NumberPicker numberPicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +43,31 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
+//        numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
+//
+//        numberPicker.setMaxValue(10);
+//        numberPicker.setMinValue(0);
+
+
         lblTime = (TextView) findViewById(R.id.lblTime);
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Thin.ttf");
 
+        timeContainer = (RelativeLayout) findViewById(R.id.timeContainer);
+
+
+        timeContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTimePicker();
+            }
+        });
+
         customizeToolbar();
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         update();
     }
@@ -48,12 +76,16 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblTime.setText(timeFormat.format(calendar.getTime()));
     }
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnTimePicker:
-                TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
-                break;
-        }
+    public void openTimePicker() {
+
+        TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     @Override
@@ -66,6 +98,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public void customizeToolbar() {
         mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) mActionBarToolbar.findViewById(R.id.toolbar_title);
+
+
 
         setSupportActionBar(mActionBarToolbar);
         mToolbarTitle.setText(mActionBarToolbar.getTitle());
