@@ -18,8 +18,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:layout_gravity="center"
             android:orientation="vertical"
             android:weightSum="1"
@@ -35,16 +37,6 @@
                 android:layout_below="@+id/toolbar">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/lblTextTime"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/lblTime"
-                    style="@style/DTP.Label"
-                    android:textSize="70dp"
-                    android:text="Test"
-                    android:clickable="true"/>
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:id="@+id/lblTextTime"
                     style="@style/DTP.Label"
@@ -56,6 +48,17 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/lblTextTime"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/lblTime"
+                    style="@style/DTP.Label"
+                    android:textSize="70dp"
+                    android:text="Test"
+                    android:clickable="true"/>
+
             </RelativeLayout>
 
             <RelativeLayout
