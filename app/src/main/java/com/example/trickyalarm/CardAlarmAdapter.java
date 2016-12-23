@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.text.SimpleDateFormat;
@@ -25,13 +26,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
-class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>{
+class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
     private SimpleDatabaseHelper mHelper;
     private SQLiteDatabase mDatabase;
+
+    private Button onMonday;
+    private Button onTuesday;
+    private Button onWednesday;
+    private Button onThursday;
+    private Button onFriday;
+    private Button onSaturday;
+    private Button onSunday;
+    private ToggleButton toggleButton;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
@@ -65,13 +75,13 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         alarmTime.setText(time);
         alarmTime.setTypeface(mFontForText);
 
-        Button onMonday = (Button) cardView.findViewById(R.id.monday_letter);
-        Button onTuesday = (Button) cardView.findViewById(R.id.tuesday_letter);
-        Button onWednesday = (Button) cardView.findViewById(R.id.wednesday_letter);
-        Button onThursday = (Button) cardView.findViewById(R.id.thursday_letter);
-        Button onFriday = (Button) cardView.findViewById(R.id.friday_letter);
-        Button onSaturday = (Button) cardView.findViewById(R.id.saturday_letter);
-        Button onSunday = (Button) cardView.findViewById(R.id.sunday_letter);
+        onMonday = (Button) cardView.findViewById(R.id.monday_letter);
+        onTuesday = (Button) cardView.findViewById(R.id.tuesday_letter);
+        onWednesday = (Button) cardView.findViewById(R.id.wednesday_letter);
+        onThursday = (Button) cardView.findViewById(R.id.thursday_letter);
+        onFriday = (Button) cardView.findViewById(R.id.friday_letter);
+        onSaturday = (Button) cardView.findViewById(R.id.saturday_letter);
+        onSunday = (Button) cardView.findViewById(R.id.sunday_letter);
 
         setColorText(onMonday, mAlarms.get(position).isOnMonday());
         setColorText(onTuesday, mAlarms.get(position).isOnTuesday());
@@ -81,13 +91,17 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         setColorText(onSaturday, mAlarms.get(position).isOnSaturday());
         setColorText(onSunday, mAlarms.get(position).isOnSunday());
 
-        ToggleButton toggleButton = (ToggleButton) cardView.findViewById(R.id.toggle_button);
+        toggleButton = (ToggleButton) cardView.findViewById(R.id.toggle_button);
         toggleButton.setChecked(mAlarms.get(position).isEnable());
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Alarm alarm = mAlarms.get(position);
                 alarm.setEnable(b);
+                if (b)
+                    Toast.makeText(mContext, "Alarm is switched on", Toast.LENGTH_SHORT);
+                else
+                    Toast.makeText(mContext, "Alarm is switched off", Toast.LENGTH_SHORT);
                 updateDatabase(alarm, position);
             }
         });
@@ -95,6 +109,14 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         TextView biasTime = (TextView) cardView.findViewById(R.id.bias_time);
         biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
         biasTime.setTypeface(mFontForText);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.monday_letter:
+                break;
+        }
     }
 
     public void updateDatabase(Alarm alarm, int position) {

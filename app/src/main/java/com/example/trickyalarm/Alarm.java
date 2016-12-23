@@ -21,14 +21,6 @@ public class Alarm {
     private boolean isRepeated;
     private int repeatInterval;
 
-    /**
-     * Single alarm (without scheduler depending on weekdays)
-     * @param isEnable
-     * @param time
-     * @param bias
-     * @param isRepeated
-     * @param repeatInterval
-     */
     public Alarm(boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
         this.isEnable = isEnable;
         this.time = time;
@@ -44,21 +36,6 @@ public class Alarm {
         this.onSunday = false;
     }
 
-    /**
-     * Alarm with sheduler
-     * @param isEnable
-     * @param time
-     * @param bias
-     * @param onMonday
-     * @param onTuesday
-     * @param onWednesday
-     * @param onThursday
-     * @param onFriday
-     * @param onSaturday
-     * @param onSunday
-     * @param isRepeated
-     * @param repeatInterval
-     */
     public Alarm(boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
                  boolean onSunday, boolean isRepeated, int repeatInterval) {
@@ -74,6 +51,27 @@ public class Alarm {
         this.onSunday = onSunday;
         this.isRepeated = isRepeated;
         this.repeatInterval = repeatInterval;
+    }
+
+    public Alarm(AlarmDatabase alarmDatabase) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(alarmDatabase.getTime());
+        this.isEnable = intToBoolean(alarmDatabase.getIsEnable());
+        this.time = calendar;
+        this.bias = alarmDatabase.getBias();
+        this.onMonday = intToBoolean(alarmDatabase.getOnMonday());
+        this.onTuesday = intToBoolean(alarmDatabase.getOnTuesday());
+        this.onWednesday = intToBoolean(alarmDatabase.getOnWednesday());
+        this.onThursday = intToBoolean(alarmDatabase.getOnThursday());
+        this.onFriday = intToBoolean(alarmDatabase.getOnFriday());
+        this.onSaturday = intToBoolean(alarmDatabase.getOnSaturday());
+        this.onSunday = intToBoolean(alarmDatabase.getOnSunday());
+        this.isRepeated = intToBoolean(alarmDatabase.getIsRepeated());
+        this.repeatInterval = alarmDatabase.getRepeatInterval();
+    }
+
+    public boolean intToBoolean(int value) {
+        return value > 0 ? true : false;
     }
 
     public boolean isEnable() {

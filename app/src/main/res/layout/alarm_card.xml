@@ -68,6 +68,7 @@
                 android:background="@null"
                 android:textColor="@color/white_color"
                 android:text="@string/monday_letter"
+                android:textAllCaps="false"
                 android:textSize="@dimen/weekday_letter"/>
 
             <Button
@@ -78,6 +79,7 @@
                 android:background="@null"
                 android:textColor="@color/white_color"
                 android:text="@string/tuesday_letter"
+                android:textAllCaps="false"
                 android:textSize="@dimen/weekday_letter"/>
 
             <Button
@@ -88,6 +90,7 @@
                 android:background="@null"
                 android:textColor="@color/white_color"
                 android:text="@string/wednesday_letter"
+                android:textAllCaps="false"
                 android:textSize="@dimen/weekday_letter"/>
 
             <Button
@@ -109,6 +112,7 @@
                 android:background="@null"
                 android:textColor="@color/white_color"
                 android:text="@string/friday_letter"
+                android:textAllCaps="false"
                 android:textSize="@dimen/weekday_letter"/>
 
             <Button
@@ -119,6 +123,7 @@
                 android:background="@null"
                 android:textColor="@color/white_color"
                 android:text="@string/saturday_letter"
+                android:textAllCaps="false"
                 android:textSize="@dimen/weekday_letter"/>
 
             <Button
