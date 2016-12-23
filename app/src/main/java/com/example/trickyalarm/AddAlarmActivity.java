@@ -21,6 +21,7 @@ import java.lang.reflect.TypeVariable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Map;
 
 import static android.R.attr.onClick;
 
@@ -36,6 +37,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView lblRepeat;
     private TextView lblWeekly;
 
+    private boolean[] daysConditions = new boolean[7];
+
     private Button onMonday;
     private Button onTuesday;
     private Button onWednesday;
@@ -45,7 +48,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private Button onSunday;
     private Button confirm;
 
-    private ToggleButton repeatable;
+    private ToggleButton repeat;
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
 
@@ -96,6 +99,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onFriday = (Button) findViewById(R.id.friday_letter);
         onSaturday = (Button) findViewById(R.id.saturday_letter);
         onSunday = (Button) findViewById(R.id.sunday_letter);
+
+        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+
+        bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
+
+        interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
 
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
@@ -154,26 +163,40 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
     @Override
     public void onClick(View view) {
+        
 
         switch (view.getId()) {
             case R.id.monday_letter:
-                setColorText(onMonday);
+                setTextColor(onMonday, 0);
                 break;
             case R.id.add_alarm_confirm:
+                addAlarm();
                 onSupportNavigateUp();
                 break;
         }
     }
 
-    public void setColorText(Button button) {
-        if (button.isEnabled())
-            button.setTextColor(Color.WHITE);
+    public void setTextColor(Button button, int number) {
+        daysConditions[number] = !daysConditions[number];
+        if (daysConditions[number])
+            button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
 
         else if (!button.isEnabled())
-            button.setTextColor(Color.BLACK);
+            button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
 
-    public void confirmAddAlarm() {
+    public void addAlarm() {
+        Alarm alarm;
+
+        if (repeat.isChecked()){
+            alarm = new Alarm(true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress());
+        }
+        else
+            alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
+
+        SimpleDatabaseHelper mHelper = new SimpleDatabaseHelper(this);
+        mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
 
     }
 }
