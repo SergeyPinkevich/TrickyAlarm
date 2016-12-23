@@ -192,9 +192,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public void setTextColor(Button button, int number) {
         daysConditions[number] = !daysConditions[number];
         if (daysConditions[number])
-            button.setTextColor(Color.WHITE);
-        else
             button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
+        else
+            button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
 
     public void addAlarm() {
