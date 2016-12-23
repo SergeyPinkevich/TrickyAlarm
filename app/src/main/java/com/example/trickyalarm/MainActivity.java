@@ -1,5 +1,6 @@
 package com.example.trickyalarm;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        if (getIntent() != null)
+            adapter.notifyDataSetChanged();
     }
 
     public void readFromDatabase() {
@@ -81,16 +85,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean intToBoolean(int number) {
-        return number > 0 ? true : false;
-    }
-
-    public Calendar getCalendarFromMilliseconds(long milliseconds) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(milliseconds);
-        return calendar;
-    }
-
     public void close() {
         mCursor.close();
         mDatabase.close();
@@ -105,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_alarm) {
-            Intent intent = new Intent(this, AddAlarmActivity.class);
+            Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
             startActivity(intent);
             return true;
         } else

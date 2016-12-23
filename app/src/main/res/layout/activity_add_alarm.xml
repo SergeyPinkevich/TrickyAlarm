@@ -15,20 +15,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_size">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:layout_gravity="center"
             android:orientation="vertical"
-            android:weightSum="1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/toolbar">
+            android:weightSum="1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -43,7 +37,7 @@
                     android:textSize="25dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="33dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/time"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
@@ -148,8 +142,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
                 android:weightSum="7"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <Button
                     android:id="@+id/monday_letter"
@@ -229,13 +223,22 @@
                     android:textSize="@dimen/weekday_letter"/>
             </LinearLayout>
 
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/IntervalConteiner"
-                android:layout_marginTop="20dp">
+                android:id="@+id/IntervalConteiner">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/interval"
+                    android:textSize="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/lblInterval"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
                 <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
                     android:layout_width="match_parent"
@@ -250,28 +253,17 @@
                     android:theme="@style/AppTheme.Base"
                     android:layout_toRightOf="@+id/lblInterval"
                     android:layout_toEndOf="@+id/lblInterval"
-                    android:fadingEdge="horizontal"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/interval"
-                    android:textSize="24dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/lblInterval"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:fadingEdge="horizontal"/>
             </RelativeLayout>
 
             <Button
                 android:layout_gravity="center"
-                android:layout_width="60dp"
+                android:layout_width="65dp"
                 android:layout_height="60dp"
                 android:id="@+id/add_alarm_confirm"
-                android:background="@drawable/add_alarm_confirm" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/add_alarm_confirm"/>
             
         </LinearLayout>
 

@@ -62,7 +62,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     public void updateAlarm(SQLiteDatabase db, Alarm alarm, int position) {
         ContentValues alarmValues = getContentValues(alarm);
-        db.update(TABLE_NAME, alarmValues, "_id = ?", new String[] {Integer.toString(position)});
+        db.update(TABLE_NAME, alarmValues, "_id = ?", new String[] {Integer.toString(position + 1)});
     }
 
     public ContentValues getContentValues(Alarm alarm) {
@@ -85,25 +85,5 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         alarmValues.put("REPEAT_INTERVAL", alarmDatabase.getRepeatInterval());
 
         return alarmValues;
-    }
-
-    public void addTestAlarms(SQLiteDatabase db) {
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.setTimeInMillis(System.currentTimeMillis() + 400 * 1000);
-        Alarm alarm1 = new Alarm(true, calendar1,
-                10, true, false, true, true, true, false, false, true, 10);
-
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTimeInMillis(System.currentTimeMillis() + 1220 * 1000);
-        Alarm alarm2 = new Alarm(false, calendar2,
-                15, false, true, false, true, false, true, false, true, 5);
-
-        Calendar calendar3 = Calendar.getInstance();
-        calendar3.setTimeInMillis(System.currentTimeMillis() + 5520 * 1000);
-        Alarm alarm3 = new Alarm(true, calendar3,
-                25, true, true, false, false, true, true, false, false, 5);
-        addAlarm(db, alarm1);
-        addAlarm(db, alarm2);
-        addAlarm(db, alarm3);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.trickyalarm;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
@@ -28,6 +30,7 @@ import static android.R.attr.onClick;
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
+    public static final String ADD_ALARM = "Alarm was added";
 
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
@@ -51,7 +54,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private ToggleButton repeat;
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
-
 
     private View.OnClickListener weekButtons;
 
@@ -128,7 +130,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
 
     public void openTimePicker() {
-            TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
+        TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
     }
 
     @Override
@@ -184,9 +186,18 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
                 break;
             case R.id.add_alarm_confirm:
                 addAlarm();
-                onSupportNavigateUp();
+                returnToMenu(true);
                 break;
         }
+    }
+
+    public void returnToMenu(boolean value) {
+        Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public static boolean wasAlarmAdded(Intent intent) {
+        return intent.getBooleanExtra(ADD_ALARM, false);
     }
 
     public void setTextColor(Button button, int number) {
