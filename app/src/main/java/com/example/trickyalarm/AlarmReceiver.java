@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.PowerManager;
 
 /**
  * Created by Almaz on 21.12.2016.
@@ -20,13 +19,13 @@ public class AlarmReceiver extends BroadcastReceiver {
      */
     @Override
     public void onReceive(Context context, Intent intent) {
-        PowerManager powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakelockTag");
-        wakeLock.acquire();
+        //PowerManager powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
+        //PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakelockTag");
+        //wakeLock.acquire();
         Intent intent1 = new Intent(context, SignalActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent1);
-        wakeLock.release();
+        //wakeLock.release();
     }
 
     /**
