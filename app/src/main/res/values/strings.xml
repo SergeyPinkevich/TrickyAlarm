@@ -13,8 +13,12 @@
     <string name="sunday_letter">Sun</string>
 
     <!-- Alarm's fields -->
-    <string name="time">Time</string>
-    <string name="repeat">Repeat</string>
+    <string name="new_alarm">New alarm</string>
+    <string name="time">Time:</string>
+    <string name="repeat_on">Repeat on:</string>
+    <string name="bias">Bias:</string>
+    <string name="repeat">Repeat:</string>
+    <string name="interval">Interval:</string>
 
     <string name="title_activity_signal">SignalActivity</string>
     <string name="dummy_button">Dummy Button</string>
