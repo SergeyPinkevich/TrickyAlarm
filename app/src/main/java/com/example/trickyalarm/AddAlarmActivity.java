@@ -108,7 +108,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
-
         onMonday.setOnClickListener(this);
         onTuesday.setOnClickListener(this);
         onWednesday.setOnClickListener(this);
@@ -119,8 +118,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         confirm.setOnClickListener(this);
 
         customizeToolbar();
-
-
 
         update();
     }
@@ -145,15 +142,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public boolean onSupportNavigateUp(){
         finish();
         return true;
-
     }
 
-
-
-
     public void customizeToolbar() {
-
-
         mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) mActionBarToolbar.findViewById(R.id.toolbar_title);
 
@@ -169,8 +160,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
     @Override
     public void onClick(View view) {
-
-
         switch (view.getId()) {
             case R.id.monday_letter:
                 setTextColor(onMonday, 0);
@@ -204,7 +193,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         daysConditions[number] = !daysConditions[number];
         if (daysConditions[number])
             button.setTextColor(Color.WHITE);
-
         else
             button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
     }
@@ -212,15 +200,13 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public void addAlarm() {
         Alarm alarm;
 
-        if (repeat.isChecked()){
+        if (repeat.isChecked())
             alarm = new Alarm(true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress());
-        }
         else
             alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
         SimpleDatabaseHelper mHelper = new SimpleDatabaseHelper(this);
         mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
-
     }
 }
