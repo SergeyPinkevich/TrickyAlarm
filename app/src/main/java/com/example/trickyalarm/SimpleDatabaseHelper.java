@@ -52,7 +52,6 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + "ON_SUNDAY INTEGER, "
                     + "IS_REPEATED INTEGER, "
                     + "REPEAT_INTERVAL INTEGER);");
-            addTestAlarms(db);
         }
     }
 

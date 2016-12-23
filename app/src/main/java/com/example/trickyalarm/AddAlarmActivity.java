@@ -169,7 +169,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
     @Override
     public void onClick(View view) {
-        
+
 
         switch (view.getId()) {
             case R.id.monday_letter:
