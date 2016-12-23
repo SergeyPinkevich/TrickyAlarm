@@ -7,10 +7,10 @@
     <string name="monday_letter">Mon</string>
     <string name="tuesday_letter">Tue</string>
     <string name="wednesday_letter">Wed</string>
-    <string name="thursday_letter">THU</string>
+    <string name="thursday_letter">Thu</string>
     <string name="friday_letter">Fri</string>
     <string name="saturday_letter">Sat</string>
-    <string name="sunday_letter">SAN</string>
+    <string name="sunday_letter">Sun</string>
 
     <!-- Alarm's fields -->
     <string name="time">Time</string>

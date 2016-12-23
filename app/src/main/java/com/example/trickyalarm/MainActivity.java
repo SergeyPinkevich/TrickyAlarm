@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        AlarmReceiver alarmReceiver = new AlarmReceiver();
+//        alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 60 * 1000));
+
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
@@ -59,13 +62,15 @@ public class MainActivity extends AppCompatActivity {
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
-                    long milliseconds = mCursor.getLong(1);
-                    Alarm temp = new Alarm(intToBoolean(mCursor.getInt(0)), getCalendarFromMilliseconds(milliseconds),
-                            mCursor.getInt(2), intToBoolean(mCursor.getInt(3)),
-                            intToBoolean(mCursor.getInt(4)), intToBoolean(mCursor.getInt(5)),
-                            intToBoolean(mCursor.getInt(6)), intToBoolean(mCursor.getInt(7)),
-                            intToBoolean(mCursor.getInt(8)), intToBoolean(mCursor.getInt(9)),
-                            intToBoolean(mCursor.getInt(10)), mCursor.getInt(11));
+                    long milliseconds = mCursor.getLong(2);
+                    AlarmDatabase alarmDatabase = new AlarmDatabase(
+                            mCursor.getInt(1), milliseconds,
+                            mCursor.getInt(3), mCursor.getInt(3),
+                            mCursor.getInt(4), mCursor.getInt(5),
+                            mCursor.getInt(6), mCursor.getInt(7),
+                            mCursor.getInt(8), mCursor.getInt(9),
+                            mCursor.getInt(10), mCursor.getInt(11));
+                    Alarm temp = new Alarm(alarmDatabase);
                     alarms.add(temp);
                     mCursor.moveToNext();
                 }

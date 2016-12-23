@@ -48,11 +48,11 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblTime.setText(timeFormat.format(calendar.getTime()));
     }
 
-    public void onClick(View view) {
-        if (view.getId() == R.id.btnTimePicker) {
-            TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
-        }
-    }
+//    public void onClick(View view) {
+//        if (view.getId() == R.id.btnTimePicker) {
+//            TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
+//        }
+//    }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
