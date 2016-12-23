@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#242834</color>
-    <color name="colorPrimaryDark">#181B23</color>
+    <color name="colorPrimaryDark">#181b23</color>
     <color name="colorAccent">#DEC3BE</color>
 
     <color name="main_background">#395e7a</color>
     <color name="card_background">#4a708c</color>
     <color name="white_color">#FFFFFF</color>
     <color name="toolbar_title">#828692</color>
+    <color name="semi_transparent">#64FFFFFF</color>
 
-    <color name="card_color_01">#D2D383</color>
+    <color name="black_overlay">#ffffff</color>
+
+    <!-- Colors for cards -->
+    <color name="card_color_01">#d2d383</color>
     <color name="card_color_02">#BEBEBE</color>
     <color name="card_color_03">#cbe6df</color>
     <color name="card_color_04">#a5c3cd</color>
+    <color name="card_color_05">#9AADBF</color>
+    <color name="card_color_06">#6d95ba</color>
+    <color name="card_color_07">#B58292</color>
+    <color name="card_color_08">#C5D69D</color>
+    <color name="card_color_09">#926FC3</color>
+
+    <!-- Cards colors array-->
+    <integer-array name="randomColors">
+        <item>@color/card_color_01</item>
+        <item>@color/card_color_02</item>
+        <item>@color/card_color_03</item>
+        <item>@color/card_color_04</item>
+        <item>@color/card_color_05</item>
+        <item>@color/card_color_06</item>
+        <item>@color/card_color_07</item>
+        <item>@color/card_color_08</item>
+        <item>@color/card_color_09</item>
+    </integer-array>
 </resources>

@@ -2,6 +2,7 @@ package com.example.trickyalarm;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -50,7 +51,9 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + "ON_SUNDAY INTEGER, "
                     + "IS_REPEATED INTEGER, "
                     + "REPEAT_INTERVAL INTEGER);");
-            insertAlarm(db, 0, System.currentTimeMillis() + 10000, 10, 1, 1, 1, 1, 1, 0, 0, 0, 5);
+            insertAlarm(db, 0, System.currentTimeMillis() + 10000000, 25, 1, 1, 1, 1, 1, 0, 0, 0, 5);
+            insertAlarm(db, 1, System.currentTimeMillis() + 28900000, 10, 0, 1, 0, 1, 0, 1, 1, 0, 5);
+            insertAlarm(db, 1, System.currentTimeMillis() + 1239878497, 10, 1, 1, 0, 0, 0, 1, 0, 1, 5);
         }
     }
 
@@ -72,5 +75,20 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         alarmValues.put("IS_REPEATED", isRepeated);
         alarmValues.put("REPEAT_INTERVAL", repeatInterval);
         db.insert(TABLE_NAME, null, alarmValues);
+    }
+
+    public void addAlarm(SQLiteDatabase db, Alarm alarm) {
+        insertAlarm(db, booleanToInt(alarm.isEnable()), alarm.getTime().getTime().getTime(), alarm.getBias(),
+                booleanToInt(alarm.isOnMonday()), booleanToInt(alarm.isOnTuesday()), booleanToInt(alarm.isOnWednesday()),
+                        booleanToInt(alarm.isOnThursday()), booleanToInt(alarm.isOnFriday()), booleanToInt(alarm.isOnSaturday()),
+                booleanToInt(alarm.isOnSunday()), booleanToInt(alarm.isRepeated()), alarm.getRepeatInterval());
+    }
+
+    public void updateAlarm(SQLiteDatabase db, Alarm alarm, int position) {
+        
+    }
+
+    public int booleanToInt(boolean value) {
+        return value ? 1 : 0;
     }
 }

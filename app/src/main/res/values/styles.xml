@@ -11,4 +11,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DTP">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DTP.Label">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DTP.Button">
+        <item name="android:onClick">onClick</item>
+    </style>
+
 </resources>
