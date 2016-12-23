@@ -6,7 +6,7 @@
 
     <color name="main_background">#395e7a</color>
     <color name="card_background">#899ebc</color>
-    <color name="white_color">#a9ffffff</color>
+    <color name="white_color">#ffffff</color>
     <color name="toolbar_title">#828692</color>
     <color name="semi_transparent">#64FFFFFF</color>
 
