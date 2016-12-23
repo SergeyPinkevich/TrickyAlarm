@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
                     long milliseconds = mCursor.getLong(2);
                     AlarmDatabase alarmDatabase = new AlarmDatabase(
                             mCursor.getInt(1), milliseconds,
-                            mCursor.getInt(3), mCursor.getInt(3),
-                            mCursor.getInt(4), mCursor.getInt(5),
-                            mCursor.getInt(6), mCursor.getInt(7),
-                            mCursor.getInt(8), mCursor.getInt(9),
-                            mCursor.getInt(10), mCursor.getInt(11));
+                            mCursor.getInt(3), mCursor.getInt(4),
+                            mCursor.getInt(5), mCursor.getInt(6),
+                            mCursor.getInt(7), mCursor.getInt(8),
+                            mCursor.getInt(9), mCursor.getInt(10),
+                            mCursor.getInt(11), mCursor.getInt(12));
                     Alarm temp = new Alarm(alarmDatabase);
                     alarms.add(temp);
                     mCursor.moveToNext();
