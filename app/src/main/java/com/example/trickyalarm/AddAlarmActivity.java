@@ -196,10 +196,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         startActivity(intent);
     }
 
-    public static boolean wasAlarmAdded(Intent intent) {
-        return intent.getBooleanExtra(ADD_ALARM, false);
-    }
-
     public void setTextColor(Button button, int number) {
         daysConditions[number] = !daysConditions[number];
         if (daysConditions[number])
