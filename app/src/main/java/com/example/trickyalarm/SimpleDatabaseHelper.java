@@ -22,7 +22,6 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "alarms.db";
     private static final int DB_VERSION = 1;
     public static final String TABLE_NAME = "ALARMS";
-    private Context mContext;
 
     public static synchronized SimpleDatabaseHelper getInstance(Context context) {
         if (sInstance == null)
@@ -32,7 +31,6 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     private SimpleDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        mContext = context;
     }
 
     @Override

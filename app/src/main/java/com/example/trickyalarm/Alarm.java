@@ -53,23 +53,6 @@ public class Alarm {
         this.repeatInterval = repeatInterval;
     }
 
-    public Alarm(AlarmDatabase alarmDatabase) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(alarmDatabase.getTime());
-        this.isEnable = intToBoolean(alarmDatabase.getIsEnable());
-        this.time = calendar;
-        this.bias = alarmDatabase.getBias();
-        this.onMonday = intToBoolean(alarmDatabase.getOnMonday());
-        this.onTuesday = intToBoolean(alarmDatabase.getOnTuesday());
-        this.onWednesday = intToBoolean(alarmDatabase.getOnWednesday());
-        this.onThursday = intToBoolean(alarmDatabase.getOnThursday());
-        this.onFriday = intToBoolean(alarmDatabase.getOnFriday());
-        this.onSaturday = intToBoolean(alarmDatabase.getOnSaturday());
-        this.onSunday = intToBoolean(alarmDatabase.getOnSunday());
-        this.isRepeated = intToBoolean(alarmDatabase.getIsRepeated());
-        this.repeatInterval = alarmDatabase.getRepeatInterval();
-    }
-
     public boolean intToBoolean(int value) {
         return value > 0 ? true : false;
     }

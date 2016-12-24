@@ -19,23 +19,6 @@ public class AlarmDatabase {
     private int isRepeated;
     private int repeatInterval;
 
-    public AlarmDatabase(int isEnable, long time, int bias, int onMonday, int onTuesday,
-                 int onWednesday, int onThursday, int onFriday, int onSaturday,
-                 int onSunday, int isRepeated, int repeatInterval) {
-        this.isEnable = isEnable;
-        this.time = time;
-        this.bias = bias;
-        this.onMonday = onMonday;
-        this.onTuesday = onTuesday;
-        this.onWednesday = onWednesday;
-        this.onThursday = onThursday;
-        this.onFriday = onFriday;
-        this.onSaturday = onSaturday;
-        this.onSunday = onSunday;
-        this.isRepeated = isRepeated;
-        this.repeatInterval = repeatInterval;
-    }
-
     public AlarmDatabase(Alarm alarm) {
         this.isEnable = booleanToInt(alarm.isEnable());
         this.time = alarm.getTime().getTime().getTime();

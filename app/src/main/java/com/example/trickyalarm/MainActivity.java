@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,16 +111,17 @@ public class MainActivity extends AppCompatActivity {
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
+                    Calendar calendar = Calendar.getInstance();
                     long milliseconds = mCursor.getLong(2);
-                    AlarmDatabase alarmDatabase = new AlarmDatabase(
-                            mCursor.getInt(1), milliseconds,
-                            mCursor.getInt(3), mCursor.getInt(4),
-                            mCursor.getInt(5), mCursor.getInt(6),
-                            mCursor.getInt(7), mCursor.getInt(8),
-                            mCursor.getInt(9), mCursor.getInt(10),
-                            mCursor.getInt(11), mCursor.getInt(12));
-                    Alarm temp = new Alarm(alarmDatabase);
-                    alarms.add(temp);
+                    calendar.setTimeInMillis(milliseconds);
+                    Alarm alarm = new Alarm(
+                            mCursor.getInt(1) > 0, calendar,
+                            mCursor.getInt(3), mCursor.getInt(4) > 0,
+                            mCursor.getInt(5) > 0, mCursor.getInt(6) > 0,
+                            mCursor.getInt(7) > 0, mCursor.getInt(8) > 0,
+                            mCursor.getInt(9) > 0, mCursor.getInt(10) > 0,
+                            mCursor.getInt(11) > 0, mCursor.getInt(12));
+                    alarms.add(alarm);
                     mCursor.moveToNext();
                 }
             }
