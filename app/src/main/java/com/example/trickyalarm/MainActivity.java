@@ -1,6 +1,5 @@
 package com.example.trickyalarm;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        AlarmReceiver alarmReceiver = new AlarmReceiver();
-//        alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 60 * 1000));
+        //AlarmReceiver alarmReceiver = new AlarmReceiver();
+        //alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 10 * 1000));
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
