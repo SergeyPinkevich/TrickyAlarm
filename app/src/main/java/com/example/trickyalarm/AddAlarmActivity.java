@@ -2,8 +2,8 @@ package com.example.trickyalarm;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -20,10 +20,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
-    public static final String ADD_ALARM = "Alarm was added";
+
+    private AlarmRepo repo;
 
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
@@ -32,7 +34,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView lblBias;
     private TextView lblRepeat;
     private TextView lblWeekly;
-    private TextView lblInterval;
 
     private boolean[] daysConditions = new boolean[7];
 
@@ -59,6 +60,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
+
+        repo = new AlarmRepo(this);
 
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
@@ -102,9 +105,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
 
-        lblInterval = (TextView) findViewById(R.id.lblInterval);
-        lblInterval.setTypeface(mCustomFont);
-
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
         onMonday.setOnClickListener(this);
@@ -124,6 +124,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private void update() {
         lblTime.setText(timeFormat.format(calendar.getTime()));
     }
+
 
     public void openTimePicker() {
         TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
@@ -182,14 +183,10 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
                 break;
             case R.id.add_alarm_confirm:
                 addAlarm();
-                returnToMenu(true);
+                Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
-    }
-
-    public void returnToMenu(boolean value) {
-        Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 
     public void setTextColor(Button button, int number) {
@@ -209,8 +206,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         else
             alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
-        SimpleDatabaseHelper mHelper = new SimpleDatabaseHelper(this);
-        mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
+        repo.addAlarm(alarm);
     }
-
 }
