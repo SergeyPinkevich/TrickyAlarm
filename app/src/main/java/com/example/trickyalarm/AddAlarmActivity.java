@@ -186,14 +186,10 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
                 break;
             case R.id.add_alarm_confirm:
                 addAlarm();
-                returnToMenu(true);
+                Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
-    }
-
-    public void returnToMenu(boolean value) {
-        Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 
     public void setTextColor(Button button, int number) {
@@ -214,6 +210,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
         SimpleDatabaseHelper mHelper = SimpleDatabaseHelper.getInstance(this);
-        mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
+        mHelper.addAlarm(mHelper.getReadableDatabase(), alarm);
     }
 }
