@@ -150,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
+
                     android:textColor="@color/semi_transparent"
                     android:text="@string/monday_letter"
                     android:textAllCaps="false"
