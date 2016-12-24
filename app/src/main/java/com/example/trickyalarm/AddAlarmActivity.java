@@ -213,7 +213,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         else
             alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
-        SimpleDatabaseHelper mHelper = new SimpleDatabaseHelper(this);
+        SimpleDatabaseHelper mHelper = SimpleDatabaseHelper.getInstance(this);
         mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
     }
 }

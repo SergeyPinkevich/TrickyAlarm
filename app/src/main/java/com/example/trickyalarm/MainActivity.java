@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -27,8 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private Typeface mCustomFont;
 
     private ArrayList<Alarm> alarms;
+    private SimpleDatabaseHelper databaseHelper;
     private SQLiteDatabase mDatabase;
     private Cursor mCursor;
+
+    private RecyclerView mRecyclerView;
+    private CardAlarmAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,27 +48,67 @@ public class MainActivity extends AppCompatActivity {
 
         customizeToolbar();
 
+        databaseHelper = SimpleDatabaseHelper.getInstance(this);
+        mDatabase = databaseHelper.getWritableDatabase();
+
         readFromDatabase();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.alarm_list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        CardAlarmAdapter adapter = new CardAlarmAdapter(alarms, mCustomFont, this);
+        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, this);
 
-        recyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         if (getIntent() != null)
-            adapter.notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
+
+        swipeSetup();
+    }
+
+    public void swipeSetup() {
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(mRecyclerView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipeLeft(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public boolean canSwipeRight(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    alarms.remove(position);
+                                    databaseHelper.deleteAlarm(mDatabase, alarms.get(position), position);
+                                    mAdapter.notifyItemRemoved(position);
+                                }
+                                mAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions){
+                                    alarms.remove(position);
+                                    databaseHelper.deleteAlarm(mDatabase, alarms.get(position), position);
+                                    mAdapter.notifyItemRemoved(position);
+                                }
+                                mAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+        mRecyclerView.addOnItemTouchListener(swipeTouchListener);
     }
 
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
-            SQLiteOpenHelper databaseHelper = new SimpleDatabaseHelper(this);
-            mDatabase = databaseHelper.getReadableDatabase();
-
             mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
             if (mCursor.moveToFirst()) {
                 while (mCursor.isAfterLast() == false) {
@@ -79,15 +125,9 @@ public class MainActivity extends AppCompatActivity {
                     mCursor.moveToNext();
                 }
             }
-            close();
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database is unavailable", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void close() {
-        mCursor.close();
-        mDatabase.close();
     }
 
     @Override
@@ -101,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_add_alarm) {
             Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
             startActivity(intent);
+            close();
             return true;
         } else
             return super.onOptionsItemSelected(item);
@@ -116,5 +157,16 @@ public class MainActivity extends AppCompatActivity {
         mToolbarTitle.setTypeface(mCustomFont);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        close();
+    }
+
+    public void close() {
+        mCursor.close();
+        mDatabase.close();
     }
 }

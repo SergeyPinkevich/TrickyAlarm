@@ -17,12 +17,20 @@ import java.util.concurrent.SynchronousQueue;
 
 public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
+    private static SimpleDatabaseHelper sInstance;
+
     private static final String DB_NAME = "alarms.db";
     private static final int DB_VERSION = 1;
     public static final String TABLE_NAME = "ALARMS";
     private Context mContext;
 
-    SimpleDatabaseHelper(Context context) {
+    public static synchronized SimpleDatabaseHelper getInstance(Context context) {
+        if (sInstance == null)
+            sInstance = new SimpleDatabaseHelper(context.getApplicationContext());
+        return sInstance;
+    }
+
+    private SimpleDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         mContext = context;
     }
@@ -62,7 +70,11 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     public void updateAlarm(SQLiteDatabase db, Alarm alarm, int position) {
         ContentValues alarmValues = getContentValues(alarm);
-        db.update(TABLE_NAME, alarmValues, "_id = ?", new String[] {Integer.toString(position + 1)});
+        db.update(TABLE_NAME, alarmValues, "_id = ?", new String[] {Integer.toString(position)});
+    }
+
+    public void deleteAlarm(SQLiteDatabase db, Alarm alarm, int position) {
+        db.delete(TABLE_NAME, "_id = ?", new String[] {Integer.toString(position)});
     }
 
     public ContentValues getContentValues(Alarm alarm) {
