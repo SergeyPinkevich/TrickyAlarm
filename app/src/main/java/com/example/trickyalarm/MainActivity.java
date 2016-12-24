@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         swipeSetup();
     }
 
+    /**
+     * Method for deleting the card by swipe
+     * It uses third-party library and delete record from ArrayList<Alarm> and from Database
+     */
     public void swipeSetup() {
         SwipeableRecyclerViewTouchListener swipeTouchListener =
                 new SwipeableRecyclerViewTouchListener(mRecyclerView,
@@ -105,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
     }
 
+    /**
+     * Method for reading all records in Database
+     */
     public void readFromDatabase() {
         alarms = new ArrayList<>();
         try {
@@ -130,12 +137,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Overriding existing method to customize menu (add plus icon on toolbar)
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Adding intent to plus icon. It starts AddActivity
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_alarm) {
@@ -147,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Customizing toolbar
+     */
     public void customizeToolbar() {
         mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) mActionBarToolbar.findViewById(R.id.toolbar_title);
@@ -159,12 +179,18 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+    /**
+     * Overriding existing activity lifecycle method to close cursor and database
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
         close();
     }
 
+    /**
+     * Close cursor and database
+     */
     public void close() {
         mCursor.close();
         mDatabase.close();

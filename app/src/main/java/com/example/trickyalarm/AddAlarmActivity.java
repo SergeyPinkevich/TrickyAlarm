@@ -1,8 +1,6 @@
 package com.example.trickyalarm;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,13 +17,10 @@ import com.android.datetimepicker.time.TimePickerDialog;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
-import java.lang.reflect.TypeVariable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Map;
 
-import static android.R.attr.onClick;
 
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 

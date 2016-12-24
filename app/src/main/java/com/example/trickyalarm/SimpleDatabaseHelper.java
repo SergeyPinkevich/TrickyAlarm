@@ -23,6 +23,11 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     public static final String TABLE_NAME = "ALARMS";
 
+    /**
+     * Singleton pattern
+     * @param context
+     * @return
+     */
     public static synchronized SimpleDatabaseHelper getInstance(Context context) {
         if (sInstance == null)
             sInstance = new SimpleDatabaseHelper(context.getApplicationContext());
