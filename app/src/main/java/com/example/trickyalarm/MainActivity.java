@@ -1,10 +1,6 @@
 package com.example.trickyalarm;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +15,6 @@ import android.widget.Toast;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,9 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Typeface mCustomFont;
 
     private ArrayList<Alarm> alarms;
-    private SimpleDatabaseHelper databaseHelper;
-    private SQLiteDatabase mDatabase;
-    private Cursor mCursor;
+
+    private AlarmRepo repo;
 
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
@@ -47,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         customizeToolbar();
 
-        databaseHelper = SimpleDatabaseHelper.getInstance(this);
-        mDatabase = databaseHelper.getWritableDatabase();
-
-        readFromDatabase();
+        repo = new AlarmRepo(this);
+        alarms = repo.getAlarmsList();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
@@ -88,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
-                                    databaseHelper.deleteAlarm(mDatabase, alarms.get(position), position);
                                     mAdapter.notifyItemRemoved(position);
                                 }
                                 mAdapter.notifyDataSetChanged();
@@ -98,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
+                                    repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
-                                    databaseHelper.deleteAlarm(mDatabase, alarms.get(position), position);
                                     mAdapter.notifyItemRemoved(position);
                                 }
                                 mAdapter.notifyDataSetChanged();
@@ -107,34 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         });
 
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
-    }
-
-    /**
-     * Method for reading all records in Database
-     */
-    public void readFromDatabase() {
-        alarms = new ArrayList<>();
-        try {
-            mCursor = mDatabase.query(SimpleDatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
-            if (mCursor.moveToFirst()) {
-                while (mCursor.isAfterLast() == false) {
-                    Calendar calendar = Calendar.getInstance();
-                    long milliseconds = mCursor.getLong(2);
-                    calendar.setTimeInMillis(milliseconds);
-                    Alarm alarm = new Alarm(
-                            mCursor.getInt(1) > 0, calendar,
-                            mCursor.getInt(3), mCursor.getInt(4) > 0,
-                            mCursor.getInt(5) > 0, mCursor.getInt(6) > 0,
-                            mCursor.getInt(7) > 0, mCursor.getInt(8) > 0,
-                            mCursor.getInt(9) > 0, mCursor.getInt(10) > 0,
-                            mCursor.getInt(11) > 0, mCursor.getInt(12));
-                    alarms.add(alarm);
-                    mCursor.moveToNext();
-                }
-            }
-        } catch (SQLiteException e) {
-            Toast.makeText(this, "Database is unavailable", Toast.LENGTH_SHORT).show();
-        }
     }
 
     /**
@@ -158,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_add_alarm) {
             Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
             startActivity(intent);
-            close();
             return true;
         } else
             return super.onOptionsItemSelected(item);
@@ -177,22 +140,5 @@ public class MainActivity extends AppCompatActivity {
         mToolbarTitle.setTypeface(mCustomFont);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
-
-    /**
-     * Overriding existing activity lifecycle method to close cursor and database
-     */
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        close();
-    }
-
-    /**
-     * Close cursor and database
-     */
-    public void close() {
-        mCursor.close();
-        mDatabase.close();
     }
 }

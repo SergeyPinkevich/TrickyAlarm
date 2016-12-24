@@ -8,6 +8,26 @@ import java.util.Calendar;
 
 public class Alarm {
 
+    // Label table name
+    public static final String TABLE = "alarms";
+
+    // Labels Table Columns name
+    public static final String KEY_ID = "_id";
+    public static final String KEY_ALARM_ID = "alarm_id";
+    public static final String KEY_enable = "enable";
+    public static final String KEY_time = "time";
+    public static final String KEY_bias = "bias";
+    public static final String KEY_on_monday = "monday";
+    public static final String KEY_on_tuesday = "tuesday";
+    public static final String KEY_on_wednesday = "wednesday";
+    public static final String KEY_on_thursday = "thursday";
+    public static final String KEY_on_friday = "friday";
+    public static final String KEY_on_saturday = "saturday";
+    public static final String KEY_on_sunday = "sunday";
+    public static final String KEY_repeated = "repeated";
+    public static final String KEY_repeat_interval = "repeat_interval";
+
+    private String ID;
     private boolean isEnable;
     private Calendar time;
     private int bias;
@@ -22,6 +42,7 @@ public class Alarm {
     private int repeatInterval;
 
     public Alarm(boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
+        generateId();
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -39,6 +60,7 @@ public class Alarm {
     public Alarm(boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
                  boolean onSunday, boolean isRepeated, int repeatInterval) {
+        generateId();
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -53,8 +75,21 @@ public class Alarm {
         this.repeatInterval = repeatInterval;
     }
 
-    public boolean intToBoolean(int value) {
-        return value > 0 ? true : false;
+    /**
+     * Generate ID which is time of creation in milliseconds
+     */
+    private void generateId() {
+        Calendar calendar = Calendar.getInstance();
+        long timeOfCreation = calendar.getTimeInMillis();
+        this.ID = String.valueOf(timeOfCreation);
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public boolean isEnable() {

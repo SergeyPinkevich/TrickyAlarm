@@ -6,6 +6,7 @@ package com.example.trickyalarm;
 
 public class AlarmDatabase {
 
+    private String id;
     private int isEnable;
     private long time;
     private int bias;
@@ -20,6 +21,7 @@ public class AlarmDatabase {
     private int repeatInterval;
 
     public AlarmDatabase(Alarm alarm) {
+        this.id = alarm.getID();
         this.isEnable = booleanToInt(alarm.isEnable());
         this.time = alarm.getTime().getTime().getTime();
         this.bias = alarm.getBias();
@@ -32,6 +34,14 @@ public class AlarmDatabase {
         this.onSunday = booleanToInt(alarm.isOnSunday());
         this.isRepeated = booleanToInt(alarm.isRepeated());
         this.repeatInterval = alarm.getRepeatInterval();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int booleanToInt(boolean value) {

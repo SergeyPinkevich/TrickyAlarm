@@ -3,14 +3,13 @@ package com.example.trickyalarm;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
@@ -25,7 +24,8 @@ import java.util.Locale;
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
-    public static final String ADD_ALARM = "Alarm was added";
+
+    private AlarmRepo repo;
 
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
@@ -60,6 +60,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
+
+        repo = new AlarmRepo(this);
 
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
@@ -204,7 +206,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         else
             alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
-        SimpleDatabaseHelper mHelper = SimpleDatabaseHelper.getInstance(this);
-        mHelper.addAlarm(mHelper.getReadableDatabase(), alarm);
+        repo.addAlarm(alarm);
     }
 }

@@ -31,8 +31,8 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
-    private SimpleDatabaseHelper mHelper;
-    private SQLiteDatabase mDatabase;
+
+    private AlarmRepo repo;
 
     private Button onMonday;
     private Button onTuesday;
@@ -56,6 +56,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         this.mAlarms = alarms;
         mFontForText = typeface;
         mContext = context;
+        repo = new AlarmRepo(mContext);
     }
 
     @Override
@@ -102,7 +103,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
                     Toast.makeText(mContext, "Alarm is switched on", Toast.LENGTH_SHORT);
                 else
                     Toast.makeText(mContext, "Alarm is switched off", Toast.LENGTH_SHORT);
-                updateDatabase(alarm, position);
+                repo.updateAlarm(alarm);
             }
         });
 
@@ -117,12 +118,6 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
             case R.id.monday_letter:
                 break;
         }
-    }
-
-    public void updateDatabase(Alarm alarm, int position) {
-        mHelper = new SimpleDatabaseHelper(mContext);
-        mDatabase = mHelper.getWritableDatabase();
-        mHelper.updateAlarm(mDatabase, alarm, position);
     }
 
     public void setColorText(Button button, boolean condition) {
