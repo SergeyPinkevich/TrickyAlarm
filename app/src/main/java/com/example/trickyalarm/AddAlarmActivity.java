@@ -39,6 +39,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView lblBias;
     private TextView lblRepeat;
     private TextView lblWeekly;
+    private TextView lblInterval;
 
     private boolean[] daysConditions = new boolean[7];
 
@@ -107,6 +108,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+
+        lblInterval = (TextView) findViewById(R.id.lblInterval);
+        lblInterval.setTypeface(mCustomFont);
 
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
