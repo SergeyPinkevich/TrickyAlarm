@@ -1,31 +1,24 @@
 package com.example.trickyalarm;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
-import java.lang.reflect.TypeVariable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Map;
-
-import static android.R.attr.onClick;
 
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
@@ -128,7 +121,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblTime.setText(timeFormat.format(calendar.getTime()));
     }
 
-
     public void openTimePicker() {
         TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
     }
@@ -216,4 +208,5 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         SimpleDatabaseHelper mHelper = new SimpleDatabaseHelper(this);
         mHelper.addAlarm(mHelper.getReadableDatabase(),alarm);
     }
+
 }

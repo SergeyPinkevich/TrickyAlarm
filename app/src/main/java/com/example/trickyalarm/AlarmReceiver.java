@@ -31,13 +31,13 @@ public class AlarmReceiver extends BroadcastReceiver {
     /**
      * Function that set a new alarm.
      * @param context
-     * @param time in which alarm should work.
+     * @param alarm alarm that we should to create.
      */
-    public void setAlarm(Context context, int time) {
+    public void setAlarm(Context context, Alarm alarm) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarm.getTime().getTimeInMillis(), pendingIntent);
     }
 
     /**
