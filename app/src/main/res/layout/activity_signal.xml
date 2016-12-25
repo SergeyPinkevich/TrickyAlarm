@@ -19,10 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:id="@+id/timeToWakeUpView"
-        android:textSize="60px"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="80px" />
 
     <ImageView
         app:srcCompat="@drawable/alarm_clock_icon"
@@ -97,11 +97,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:srcCompat="@drawable/arrow_back"
-        android:layout_alignBottom="@+id/arrow3imageView"
-        android:layout_alignRight="@+id/timeToWakeUpView"
-        android:layout_alignEnd="@+id/timeToWakeUpView"
         android:layout_marginRight="17dp"
         android:layout_marginEnd="17dp"
-        android:id="@+id/arrow4imageView" />
+        android:id="@+id/arrow4imageView"
+        android:layout_alignTop="@+id/arrow3imageView"
+        android:layout_toLeftOf="@+id/repeatImageView"
+        android:layout_toStartOf="@+id/repeatImageView" />
 
 </RelativeLayout>
