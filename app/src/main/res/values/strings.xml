@@ -20,6 +20,9 @@
     <string name="repeat">Repeat:</string>
     <string name="interval">Interval:</string>
 
+    <string name="successful_deletion">Alarm was deleted</string>
+    <string name="unsuccessful_deletion">Alarm was not deleted</string>
+
     <string name="title_activity_signal">SignalActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

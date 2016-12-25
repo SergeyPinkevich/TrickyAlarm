@@ -80,9 +80,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    repo.deleteAlarm(alarms.get(position));
+                                    int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
+                                    showDeleteMessage(deleted);
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -90,15 +91,23 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
-                                    repo.deleteAlarm(alarms.get(position));
+                                    int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
+                                    showDeleteMessage(deleted);
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
                         });
 
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
+    }
+
+    public void showDeleteMessage(int value) {
+        if (value > 0)
+            Toast.makeText(getApplicationContext(), R.string.successful_deletion, Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(), R.string.unsuccessful_deletion, Toast.LENGTH_SHORT).show();
     }
 
     /**

@@ -41,8 +41,8 @@ public class Alarm {
     private boolean isRepeated;
     private int repeatInterval;
 
-    public Alarm(boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
-        generateId();
+    public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
+        this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -57,10 +57,10 @@ public class Alarm {
         this.onSunday = false;
     }
 
-    public Alarm(boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
+    public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
                  boolean onSunday, boolean isRepeated, int repeatInterval) {
-        generateId();
+        this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -73,15 +73,6 @@ public class Alarm {
         this.onSunday = onSunday;
         this.isRepeated = isRepeated;
         this.repeatInterval = repeatInterval;
-    }
-
-    /**
-     * Generate ID which is time of creation in milliseconds
-     */
-    private void generateId() {
-        Calendar calendar = Calendar.getInstance();
-        long timeOfCreation = calendar.getTimeInMillis();
-        this.ID = String.valueOf(timeOfCreation);
     }
 
     public String getID() {

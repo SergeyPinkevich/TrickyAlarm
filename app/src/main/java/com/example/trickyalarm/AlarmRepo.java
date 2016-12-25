@@ -29,14 +29,15 @@ public class AlarmRepo {
     public void updateAlarm(Alarm alarm) {
         SQLiteDatabase database = mHelper.getWritableDatabase();
         ContentValues alarmValues = getContentValues(alarm);
-        database.update(Alarm.TABLE, alarmValues, Alarm.KEY_ALARM_ID + "= ?", new String[] {alarm.getID()});
+        database.update(Alarm.TABLE, alarmValues, Alarm.KEY_ALARM_ID + " = ?", new String[] {alarm.getID()});
         database.close();
     }
 
-    public void deleteAlarm(Alarm alarm) {
+    public int deleteAlarm(Alarm alarm) {
         SQLiteDatabase database = mHelper.getWritableDatabase();
-        database.delete(Alarm.TABLE, Alarm.KEY_ALARM_ID + "= ?", new String[] {alarm.getID()});
+        int result = database.delete(Alarm.TABLE, Alarm.KEY_ALARM_ID + " = ?", new String[] {alarm.getID()});
         database.close();
+        return result;
     }
 
     public ArrayList<Alarm> getAlarmsList() {
@@ -49,7 +50,7 @@ public class AlarmRepo {
                 Calendar calendar = Calendar.getInstance();
                 long milliseconds = cursor.getLong(3);
                 calendar.setTimeInMillis(milliseconds);
-                Alarm alarm = new Alarm(
+                Alarm alarm = new Alarm(cursor.getString(1),
                         cursor.getInt(2) > 0, calendar,
                         cursor.getInt(4), cursor.getInt(5) > 0,
                         cursor.getInt(6) > 0, cursor.getInt(7) > 0,

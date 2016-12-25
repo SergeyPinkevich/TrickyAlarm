@@ -201,11 +201,19 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         Alarm alarm;
 
         if (repeat.isChecked())
-            alarm = new Alarm(true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress());
         else
-            alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress());
 
         repo.addAlarm(alarm);
+    }
+
+    /**
+     * Generate ID which is time of creation in milliseconds
+     */
+    private String generateId() {
+        Calendar calendar = Calendar.getInstance();
+        return String.valueOf(calendar.getTimeInMillis());
     }
 }

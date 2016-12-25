@@ -6,6 +6,7 @@ package com.example.trickyalarm;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
@@ -33,6 +34,8 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     private Context mContext;
 
     private AlarmRepo repo;
+
+    private boolean[] daysConditions = new boolean[7];
 
     private Button onMonday;
     private Button onTuesday;
@@ -116,8 +119,35 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.monday_letter:
+                setTextColor(onMonday, 0);
+                break;
+            case R.id.tuesday_letter:
+                setTextColor(onTuesday, 1);
+                break;
+            case R.id.wednesday_letter:
+                setTextColor(onWednesday, 2);
+                break;
+            case R.id.thursday_letter:
+                setTextColor(onThursday, 3);
+                break;
+            case R.id.friday_letter:
+                setTextColor(onFriday, 4);
+                break;
+            case R.id.saturday_letter:
+                setTextColor(onSaturday, 5);
+                break;
+            case R.id.sunday_letter:
+                setTextColor(onSunday, 6);
                 break;
         }
+    }
+
+    public void setTextColor(Button button, int number) {
+        daysConditions[number] = !daysConditions[number];
+        if (daysConditions[number])
+            button.setTextColor(ContextCompat.getColor(mContext, R.color.white_color));
+        else
+            button.setTextColor(ContextCompat.getColor(mContext, R.color.semi_transparent));
     }
 
     public void setColorText(Button button, boolean condition) {
