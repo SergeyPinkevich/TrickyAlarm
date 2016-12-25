@@ -1,5 +1,8 @@
 package com.example.trickyalarm;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,7 +12,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -22,7 +30,6 @@ import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
 
 
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
@@ -64,6 +71,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
 
+    private LinearLayout weekdaysLayout;
+    private Context mContext;
 
     private View.OnClickListener weekButtons;
 
@@ -74,9 +83,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_add_alarm);
+
+        mContext = this;
 
         repo = new AlarmRepo(this);
 
@@ -104,6 +113,10 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
         lblRepeat.setTypeface(mCustomFont);
+
+        weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);
+//        weekdaysLayout.setVisibility(View.GONE);
+//        lblRepeat.setVisibility(View.GONE);
 
         lblWeekly = (TextView) findViewById(R.id.lblWeekly);
         lblWeekly.setTypeface(mCustomFont);
@@ -141,9 +154,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         builder.setCancelable(false);
         soundList = builder.create();
 
-
-
-
         onMonday = (Button) findViewById(R.id.monday_letter);
         onTuesday = (Button) findViewById(R.id.tuesday_letter);
         onWednesday = (Button) findViewById(R.id.wednesday_letter);
@@ -153,6 +163,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onSunday = (Button) findViewById(R.id.sunday_letter);
 
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
+
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
@@ -172,11 +183,23 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onSunday.setOnClickListener(this);
         confirm.setOnClickListener(this);
 
-
-
         customizeToolbar();
 
         update();
+    }
+
+    public void animateRepeatLayout(final View view) {
+        view.animate()
+                .translationY(view.getHeight())
+                .alpha(1.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
     }
 
     private void update() {
