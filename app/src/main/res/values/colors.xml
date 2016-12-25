@@ -22,6 +22,11 @@
     <color name="card_color_07">#B58292</color>
     <color name="card_color_08">#C5D69D</color>
     <color name="card_color_09">#926FC3</color>
+    <color name="card_color_10">#90EE90</color>
+    <color name="card_color_11">#CDB5CD</color>
+    <color name="card_color_12">#CD96CD</color>
+    <color name="card_color_13">#96CDCD</color>
+
 
     <!-- Cards colors array-->
     <integer-array name="randomColors">
@@ -34,5 +39,9 @@
         <item>@color/card_color_07</item>
         <item>@color/card_color_08</item>
         <item>@color/card_color_09</item>
+        <item>@color/card_color_10</item>
+        <item>@color/card_color_11</item>
+        <item>@color/card_color_12</item>
+        <item>@color/card_color_13</item>
     </integer-array>
 </resources>
