@@ -48,15 +48,23 @@ public class AlarmRepo {
         if (cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
                 Calendar calendar = Calendar.getInstance();
-                long milliseconds = cursor.getLong(3);
+                long milliseconds = cursor.getLong(cursor.getColumnIndex(Alarm.KEY_time));
                 calendar.setTimeInMillis(milliseconds);
-                Alarm alarm = new Alarm(cursor.getString(1),
-                        cursor.getInt(2) > 0, calendar,
-                        cursor.getInt(4), cursor.getInt(5) > 0,
-                        cursor.getInt(6) > 0, cursor.getInt(7) > 0,
-                        cursor.getInt(8) > 0, cursor.getInt(9) > 0,
-                        cursor.getInt(10) > 0, cursor.getInt(11) > 0,
-                        cursor.getInt(12) > 0, cursor.getInt(13));
+                Alarm alarm = new Alarm(cursor.getString(cursor.getColumnIndex(Alarm.KEY_ID)),
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_enable)) > 0, calendar,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_bias)),
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_monday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_tuesday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_wednesday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_thursday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_friday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_saturday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_sunday)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeated)) > 0,
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeat_interval)),
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_volume)),
+                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_vibrated)) > 0,
+                        cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)));
                 alarms.add(alarm);
                 cursor.moveToNext();
             }

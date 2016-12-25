@@ -29,6 +29,8 @@ import java.util.Random;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
+    private static final String ALARM_LIST_POSITION = "position";
+
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
@@ -74,6 +76,15 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         cardView.setCardElevation(0);
         cardView.setBackgroundColor(getRandomColor());
 
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, EditAlarmActivity.class);
+                intent.putExtra(ALARM_LIST_POSITION, position);
+                mContext.startActivity(intent);
+            }
+        });
+
         TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
         String time = calendarToString(mAlarms.get(position).getTime());
         alarmTime.setText(time);
@@ -103,9 +114,9 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
                 Alarm alarm = mAlarms.get(position);
                 alarm.setEnable(b);
                 if (b)
-                    Toast.makeText(mContext, "Alarm is switched on", Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, mContext.getString(R.string.alarm_on), Toast.LENGTH_SHORT);
                 else
-                    Toast.makeText(mContext, "Alarm is switched off", Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, mContext.getString(R.string.alarm_off), Toast.LENGTH_SHORT);
                 repo.updateAlarm(alarm);
             }
         });

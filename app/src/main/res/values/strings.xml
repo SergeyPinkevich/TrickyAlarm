@@ -20,12 +20,14 @@
     <string name="repeat">Repeat:</string>
     <string name="interval">Interval:</string>
     <string name="volume">Volume:</string>
-    <string name="vibration">Vibration:</string>
+    <string name="vibrated">Vibration:</string>
     <string name="sound">Sound:</string>
 
 
     <string name="successful_deletion">Alarm was deleted</string>
     <string name="unsuccessful_deletion">Alarm was not deleted</string>
+    <string name="alarm_on">Alarm is switched on</string>
+    <string name="alarm_off">Alarm is switched off</string>
 
     <string name="title_activity_signal">SignalActivity</string>
     <string name="title_sound_selector">Sound</string>
