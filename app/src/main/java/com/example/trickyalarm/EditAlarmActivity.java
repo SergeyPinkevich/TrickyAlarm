@@ -20,6 +20,7 @@ import com.android.datetimepicker.time.TimePickerDialog;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -30,8 +31,11 @@ import java.util.Locale;
 public class EditAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
+    private static final String ALARM_LIST_POSITION = "position";
 
     private AlarmRepo repo;
+
+    private Alarm alarm;
 
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
@@ -78,11 +82,12 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_add_alarm);
+        setContentView(R.layout.activity_edit_alarm);
 
         repo = new AlarmRepo(this);
+        alarm = repo.getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION));
 
-        calendar = Calendar.getInstance();
+        calendar = alarm.getTime();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
         lblTime = (TextView) findViewById(R.id.lblTime);
@@ -152,13 +157,18 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         onSunday = (Button) findViewById(R.id.sunday_letter);
 
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        repeat.setChecked(alarm.isRepeated());
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
+        vibrate.setChecked(alarm.isVibrated());
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
+        bias.setProgress(alarm.getBias());
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+        interval.setProgress(alarm.getRepeatInterval());
 
         volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
+        volume.setProgress(alarm.getVolume());
 
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
@@ -204,7 +214,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         mToolbarTitle = (TextView) mActionBarToolbar.findViewById(R.id.toolbar_title);
 
         setSupportActionBar(mActionBarToolbar);
-        mToolbarTitle.setText(R.string.new_alarm);
+        mToolbarTitle.setText("Edit alarm");
 
         mToolbarTitle.setTypeface(mCustomFont);
 
@@ -241,7 +251,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
                 soundList.show();
                 break;
             case R.id.add_alarm_confirm:
-                addAlarm();
+                updateAlarm();
                 Intent intent = new Intent(EditAlarmActivity.this, MainActivity.class);
                 startActivity(intent);
                 break;
@@ -256,25 +266,17 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
 
-    public void addAlarm() {
+    public void updateAlarm() {
+        final String ID = new AlarmRepo(this).getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION)).getID();
         Alarm alarm;
-
         if (repeat.isChecked())
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
-
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
         repo.updateAlarm(alarm);
     }
 
-    /**
-     * Generate ID which is time of creation in milliseconds
-     */
-    private String generateId() {
-        Calendar calendar = Calendar.getInstance();
-        return String.valueOf(calendar.getTimeInMillis());
-    }
 
     /**
      * return address of a selected sound

@@ -35,6 +35,7 @@ import java.util.Locale;
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
+    private static final String ALARM_LIST_POSITION = "position";
 
     private AlarmRepo repo;
 
@@ -292,6 +293,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
 
         repo.addAlarm(alarm);
+
+//        alarm.setID(new AlarmRepo(this).getAlarmsList().get(Integer.parseInt(getIntent().getExtras().getString(ALARM_LIST_POSITION))).getID());
+//        repo.updateAlarm(alarm);
     }
 
     /**
