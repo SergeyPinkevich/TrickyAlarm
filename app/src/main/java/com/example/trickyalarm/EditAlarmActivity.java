@@ -23,9 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Created by nicholas on 25/12/2016.
+ */
 
-
-public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
+public class EditAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
 
@@ -121,7 +123,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         soundSelector.setTypeface(mCustomFont);
         soundSelector.setOnClickListener(this);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(AddAlarmActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
         builder.setIcon(R.drawable.ic_action_add_alarm);
 
@@ -239,7 +241,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
                 break;
             case R.id.add_alarm_confirm:
                 addAlarm();
-                Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditAlarmActivity.this, MainActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -257,19 +259,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         Alarm alarm;
 
         if (repeat.isChecked())
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
+            alarm = new Alarm(true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress());
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress());
+            alarm = new Alarm(true, calendar, bias.getProgress(), false, interval.getProgress());
 
         repo.addAlarm(alarm);
     }
-
-    /**
-     * Generate ID which is time of creation in milliseconds
-     */
-    private String generateId() {
-        Calendar calendar = Calendar.getInstance();
-        return String.valueOf(calendar.getTimeInMillis());
-    }
 }
+
