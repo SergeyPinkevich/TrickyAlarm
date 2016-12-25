@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_alarm) {
             Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
+
             startActivity(intent);
             return true;
         } else

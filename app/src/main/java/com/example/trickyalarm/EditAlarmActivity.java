@@ -274,5 +274,12 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         Calendar calendar = Calendar.getInstance();
         return String.valueOf(calendar.getTimeInMillis());
     }
-}
 
+    /**
+     * Generate ID which is time of creation in milliseconds
+     */
+    private String generateId() {
+        Calendar calendar = Calendar.getInstance();
+        return String.valueOf(calendar.getTimeInMillis());
+    }
+}

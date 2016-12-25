@@ -59,8 +59,11 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private Button confirm;
 
     private ToggleButton repeat;
+    private ToggleButton vibrate;
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
+    private DiscreteSeekBar volume;
+
 
     private View.OnClickListener weekButtons;
 
@@ -150,10 +153,13 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onSunday = (Button) findViewById(R.id.sunday_letter);
 
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+
+        volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
 
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
@@ -258,9 +264,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         if (repeat.isChecked())
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress());
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress());
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
 
         repo.addAlarm(alarm);
     }
@@ -271,5 +277,14 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private String generateId() {
         Calendar calendar = Calendar.getInstance();
         return String.valueOf(calendar.getTimeInMillis());
+    }
+
+    /**
+     * return address of a selected sound
+     */
+
+    private String getSoundAddress() {
+        //to be implemented
+        return "";
     }
 }
