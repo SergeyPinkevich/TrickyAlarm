@@ -19,8 +19,14 @@
     <string name="bias">Bias:</string>
     <string name="repeat">Repeat:</string>
     <string name="interval">Interval:</string>
+    <string name="volume">Volume:</string>
+    <string name="vibration">Vibration:</string>
+    <string name="sound">Sound:</string>
+
 
     <string name="title_activity_signal">SignalActivity</string>
+    <string name="title_sound_selector">Sound</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>
