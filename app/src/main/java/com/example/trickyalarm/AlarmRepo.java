@@ -93,6 +93,9 @@ public class AlarmRepo {
         alarmValues.put(Alarm.KEY_on_sunday, alarmDatabase.getOnSunday());
         alarmValues.put(Alarm.KEY_repeated, alarmDatabase.getIsRepeated());
         alarmValues.put(Alarm.KEY_repeat_interval, alarmDatabase.getRepeatInterval());
+        alarmValues.put(Alarm.KEY_volume, alarmDatabase.getVolume());
+        alarmValues.put(Alarm.KEY_vibrated, alarmDatabase.getIsVibrated());
+        alarmValues.put(Alarm.KEY_sound, alarmDatabase.getSound());
 
         return alarmValues;
     }
