@@ -282,7 +282,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     /**
      * return address of a selected sound
      */
-
     private String getSoundAddress() {
         //to be implemented
         return "";

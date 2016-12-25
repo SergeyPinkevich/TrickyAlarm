@@ -50,7 +50,7 @@ public class AlarmRepo {
                 Calendar calendar = Calendar.getInstance();
                 long milliseconds = cursor.getLong(cursor.getColumnIndex(Alarm.KEY_time));
                 calendar.setTimeInMillis(milliseconds);
-                Alarm alarm = new Alarm(cursor.getString(cursor.getColumnIndex(Alarm.KEY_ID)),
+                Alarm alarm = new Alarm(cursor.getString(cursor.getColumnIndex(Alarm.KEY_ALARM_ID)),
                         cursor.getInt(cursor.getColumnIndex(Alarm.KEY_enable)) > 0, calendar,
                         cursor.getInt(cursor.getColumnIndex(Alarm.KEY_bias)),
                         cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_monday)) > 0,
