@@ -6,6 +6,7 @@ package com.example.trickyalarm;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
@@ -28,11 +29,15 @@ import java.util.Random;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
+    private static final String ALARM_LIST_POSITION = "position";
+
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
-    private SimpleDatabaseHelper mHelper;
-    private SQLiteDatabase mDatabase;
+
+    private AlarmRepo repo;
+
+    private boolean[] daysConditions = new boolean[7];
 
     private Button onMonday;
     private Button onTuesday;
@@ -56,6 +61,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         this.mAlarms = alarms;
         mFontForText = typeface;
         mContext = context;
+        repo = new AlarmRepo(mContext);
     }
 
     @Override
@@ -69,6 +75,15 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
 
         cardView.setCardElevation(0);
         cardView.setBackgroundColor(getRandomColor());
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, EditAlarmActivity.class);
+                intent.putExtra(ALARM_LIST_POSITION, position);
+                mContext.startActivity(intent);
+            }
+        });
 
         TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
         String time = calendarToString(mAlarms.get(position).getTime());
@@ -99,10 +114,10 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
                 Alarm alarm = mAlarms.get(position);
                 alarm.setEnable(b);
                 if (b)
-                    Toast.makeText(mContext, "Alarm is switched on", Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, mContext.getString(R.string.alarm_on), Toast.LENGTH_SHORT);
                 else
-                    Toast.makeText(mContext, "Alarm is switched off", Toast.LENGTH_SHORT);
-                updateDatabase(alarm, position);
+                    Toast.makeText(mContext, mContext.getString(R.string.alarm_off), Toast.LENGTH_SHORT);
+                repo.updateAlarm(alarm);
             }
         });
 
@@ -115,14 +130,35 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.monday_letter:
+                setTextColor(onMonday, 0);
+                break;
+            case R.id.tuesday_letter:
+                setTextColor(onTuesday, 1);
+                break;
+            case R.id.wednesday_letter:
+                setTextColor(onWednesday, 2);
+                break;
+            case R.id.thursday_letter:
+                setTextColor(onThursday, 3);
+                break;
+            case R.id.friday_letter:
+                setTextColor(onFriday, 4);
+                break;
+            case R.id.saturday_letter:
+                setTextColor(onSaturday, 5);
+                break;
+            case R.id.sunday_letter:
+                setTextColor(onSunday, 6);
                 break;
         }
     }
 
-    public void updateDatabase(Alarm alarm, int position) {
-        mHelper = new SimpleDatabaseHelper(mContext);
-        mDatabase = mHelper.getWritableDatabase();
-        mHelper.updateAlarm(mDatabase, alarm, position);
+    public void setTextColor(Button button, int number) {
+        daysConditions[number] = !daysConditions[number];
+        if (daysConditions[number])
+            button.setTextColor(ContextCompat.getColor(mContext, R.color.white_color));
+        else
+            button.setTextColor(ContextCompat.getColor(mContext, R.color.semi_transparent));
     }
 
     public void setColorText(Button button, boolean condition) {
