@@ -143,9 +143,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         builder.setCancelable(false);
         soundList = builder.create();
 
-
-
-
         onMonday = (Button) findViewById(R.id.monday_letter);
         onTuesday = (Button) findViewById(R.id.tuesday_letter);
         onWednesday = (Button) findViewById(R.id.wednesday_letter);
@@ -173,8 +170,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         onSaturday.setOnClickListener(this);
         onSunday.setOnClickListener(this);
         confirm.setOnClickListener(this);
-
-
 
         customizeToolbar();
 
@@ -270,7 +265,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         else
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
 
-        repo.addAlarm(alarm);
+        repo.updateAlarm(alarm);
     }
 
     /**
@@ -284,7 +279,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     /**
      * return address of a selected sound
      */
-
     private String getSoundAddress() {
         //to be implemented
         return "";
