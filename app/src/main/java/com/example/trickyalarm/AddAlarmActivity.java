@@ -113,8 +113,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblRepeat.setTypeface(mCustomFont);
 
         weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);
-//        weekdaysLayout.setVisibility(View.GONE);
-//        lblRepeat.setVisibility(View.GONE);
 
         lblWeekly = (TextView) findViewById(R.id.lblWeekly);
         lblWeekly.setTypeface(mCustomFont);

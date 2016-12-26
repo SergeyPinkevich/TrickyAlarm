@@ -1,5 +1,7 @@
 package com.example.trickyalarm;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -77,6 +81,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
     private View.OnClickListener weekButtons;
 
+    private LinearLayout weekdaysLayout;
+
     private TextView lblTime;
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
@@ -115,6 +121,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
         lblRepeat.setTypeface(mCustomFont);
+
+        weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);
 
         lblWeekly = (TextView) findViewById(R.id.lblWeekly);
         lblWeekly.setTypeface(mCustomFont);
@@ -167,6 +175,23 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
         vibrate.setChecked(alarm.isVibrated());
 
+        lblRepeat.setVisibility(View.GONE);
+        weekdaysLayout.setVisibility(View.GONE);
+
+        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    fadeInAnimation(lblRepeat);
+                    fadeInAnimation(weekdaysLayout);
+                } else {
+                    fadOutAnimation(lblRepeat);
+                    fadOutAnimation(weekdaysLayout);
+                }
+            }
+        });
+
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
         bias.setProgress(alarm.getBias());
 
@@ -190,6 +215,32 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         customizeToolbar();
 
         update();
+    }
+
+    public void fadeInAnimation(final View view) {
+        view.animate()
+                .alpha(1.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    public void fadOutAnimation(final View view) {
+        view.animate()
+                .alpha(0.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        view.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void update() {
