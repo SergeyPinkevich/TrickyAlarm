@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //PowerManager powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
-        //PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakelockTag");
+        //PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
         //wakeLock.acquire();
         Intent intent1 = new Intent(context, SignalActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -31,13 +31,13 @@ public class AlarmReceiver extends BroadcastReceiver {
     /**
      * Function that set a new alarm.
      * @param context
-     * @param alarm alarm that we should to create.
+     * @param time in which alarm should work.
      */
-    public void setAlarm(Context context, Alarm alarm) {
+    public void setAlarm(Context context, int time) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alarm.getTime().getTimeInMillis(), pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
     }
 
     /**
