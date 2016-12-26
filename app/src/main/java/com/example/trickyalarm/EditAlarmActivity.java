@@ -2,7 +2,11 @@ package com.example.trickyalarm;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Typeface;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -53,7 +57,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private AlertDialog soundList;
 
     private boolean[] daysConditions = new boolean[7];
-    private String[] sounds = {"1", "2", "3"};
+    private String[] sounds;
 
     private Button onMonday;
     private Button onTuesday;
@@ -134,6 +138,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
         builder.setIcon(R.drawable.ic_action_add_alarm);
+        sounds = getRingtonesTitels();
 
         builder.setItems(sounds, new DialogInterface.OnClickListener() {
 
@@ -141,6 +146,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             public void onClick(DialogInterface dialog, int which) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
                 toast.show();
+                getRingtone(which).play();
                 soundSelector.setText(sounds[which]);
             }
         });
@@ -271,9 +277,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         Alarm alarm;
         if (repeat.isChecked())
             alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
         else
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
         repo.updateAlarm(alarm);
     }
 
@@ -281,8 +287,41 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     /**
      * return address of a selected sound
      */
-    private String getSoundAddress() {
-        //to be implemented
-        return "";
+    private String getSoundAddress(int item) {
+        return getRingtonesUri()[item].getPath();
+    }
+
+    public Uri[] getRingtonesUri() {
+        RingtoneManager ringtoneMgr = new RingtoneManager(this);
+        ringtoneMgr.setType(RingtoneManager.TYPE_RINGTONE);
+        Cursor ringtoneCursor = ringtoneMgr.getCursor();
+        int ringtoneCount = ringtoneCursor.getCount();
+        if (ringtoneCount == 0 && !ringtoneCursor.moveToFirst()) {
+            return null;
+        }
+        Uri[] ringtones = new Uri[ringtoneCount];
+        while(!ringtoneCursor.isAfterLast() && ringtoneCursor.moveToNext()) {
+            int currentPosition = ringtoneCursor.getPosition();
+            ringtones[currentPosition] = ringtoneMgr.getRingtoneUri(currentPosition);
+        }
+        ringtoneCursor.close();
+        Ringtone currentRingtone = RingtoneManager.getRingtone(this, ringtones[1]);
+        currentRingtone.play();
+        currentRingtone.getTitle(this);
+        return ringtones;
+    }
+
+    public String[] getRingtonesTitels() {
+        int i = 0;
+        Uri[] ringtones = getRingtonesUri();
+        String[] titles = new String[ringtones.length];
+        for (Uri ringtone :ringtones) {
+            titles[i] = RingtoneManager.getRingtone(this, ringtone).getTitle(this);
+            i += 1;
+        }
+        return titles;
+    }
+    public Ringtone getRingtone(int item) {
+        return RingtoneManager.getRingtone(this, getRingtonesUri()[item]);
     }
 }
