@@ -12,9 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -163,7 +160,25 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onSaturday = (Button) findViewById(R.id.saturday_letter);
         onSunday = (Button) findViewById(R.id.sunday_letter);
 
+        lblRepeat.setAlpha(0.0f);
+        weekdaysLayout.setAlpha(0.0f);
+
+        lblRepeat.setVisibility(View.GONE);
+        weekdaysLayout.setVisibility(View.GONE);
+
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    fadeInAnimation(lblRepeat);
+                    fadeInAnimation(weekdaysLayout);
+                } else {
+                    fadOutAnimation(lblRepeat);
+                    fadOutAnimation(weekdaysLayout);
+                }
+            }
+        });
 
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
 
@@ -189,16 +204,28 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         update();
     }
 
-    public void animateRepeatLayout(final View view) {
+    public void fadeInAnimation(final View view) {
         view.animate()
-                .translationY(view.getHeight())
                 .alpha(1.0f)
-                .setDuration(300)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    public void fadOutAnimation(final View view) {
+        view.animate()
+                .alpha(0.0f)
+                .setDuration(500)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        view.setVisibility(View.VISIBLE);
+                        view.setVisibility(View.GONE);
                     }
                 });
     }
