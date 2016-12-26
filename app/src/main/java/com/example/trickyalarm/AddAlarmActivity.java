@@ -240,6 +240,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             case R.id.sunday_letter:
                 setTextColor(onSunday, 6);
                 break;
+            case R.id.soundSelector:
+                soundList.show();
+                break;
             case R.id.add_alarm_confirm:
                 addAlarm();
                 Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
