@@ -123,8 +123,8 @@
                 android:layout_marginTop="15dp">
 
                 <TextView
-                    android:id="@+id/lblRepeat"
                     android:layout_width="wrap_content"
+                    android:id="@+id/lblRepeat"
                     style="@style/DTP"
                     android:textSize="24dp"
                     android:layout_marginStart="20dp"
@@ -137,7 +137,6 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/weekdays_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
@@ -360,7 +359,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/add_alarm_confirm"/>
-            
+
         </LinearLayout>
 
     </ScrollView>

@@ -26,6 +26,9 @@ public class Alarm {
     public static final String KEY_on_sunday = "sunday";
     public static final String KEY_repeated = "repeated";
     public static final String KEY_repeat_interval = "repeat_interval";
+    public static final String KEY_volume = "volume";
+    public static final String KEY_vibrated = "vibrated";
+    public static final String KEY_sound = "sound";
 
     private String ID;
     private boolean isEnable;
@@ -40,9 +43,13 @@ public class Alarm {
     private boolean onSunday;
     private boolean isRepeated;
     private int repeatInterval;
+    private int volume;
+    private boolean isVibrated;
+    private String sound;
 
-    public Alarm(boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval) {
-        generateId();
+    public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval,
+                 int volume, boolean isVibrated, String sound) {
+        this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -55,12 +62,16 @@ public class Alarm {
         this.onFriday = false;
         this.onSaturday = false;
         this.onSunday = false;
+        this.volume = volume;
+        this.isVibrated = isVibrated;
+        this.sound = sound;
     }
 
-    public Alarm(boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
+    public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
-                 boolean onSunday, boolean isRepeated, int repeatInterval) {
-        generateId();
+                 boolean onSunday, boolean isRepeated, int repeatInterval, int volume, boolean isVibrated,
+                 String sound) {
+        this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
         this.bias = bias;
@@ -73,15 +84,9 @@ public class Alarm {
         this.onSunday = onSunday;
         this.isRepeated = isRepeated;
         this.repeatInterval = repeatInterval;
-    }
-
-    /**
-     * Generate ID which is time of creation in milliseconds
-     */
-    private void generateId() {
-        Calendar calendar = Calendar.getInstance();
-        long timeOfCreation = calendar.getTimeInMillis();
-        this.ID = String.valueOf(timeOfCreation);
+        this.volume = volume;
+        this.isVibrated = isVibrated;
+        this.sound = sound;
     }
 
     public String getID() {
@@ -186,5 +191,29 @@ public class Alarm {
 
     public void setRepeatInterval(int repeatInterval) {
         this.repeatInterval = repeatInterval;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public boolean isVibrated() {
+        return isVibrated;
+    }
+
+    public void setVibrated(boolean vibrated) {
+        isVibrated = vibrated;
+    }
+
+    public String getSound() {
+        return sound;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
     }
 }
