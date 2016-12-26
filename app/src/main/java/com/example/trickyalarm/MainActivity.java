@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AlarmReceiver alarmReceiver = new AlarmReceiver();
-        alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 20 * 1000));
+        //AlarmReceiver alarmReceiver = new AlarmReceiver();
+        //alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 20 * 1000));
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
