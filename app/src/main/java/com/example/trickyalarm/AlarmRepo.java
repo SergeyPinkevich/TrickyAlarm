@@ -40,6 +40,28 @@ public class AlarmRepo {
         return result;
     }
 
+    public Alarm createAlarmFromCursor(Cursor cursor) {
+        Calendar calendar = Calendar.getInstance();
+        long milliseconds = cursor.getLong(cursor.getColumnIndex(Alarm.KEY_time));
+        calendar.setTimeInMillis(milliseconds);
+        Alarm alarm = new Alarm(cursor.getString(cursor.getColumnIndex(Alarm.KEY_ALARM_ID)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_enable)) > 0, calendar,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_bias)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_monday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_tuesday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_wednesday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_thursday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_friday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_saturday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_sunday)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeated)) > 0,
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeat_interval)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_volume)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_vibrated)) > 0,
+                cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)));
+        return alarm;
+    }
+
     public ArrayList<Alarm> getAlarmsList() {
         ArrayList<Alarm> alarms = new ArrayList<>();
 
@@ -47,24 +69,7 @@ public class AlarmRepo {
         Cursor cursor = database.query(Alarm.TABLE, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
-                Calendar calendar = Calendar.getInstance();
-                long milliseconds = cursor.getLong(cursor.getColumnIndex(Alarm.KEY_time));
-                calendar.setTimeInMillis(milliseconds);
-                Alarm alarm = new Alarm(cursor.getString(cursor.getColumnIndex(Alarm.KEY_ALARM_ID)),
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_enable)) > 0, calendar,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_bias)),
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_monday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_tuesday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_wednesday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_thursday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_friday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_saturday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_on_sunday)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeated)) > 0,
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeat_interval)),
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_volume)),
-                        cursor.getInt(cursor.getColumnIndex(Alarm.KEY_vibrated)) > 0,
-                        cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)));
+                Alarm alarm = createAlarmFromCursor(cursor);
                 alarms.add(alarm);
                 cursor.moveToNext();
             }
