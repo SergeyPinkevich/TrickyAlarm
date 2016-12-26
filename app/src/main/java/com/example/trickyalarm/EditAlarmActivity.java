@@ -90,8 +90,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_edit_alarm);
 
         repo = new AlarmRepo(this);
@@ -174,6 +172,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         repeat.setChecked(alarm.isRepeated());
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
         vibrate.setChecked(alarm.isVibrated());
+
+        lblRepeat.setAlpha(0.0f);
+        weekdaysLayout.setAlpha(0.0f);
 
         lblRepeat.setVisibility(View.GONE);
         weekdaysLayout.setVisibility(View.GONE);
