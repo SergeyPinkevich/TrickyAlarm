@@ -1,5 +1,6 @@
 package com.example.trickyalarm;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +8,7 @@ import android.graphics.Typeface;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -31,7 +33,6 @@ import java.util.Locale;
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
-    private static final String ALARM_LIST_POSITION = "position";
 
     private AlarmRepo repo;
 
@@ -49,6 +50,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView soundSelector;
 
     private AlertDialog soundList;
+
 
     private boolean[] daysConditions = new boolean[7];
     private String[] sounds;
@@ -75,12 +77,18 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
 
+    private RingtoneManager ringtoneManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
         setContentView(R.layout.activity_edit_alarm);
+
+
+
+        ringtoneManager = new RingtoneManager(this);
 
         repo = new AlarmRepo(this);
 
@@ -129,23 +137,38 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         soundSelector.setOnClickListener(this);
 
 
+
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(AddAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
-        builder.setIcon(R.drawable.ic_action_add_alarm);
-        sounds = getRingtonesTitels();
+        builder.setCancelable(false);
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtoneManager.stopPreviousRingtone();
+                dialog.cancel();
+            }
+        });
 
-        builder.setItems(sounds, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtoneManager.stopPreviousRingtone();
+            }
+        });
 
+        builder.setSingleChoiceItems(sounds, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
                 toast.show();
+                ringtoneManager.
                 getRingtone(which).play();
                 soundSelector.setText(sounds[which]);
             }
         });
 
-        builder.setCancelable(false);
         soundList = builder.create();
 
         onMonday = (Button) findViewById(R.id.monday_letter);
@@ -158,6 +181,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
+        vibrate.setOnClickListener(this);
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
 
@@ -244,6 +268,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             case R.id.soundSelector:
                 soundList.show();
                 break;
+            case R.id.toggle_button_vibration:
+                if(vibrate.isChecked()){
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v.vibrate(400);
+                }
+                break;
             case R.id.add_alarm_confirm:
                 addAlarm();
                 Intent intent = new Intent(AddAlarmActivity.this, MainActivity.class);
@@ -301,9 +331,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             ringtones[currentPosition] = ringtoneMgr.getRingtoneUri(currentPosition);
         }
         ringtoneCursor.close();
-        Ringtone currentRingtone = RingtoneManager.getRingtone(this, ringtones[1]);
-        currentRingtone.play();
-        currentRingtone.getTitle(this);
         return ringtones;
     }
 
@@ -320,4 +347,5 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public Ringtone getRingtone(int item) {
         return RingtoneManager.getRingtone(this, getRingtonesUri()[item]);
     }
+
 }

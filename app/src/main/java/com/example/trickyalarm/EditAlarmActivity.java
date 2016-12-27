@@ -305,9 +305,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             ringtones[currentPosition] = ringtoneMgr.getRingtoneUri(currentPosition);
         }
         ringtoneCursor.close();
-        Ringtone currentRingtone = RingtoneManager.getRingtone(this, ringtones[1]);
-        currentRingtone.play();
-        currentRingtone.getTitle(this);
         return ringtones;
     }
 
