@@ -16,7 +16,7 @@
         </activity>
 
         <activity android:name=".AddAlarmActivity" />
-
+        <activity android:name=".EditAlarmActivity" />
         <activity android:name=".SignalActivity"/>
 
         <receiver android:name=".AlarmReceiver" />

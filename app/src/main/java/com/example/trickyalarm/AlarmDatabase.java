@@ -6,6 +6,7 @@ package com.example.trickyalarm;
 
 public class AlarmDatabase {
 
+    private String id;
     private int isEnable;
     private long time;
     private int bias;
@@ -18,25 +19,12 @@ public class AlarmDatabase {
     private int onSunday;
     private int isRepeated;
     private int repeatInterval;
-
-    public AlarmDatabase(int isEnable, long time, int bias, int onMonday, int onTuesday,
-                 int onWednesday, int onThursday, int onFriday, int onSaturday,
-                 int onSunday, int isRepeated, int repeatInterval) {
-        this.isEnable = isEnable;
-        this.time = time;
-        this.bias = bias;
-        this.onMonday = onMonday;
-        this.onTuesday = onTuesday;
-        this.onWednesday = onWednesday;
-        this.onThursday = onThursday;
-        this.onFriday = onFriday;
-        this.onSaturday = onSaturday;
-        this.onSunday = onSunday;
-        this.isRepeated = isRepeated;
-        this.repeatInterval = repeatInterval;
-    }
+    private int volume;
+    private int isVibrated;
+    private String sound;
 
     public AlarmDatabase(Alarm alarm) {
+        this.id = alarm.getID();
         this.isEnable = booleanToInt(alarm.isEnable());
         this.time = alarm.getTime().getTime().getTime();
         this.bias = alarm.getBias();
@@ -49,6 +37,17 @@ public class AlarmDatabase {
         this.onSunday = booleanToInt(alarm.isOnSunday());
         this.isRepeated = booleanToInt(alarm.isRepeated());
         this.repeatInterval = alarm.getRepeatInterval();
+        this.volume = alarm.getVolume();
+        this.isVibrated = booleanToInt(alarm.isVibrated());
+        this.sound = alarm.getSound();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int booleanToInt(boolean value) {
@@ -149,5 +148,29 @@ public class AlarmDatabase {
 
     public void setRepeatInterval(int repeatInterval) {
         this.repeatInterval = repeatInterval;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public int getIsVibrated() {
+        return isVibrated;
+    }
+
+    public void setIsVibrated(int isVibrated) {
+        this.isVibrated = isVibrated;
+    }
+
+    public String getSound() {
+        return sound;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
     }
 }

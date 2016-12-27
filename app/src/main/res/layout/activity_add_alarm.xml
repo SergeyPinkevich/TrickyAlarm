@@ -123,8 +123,8 @@
                 android:layout_marginTop="15dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/lblRepeat"
+                    android:layout_width="wrap_content"
                     style="@style/DTP"
                     android:textSize="24dp"
                     android:layout_marginStart="20dp"
@@ -137,6 +137,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/weekdays_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
@@ -256,6 +257,100 @@
                     android:layout_toEndOf="@+id/lblInterval"
                     android:fadingEdge="horizontal"/>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/VolumeConteiner"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume"
+                    android:textSize="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/lblVolume"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+
+                    app:dsb_indicatorColor="@color/white_color"
+                    app:dsb_progressColor="@color/white_color"
+                    app:dsb_rippleColor="@color/white_color"
+                    app:dsb_trackColor="@color/white_color"
+                    android:id="@+id/discreteSeekBarVolume"
+                    android:theme="@style/AppTheme.Base"
+                    android:layout_toRightOf="@+id/lblVolume"
+                    android:layout_toEndOf="@+id/lblVolume"
+                    android:fadingEdge="horizontal"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vibrated"
+                    android:textSize="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/lblVibration"/>
+
+                <ToggleButton
+                    android:id="@+id/toggle_button_vibration"
+                    android:layout_width="50dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="35dp"
+                    android:background="@drawable/toggle_switch"
+                    android:textOff=""
+                    android:textOn=""/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:id="@+id/soundContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sound"
+                    android:textSize="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/lblSound"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tap to select"
+                    android:textSize="24dp"
+                    android:layout_marginEnd="20dp"
+                    android:id="@+id/soundSelector"
+                    android:clickable="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="20dp" />
+
+            </RelativeLayout>
+
+
+
 
             <Button
                 android:layout_gravity="center"
