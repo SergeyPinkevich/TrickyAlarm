@@ -79,7 +79,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_edit_alarm);
 
         repo = new AlarmRepo(this);
@@ -185,7 +184,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblTime.setText(timeFormat.format(calendar.getTime()));
     }
 
-
     public void openTimePicker() {
         TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
     }
@@ -270,6 +268,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
 
         repo.addAlarm(alarm);
+
+        AlarmReceiver alarmReceiver = new AlarmReceiver();
+        alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
     }
 
     /**
