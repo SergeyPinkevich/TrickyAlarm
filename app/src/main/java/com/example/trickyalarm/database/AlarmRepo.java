@@ -32,6 +32,16 @@ public class AlarmRepo {
         database.close();
     }
 
+    public Alarm getAlarmById(String id) {
+        SQLiteDatabase database = mHelper.getReadableDatabase();
+        Cursor cursor = database.query(Alarm.TABLE, null, Alarm.KEY_ALARM_ID + " = ?", new String[] {id}, null, null, null);
+        cursor.moveToFirst();
+        Alarm alarm = createAlarmFromCursor(cursor);
+        cursor.close();
+        database.close();
+        return alarm;
+    }
+
     /**
      * Update alarm in database
      * @param alarm
