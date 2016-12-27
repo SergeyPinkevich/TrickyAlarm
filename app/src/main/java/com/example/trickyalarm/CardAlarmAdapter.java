@@ -7,8 +7,6 @@ package com.example.trickyalarm;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -22,10 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.trickyalarm.database.AlarmRepo;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Random;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
@@ -74,13 +73,15 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
-        cardView.setBackgroundColor(mAlarms.get(position).getColor());
+        int color = mContext.getResources().getColor(mAlarms.get(position).getColor());
+        cardView.setBackgroundColor(color);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditAlarmActivity.class);
                 intent.putExtra(ALARM_LIST_POSITION, position);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

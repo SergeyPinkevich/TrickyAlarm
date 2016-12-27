@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.trickyalarm.database.AlarmRepo;
+import com.example.trickyalarm.database.ColorRepo;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Alarm> alarms;
 
     private AlarmRepo repo;
+    private ColorRepo mColorRepo;
 
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
@@ -41,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
+        mColorRepo = new ColorRepo(this);
+        colorList = mColorRepo.getColorList();
 
         repo = new AlarmRepo(this);
         alarms = repo.getAlarmsList();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, this);
+        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, getApplicationContext());
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -58,18 +63,6 @@ public class MainActivity extends AppCompatActivity {
             mAdapter.notifyDataSetChanged();
 
         swipeSetup();
-
-        setupColorList();
-    }
-
-    public void setupColorList() {
-        colorList = new ArrayList<>();
-        TypedArray locationFlags = getResources().obtainTypedArray(R.array.randomColors);
-        for (int i = 0; i < locationFlags.length(); i++) {
-            int resId = locationFlags.getResourceId(i, -1);
-            colorList.add(getResources().getColor(resId));
-        }
-        locationFlags.recycle();
     }
 
     /**
@@ -93,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    mColorRepo.addColor(alarms.get(position).getColor());
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
@@ -104,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
+                                    mColorRepo.addColor(alarms.get(position).getColor());
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);

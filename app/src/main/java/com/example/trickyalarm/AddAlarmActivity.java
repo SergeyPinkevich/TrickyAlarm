@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import android.widget.ToggleButton;
 
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
+import com.example.trickyalarm.database.AlarmRepo;
+import com.example.trickyalarm.database.ColorRepo;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -36,6 +39,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private static final String TIME_PATTERN = "HH:mm";
 
     private AlarmRepo repo;
+    private ColorRepo mColorRepo;
 
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
@@ -89,11 +93,13 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
         randomPosition = new Random().nextInt(MainActivity.colorList.size());
         backgroundColor = MainActivity.colorList.get(randomPosition);
-        containerLayout.setBackgroundColor(backgroundColor);
+        int color = getResources().getColor(backgroundColor);
+        containerLayout.setBackgroundColor(color);
 
         mContext = this;
 
         repo = new AlarmRepo(this);
+        mColorRepo = new ColorRepo(this);
 
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
@@ -327,6 +333,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         repo.addAlarm(alarm);
         MainActivity.colorList.remove(randomPosition);
+        mColorRepo.deleteColor(backgroundColor);
     }
 
     /**
