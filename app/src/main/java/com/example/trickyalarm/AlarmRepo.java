@@ -19,6 +19,10 @@ public class AlarmRepo {
         mHelper = SimpleDatabaseHelper.getInstance(context);
     }
 
+    /**
+     * Add alarm to database
+     * @param alarm
+     */
     public void addAlarm(Alarm alarm) {
         SQLiteDatabase database = mHelper.getWritableDatabase();
         ContentValues alarmValues = getContentValues(alarm);
@@ -26,6 +30,10 @@ public class AlarmRepo {
         database.close();
     }
 
+    /**
+     * Update alarm in database
+     * @param alarm
+     */
     public void updateAlarm(Alarm alarm) {
         SQLiteDatabase database = mHelper.getWritableDatabase();
         ContentValues alarmValues = getContentValues(alarm);
@@ -33,6 +41,10 @@ public class AlarmRepo {
         database.close();
     }
 
+    /**
+     * Delete alarm from database
+     * @param alarm
+     */
     public int deleteAlarm(Alarm alarm) {
         SQLiteDatabase database = mHelper.getWritableDatabase();
         int result = database.delete(Alarm.TABLE, Alarm.KEY_ALARM_ID + " = ?", new String[] {alarm.getID()});
@@ -40,6 +52,11 @@ public class AlarmRepo {
         return result;
     }
 
+    /**
+     * It gets alarm from cursor. Cursor returns rows which satisfies a specified condition
+     * @param cursor
+     * @return
+     */
     public Alarm createAlarmFromCursor(Cursor cursor) {
         Calendar calendar = Calendar.getInstance();
         long milliseconds = cursor.getLong(cursor.getColumnIndex(Alarm.KEY_time));
@@ -58,10 +75,15 @@ public class AlarmRepo {
                 cursor.getInt(cursor.getColumnIndex(Alarm.KEY_repeat_interval)),
                 cursor.getInt(cursor.getColumnIndex(Alarm.KEY_volume)),
                 cursor.getInt(cursor.getColumnIndex(Alarm.KEY_vibrated)) > 0,
-                cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)));
+                cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_color)));
         return alarm;
     }
 
+    /**
+     * return all alarms from database
+     * @return
+     */
     public ArrayList<Alarm> getAlarmsList() {
         ArrayList<Alarm> alarms = new ArrayList<>();
 
@@ -79,6 +101,12 @@ public class AlarmRepo {
         return alarms;
     }
 
+    /**
+     * This method returns all necessary ContentValues. It uses supporting class AlarmDatabase,
+     * which transform BOOL fields to INT.
+     * @param alarm
+     * @return
+     */
     public ContentValues getContentValues(Alarm alarm) {
         // Convert Alarm to AlarmDatabase
         AlarmDatabase alarmDatabase = new AlarmDatabase(alarm);
@@ -101,6 +129,7 @@ public class AlarmRepo {
         alarmValues.put(Alarm.KEY_volume, alarmDatabase.getVolume());
         alarmValues.put(Alarm.KEY_vibrated, alarmDatabase.getIsVibrated());
         alarmValues.put(Alarm.KEY_sound, alarmDatabase.getSound());
+        alarmValues.put(Alarm.KEY_color, alarmDatabase.getColor());
 
         return alarmValues;
     }

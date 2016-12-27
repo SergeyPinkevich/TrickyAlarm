@@ -22,6 +22,7 @@ public class AlarmDatabase {
     private int volume;
     private int isVibrated;
     private String sound;
+    private int color;
 
     public AlarmDatabase(Alarm alarm) {
         this.id = alarm.getID();
@@ -40,6 +41,7 @@ public class AlarmDatabase {
         this.volume = alarm.getVolume();
         this.isVibrated = booleanToInt(alarm.isVibrated());
         this.sound = alarm.getSound();
+        this.color = alarm.getColor();
     }
 
     public String getId() {
@@ -172,5 +174,13 @@ public class AlarmDatabase {
 
     public void setSound(String sound) {
         this.sound = sound;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

@@ -74,7 +74,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
-        cardView.setBackgroundColor(getRandomColor());
+        cardView.setBackgroundColor(mAlarms.get(position).getColor());
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +122,11 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         });
 
         TextView biasTime = (TextView) cardView.findViewById(R.id.bias_time);
-        biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
+        int bias = mAlarms.get(position).getBias();
+        if (bias > 0)
+            biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
+        else
+            biasTime.setText("");
         biasTime.setTypeface(mFontForText);
     }
 
@@ -171,11 +175,6 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     public String calendarToString(Calendar time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
         return dateFormat.format(time.getTime());
-    }
-
-    public int getRandomColor() {
-        int colors[] = mContext.getResources().getIntArray(R.array.randomColors);
-        return colors[new Random().nextInt(colors.length)];
     }
 
     @Override public int getItemCount()

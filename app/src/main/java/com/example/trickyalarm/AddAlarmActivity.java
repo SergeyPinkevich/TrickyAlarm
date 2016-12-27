@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -27,12 +28,12 @@ import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
-    private static final String ALARM_LIST_POSITION = "position";
 
     private AlarmRepo repo;
 
@@ -69,19 +70,26 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
 
+    private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
     private Context mContext;
-
-    private View.OnClickListener weekButtons;
 
     private TextView lblTime;
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
 
+    private int backgroundColor;
+    private int randomPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
+
+        containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
+        randomPosition = new Random().nextInt(MainActivity.colorList.size());
+        backgroundColor = MainActivity.colorList.get(randomPosition);
+        containerLayout.setBackgroundColor(backgroundColor);
 
         mContext = this;
 
@@ -313,14 +321,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         if (repeat.isChecked())
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(), backgroundColor);
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress());
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(), backgroundColor);
 
         repo.addAlarm(alarm);
-
-//        alarm.setID(new AlarmRepo(this).getAlarmsList().get(Integer.parseInt(getIntent().getExtras().getString(ALARM_LIST_POSITION))).getID());
-//        repo.updateAlarm(alarm);
+        MainActivity.colorList.remove(randomPosition);
     }
 
     /**

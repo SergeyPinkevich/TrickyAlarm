@@ -1,6 +1,7 @@
 package com.example.trickyalarm;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListen
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mActionBarToolbar;
@@ -29,13 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
 
+    public static ArrayList<Integer> colorList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //AlarmReceiver alarmReceiver = new AlarmReceiver();
-        //alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 20 * 1000));
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
@@ -57,6 +58,18 @@ public class MainActivity extends AppCompatActivity {
             mAdapter.notifyDataSetChanged();
 
         swipeSetup();
+
+        setupColorList();
+    }
+
+    public void setupColorList() {
+        colorList = new ArrayList<>();
+        TypedArray locationFlags = getResources().obtainTypedArray(R.array.randomColors);
+        for (int i = 0; i < locationFlags.length(); i++) {
+            int resId = locationFlags.getResourceId(i, -1);
+            colorList.add(getResources().getColor(resId));
+        }
+        locationFlags.recycle();
     }
 
     /**
@@ -103,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
     }
 
+    /**
+     * Show toast when alarm is being deleted
+     * User gets appropriate toast in both cases: if alarm was deleted and was not.
+     * @param value
+     */
     public void showDeleteMessage(int value) {
         if (value > 0)
             Toast.makeText(getApplicationContext(), R.string.successful_deletion, Toast.LENGTH_SHORT).show();

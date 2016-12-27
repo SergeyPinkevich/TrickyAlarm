@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -28,7 +29,6 @@ import com.android.datetimepicker.time.TimePickerDialog;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -78,14 +78,14 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
 
-
-    private View.OnClickListener weekButtons;
-
+    private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
 
     private TextView lblTime;
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
+
+    private int backgroundColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,10 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
         repo = new AlarmRepo(this);
         alarm = repo.getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION));
+
+        containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
+        backgroundColor = alarm.getColor();
+        containerLayout.setBackgroundColor(backgroundColor);
 
         calendar = alarm.getTime();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
@@ -144,7 +148,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
         builder.setIcon(R.drawable.ic_action_add_alarm);
-        sounds = getRingtonesTitels();
+        sounds = getRingtonesTitles();
 
         builder.setItems(sounds, new DialogInterface.OnClickListener() {
 
@@ -329,9 +333,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         Alarm alarm;
         if (repeat.isChecked())
             alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
         else
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
         repo.updateAlarm(alarm);
     }
 
@@ -363,7 +367,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         return ringtones;
     }
 
-    public String[] getRingtonesTitels() {
+    public String[] getRingtonesTitles() {
         int i = 0;
         Uri[] ringtones = getRingtonesUri();
         String[] titles = new String[ringtones.length];

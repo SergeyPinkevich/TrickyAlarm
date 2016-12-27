@@ -66,7 +66,8 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + Alarm.KEY_repeat_interval + " INTEGER, "
                     + Alarm.KEY_volume + " INTEGER, "
                     + Alarm.KEY_vibrated + " INTEGER, "
-                    + Alarm.KEY_sound + " TEXT);";
+                    + Alarm.KEY_sound + " TEXT, "
+                    + Alarm.KEY_color + " INTEGER);";
             db.execSQL(CREATE_TABLE_ALARMS);
         }
     }

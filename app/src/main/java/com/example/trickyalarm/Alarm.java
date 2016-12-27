@@ -29,11 +29,12 @@ public class Alarm {
     public static final String KEY_volume = "volume";
     public static final String KEY_vibrated = "vibrated";
     public static final String KEY_sound = "sound";
+    public static final String KEY_color = "color";
 
-    private String ID;
-    private boolean isEnable;
-    private Calendar time;
-    private int bias;
+    private String ID; // ID (time of creation in milliseconds)
+    private boolean isEnable; // ON or OFF
+    private Calendar time; // the response time in Calendar format
+    private int bias; // bias at which alarm will signal
     private boolean onMonday;
     private boolean onTuesday;
     private boolean onWednesday;
@@ -41,14 +42,15 @@ public class Alarm {
     private boolean onFriday;
     private boolean onSaturday;
     private boolean onSunday;
-    private boolean isRepeated;
+    private boolean isRepeated; // repeated or it will be the single alarm without repetition
     private int repeatInterval;
     private int volume;
     private boolean isVibrated;
-    private String sound;
+    private String sound; // path to the sound file on the device
+    private int color;
 
     public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval,
-                 int volume, boolean isVibrated, String sound) {
+                 int volume, boolean isVibrated, String sound, int color) {
         this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
@@ -65,12 +67,13 @@ public class Alarm {
         this.volume = volume;
         this.isVibrated = isVibrated;
         this.sound = sound;
+        this.color = color;
     }
 
     public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
                  boolean onSunday, boolean isRepeated, int repeatInterval, int volume, boolean isVibrated,
-                 String sound) {
+                 String sound, int color) {
         this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
@@ -87,6 +90,7 @@ public class Alarm {
         this.volume = volume;
         this.isVibrated = isVibrated;
         this.sound = sound;
+        this.color = color;
     }
 
     public String getID() {
@@ -215,5 +219,13 @@ public class Alarm {
 
     public void setSound(String sound) {
         this.sound = sound;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }
