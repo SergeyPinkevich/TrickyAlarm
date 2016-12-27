@@ -1,7 +1,6 @@
 package com.example.trickyalarm;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
