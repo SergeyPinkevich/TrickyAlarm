@@ -105,7 +105,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
         containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
         backgroundColor = alarm.getColor();
-        containerLayout.setBackgroundColor(backgroundColor);
+        int color = getResources().getColor(backgroundColor);
+        containerLayout.setBackgroundColor(color);
 
         calendar = alarm.getTime();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
