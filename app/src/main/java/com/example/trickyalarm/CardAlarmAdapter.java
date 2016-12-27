@@ -7,8 +7,6 @@ package com.example.trickyalarm;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -22,10 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.trickyalarm.database.AlarmRepo;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Random;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
@@ -74,13 +73,15 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         CardView cardView = holder.cardView;
 
         cardView.setCardElevation(0);
-        cardView.setBackgroundColor(getRandomColor());
+        int color = mContext.getResources().getColor(mAlarms.get(position).getColor());
+        cardView.setBackgroundColor(color);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditAlarmActivity.class);
                 intent.putExtra(ALARM_LIST_POSITION, position);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });
@@ -122,7 +123,11 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         });
 
         TextView biasTime = (TextView) cardView.findViewById(R.id.bias_time);
-        biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
+        int bias = mAlarms.get(position).getBias();
+        if (bias > 0)
+            biasTime.setText(String.valueOf(mAlarms.get(position).getBias()));
+        else
+            biasTime.setText("");
         biasTime.setTypeface(mFontForText);
     }
 
@@ -171,11 +176,6 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     public String calendarToString(Calendar time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
         return dateFormat.format(time.getTime());
-    }
-
-    public int getRandomColor() {
-        int colors[] = mContext.getResources().getIntArray(R.array.randomColors);
-        return colors[new Random().nextInt(colors.length)];
     }
 
     @Override public int getItemCount()

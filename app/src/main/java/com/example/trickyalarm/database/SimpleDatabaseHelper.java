@@ -1,15 +1,12 @@
-package com.example.trickyalarm;
+package com.example.trickyalarm.database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.TypedArray;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.SynchronousQueue;
+import com.example.trickyalarm.Alarm;
+import com.example.trickyalarm.R;
 
 /**
  * Created by Сергей Пинкевич on 09.11.2016.
@@ -18,6 +15,7 @@ import java.util.concurrent.SynchronousQueue;
 public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     private static SimpleDatabaseHelper sInstance;
+    private Context mContext;
 
     private static final String DB_NAME = "alarms.db";
     private static final int DB_VERSION = 1;
@@ -35,6 +33,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     public SimpleDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        mContext = context;
     }
 
     @Override
@@ -66,8 +65,27 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + Alarm.KEY_repeat_interval + " INTEGER, "
                     + Alarm.KEY_volume + " INTEGER, "
                     + Alarm.KEY_vibrated + " INTEGER, "
-                    + Alarm.KEY_sound + " TEXT);";
+                    + Alarm.KEY_sound + " TEXT, "
+                    + Alarm.KEY_color + " INTEGER);";
+
+            String CREATE_TABLE_COLORS = "CREATE TABLE " + ColorRepo.TABLE + " ("
+                    +  "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + ColorRepo.KEY_color_id + " INTEGER);";
+
             db.execSQL(CREATE_TABLE_ALARMS);
+            db.execSQL(CREATE_TABLE_COLORS);
+
+            addAllColors(db);
         }
+    }
+
+    public void addAllColors(SQLiteDatabase db) {
+        ColorRepo colorRepo = new ColorRepo(mContext);
+        TypedArray locationFlags = mContext.getResources().obtainTypedArray(R.array.randomColors);
+        for (int i = 0; i < locationFlags.length(); i++) {
+            int resId = locationFlags.getResourceId(i, -1);
+            colorRepo.addColor(db, resId);
+        }
+        locationFlags.recycle();
     }
 }

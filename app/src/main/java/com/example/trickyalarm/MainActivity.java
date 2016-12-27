@@ -1,6 +1,7 @@
 package com.example.trickyalarm;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.trickyalarm.database.AlarmRepo;
+import com.example.trickyalarm.database.ColorRepo;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Alarm> alarms;
 
     private AlarmRepo repo;
+    private ColorRepo mColorRepo;
 
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
+
+    public static ArrayList<Integer> colorList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
+        mColorRepo = new ColorRepo(this);
+        colorList = mColorRepo.getColorList();
 
         repo = new AlarmRepo(this);
         alarms = repo.getAlarmsList();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, this);
+        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, getApplicationContext());
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -76,9 +86,11 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    repo.deleteAlarm(alarms.get(position));
+                                    mColorRepo.addColor(alarms.get(position).getColor());
+                                    int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
+                                    showDeleteMessage(deleted);
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -86,15 +98,29 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
-                                    repo.deleteAlarm(alarms.get(position));
+                                    mColorRepo.addColor(alarms.get(position).getColor());
+                                    int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
+                                    showDeleteMessage(deleted);
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
                         });
 
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
+    }
+
+    /**
+     * Show toast when alarm is being deleted
+     * User gets appropriate toast in both cases: if alarm was deleted and was not.
+     * @param value
+     */
+    public void showDeleteMessage(int value) {
+        if (value > 0)
+            Toast.makeText(getApplicationContext(), R.string.successful_deletion, Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(), R.string.unsuccessful_deletion, Toast.LENGTH_SHORT).show();
     }
 
     /**
