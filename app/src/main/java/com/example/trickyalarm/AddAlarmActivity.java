@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Ringtone;
@@ -90,6 +91,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
     private RingtoneManager ringtoneManager;
 
+    private int backgroundColor;
+    private int randomPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,8 +106,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         containerLayout.setBackgroundColor(color);
 
         mContext = this;
-
-
 
         ringtoneManager = new RingtoneManager(this);
 
@@ -195,7 +197,28 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         onSaturday = (Button) findViewById(R.id.saturday_letter);
         onSunday = (Button) findViewById(R.id.sunday_letter);
 
+        weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        lblRepeat.setAlpha(0.0f);
+        weekdaysLayout.setAlpha(0.0f);
+
+        lblRepeat.setVisibility(View.GONE);
+        weekdaysLayout.setVisibility(View.GONE);
+
+        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    fadeInAnimation(lblRepeat);
+                    fadeInAnimation(weekdaysLayout);
+                } else {
+                    fadOutAnimation(lblRepeat);
+                    fadOutAnimation(weekdaysLayout);
+                }
+            }
+        });
+
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
         vibrate.setOnClickListener(this);
 
@@ -221,6 +244,32 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         customizeToolbar();
 
         update();
+    }
+
+    public void fadeInAnimation(final View view) {
+        view.animate()
+                .alpha(1.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    public void fadOutAnimation(final View view) {
+        view.animate()
+                .alpha(0.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        view.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void update() {
@@ -313,9 +362,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         if (repeat.isChecked())
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
 
         repo.addAlarm(alarm);
     }

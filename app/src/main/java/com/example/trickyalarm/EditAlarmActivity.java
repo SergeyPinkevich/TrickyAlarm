@@ -1,5 +1,7 @@
 package com.example.trickyalarm;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,12 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
+import com.example.trickyalarm.database.AlarmRepo;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -74,8 +80,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
 
-
-    private View.OnClickListener weekButtons;
+    private RelativeLayout containerLayout;
+    private LinearLayout weekdaysLayout;
 
     private TextView lblTime;
     private Calendar calendar;
@@ -91,7 +97,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         super.onCreate(savedInstanceState);
 
         ringtoneManager = new RingtoneManager(this);
-
 
         setContentView(R.layout.activity_edit_alarm);
 
@@ -194,6 +199,26 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
         repeat.setChecked(alarm.isRepeated());
+        lblRepeat.setAlpha(0.0f);
+        weekdaysLayout.setAlpha(0.0f);
+
+        lblRepeat.setVisibility(View.GONE);
+        weekdaysLayout.setVisibility(View.GONE);
+
+        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    fadeInAnimation(lblRepeat);
+                    fadeInAnimation(weekdaysLayout);
+                } else {
+                    fadOutAnimation(lblRepeat);
+                    fadOutAnimation(weekdaysLayout);
+                }
+            }
+        });
+
         vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
         vibrate.setChecked(alarm.isVibrated());
 
@@ -229,6 +254,32 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         customizeToolbar();
 
         update();
+    }
+
+    public void fadeInAnimation(final View view) {
+        view.animate()
+                .alpha(1.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    public void fadOutAnimation(final View view) {
+        view.animate()
+                .alpha(0.0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        view.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void update() {
@@ -326,9 +377,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         Alarm alarm;
         if (repeat.isChecked())
             alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
         else
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1));
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
         repo.updateAlarm(alarm);
     }
 
