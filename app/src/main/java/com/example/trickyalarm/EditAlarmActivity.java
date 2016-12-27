@@ -82,6 +82,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private SimpleDateFormat timeFormat;
 
     private RingtoneManager ringtoneManager;
+    private Ringtone ringtone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +141,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         soundSelector.setOnClickListener(this);
 
         sounds = getRingtonesTitels();
+        ringtone = getRingtone(0);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
@@ -147,7 +149,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ringtoneManager.stopPreviousRingtone();
+                ringtone.stop();
                 dialog.cancel();
             }
         });
@@ -155,7 +157,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ringtoneManager.stopPreviousRingtone();
+                ringtone.stop();
             }
         });
 
@@ -164,8 +166,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             public void onClick(DialogInterface dialog, int which) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
                 toast.show();
-
-                getRingtone(which).play();
+                ringtone.stop();
+                ringtone = getRingtone(which);
+                ringtone.play();
                 soundSelector.setText(sounds[which]);
             }
         });
@@ -187,9 +190,11 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         vibrate.setChecked(alarm.isVibrated());
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
+        bias.setMax(60);
         bias.setProgress(alarm.getBias());
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+        interval.setMax(60);
         interval.setProgress(alarm.getRepeatInterval());
 
         volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);

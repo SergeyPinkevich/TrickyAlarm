@@ -182,8 +182,10 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         vibrate.setOnClickListener(this);
 
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
+        bias.setMax(60);
 
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+        interval.setMax(60);
 
         volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
 
