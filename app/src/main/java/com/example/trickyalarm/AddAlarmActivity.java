@@ -128,6 +128,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         soundSelector.setTypeface(mCustomFont);
         soundSelector.setOnClickListener(this);
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(AddAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
         builder.setIcon(R.drawable.ic_action_add_alarm);
