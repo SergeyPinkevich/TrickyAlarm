@@ -81,9 +81,13 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
 
+    private RingtoneManager ringtoneManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ringtoneManager = new RingtoneManager(this);
 
 
         setContentView(R.layout.activity_edit_alarm);
@@ -135,17 +139,32 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         soundSelector.setTypeface(mCustomFont);
         soundSelector.setOnClickListener(this);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
-        builder.setTitle(R.string.title_sound_selector);
-        builder.setIcon(R.drawable.ic_action_add_alarm);
         sounds = getRingtonesTitels();
 
-        builder.setItems(sounds, new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
+        builder.setTitle(R.string.title_sound_selector);
+        builder.setCancelable(false);
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtoneManager.stopPreviousRingtone();
+                dialog.cancel();
+            }
+        });
 
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtoneManager.stopPreviousRingtone();
+            }
+        });
+
+        builder.setSingleChoiceItems(sounds, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
                 toast.show();
+
                 getRingtone(which).play();
                 soundSelector.setText(sounds[which]);
             }
@@ -179,12 +198,19 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
 
         onMonday.setOnClickListener(this);
+        setTextColor(onMonday, alarm.isOnMonday(), 0);
         onTuesday.setOnClickListener(this);
+        setTextColor(onTuesday, alarm.isOnTuesday(), 1);
         onWednesday.setOnClickListener(this);
+        setTextColor(onWednesday, alarm.isOnWednesday(), 2);
         onThursday.setOnClickListener(this);
+        setTextColor(onThursday, alarm.isOnThursday(), 3);
         onFriday.setOnClickListener(this);
+        setTextColor(onFriday, alarm.isOnFriday(), 4);
         onSaturday.setOnClickListener(this);
+        setTextColor(onSaturday, alarm.isOnSaturday(), 5);
         onSunday.setOnClickListener(this);
+        setTextColor(onSunday, alarm.isOnSunday(), 6);
         confirm.setOnClickListener(this);
 
         customizeToolbar();
@@ -271,6 +297,16 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         else
             button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
+
+    public void setTextColor(Button button, boolean turned, int number) {
+        if (turned) {
+            button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
+            daysConditions[number] = true;
+        }
+        else
+            button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
+    }
+
 
     public void updateAlarm() {
         final String ID = new AlarmRepo(this).getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION)).getID();

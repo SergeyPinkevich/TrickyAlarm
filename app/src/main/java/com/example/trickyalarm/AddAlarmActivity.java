@@ -136,9 +136,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         soundSelector.setTypeface(mCustomFont);
         soundSelector.setOnClickListener(this);
 
-
-
-
+        sounds = getRingtonesTitels();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(AddAlarmActivity.this);
         builder.setTitle(R.string.title_sound_selector);
@@ -163,7 +161,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             public void onClick(DialogInterface dialog, int which) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
                 toast.show();
-                ringtoneManager.
+
                 getRingtone(which).play();
                 soundSelector.setText(sounds[which]);
             }
