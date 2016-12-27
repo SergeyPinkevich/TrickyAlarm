@@ -367,6 +367,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
 
         repo.addAlarm(alarm);
+
         MainActivity.colorList.remove(randomPosition);
         mColorRepo.deleteColor(backgroundColor);
 

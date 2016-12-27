@@ -46,16 +46,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarm.getID().hashCode(), intent, 0);
         Calendar calendar = alarm.getTime();
         long time = calendar.getTimeInMillis();
-        long timeWithBias = time - alarm.getBias() * 1000;
+        long timeWithBias = time - alarm.getBias() * 60000;
         Random random = new Random(System.currentTimeMillis());
         long randomTime = time;
         if(alarm.getBias() != 0) {
-            randomTime = (long) random.nextInt(alarm.getBias() * 1000) + timeWithBias;
+            randomTime = (long) random.nextInt(alarm.getBias() * 60000) + timeWithBias;
         }
         if(alarm.getRepeatInterval() == 0){
             alarmManager.set(AlarmManager.RTC_WAKEUP, randomTime, pendingIntent);
         } else {
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, randomTime, alarm.getRepeatInterval() * 1000, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, randomTime, alarm.getRepeatInterval() * 60000, pendingIntent);
         }
     }
 
