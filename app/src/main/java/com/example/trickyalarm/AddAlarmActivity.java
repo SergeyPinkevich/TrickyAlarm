@@ -51,7 +51,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     //text views:
     private TextView mToolbarTitle;
     private Typeface mCustomFont;
-    private TextView lblTextTime;
     private TextView lblBias;
     private TextView lblRepeat;
     private TextView lblWeekly;
@@ -153,7 +152,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
      * set fonts of all labels to Exo2-Light
      */
     public void setTypeFace() {
-        lblTextTime.setTypeface(mCustomFont);
         lblTime.setTypeface(mCustomFont);
         lblBias.setTypeface(mCustomFont);
         lblRepeat.setTypeface(mCustomFont);
