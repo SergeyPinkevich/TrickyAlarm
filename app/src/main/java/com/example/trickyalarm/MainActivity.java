@@ -145,9 +145,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_alarm) {
-            Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
-            startActivity(intent);
-            return true;
+            if (colorList.isEmpty()) {
+                Toast.makeText(getApplicationContext(), R.string.alarms_much, Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
+                startActivity(intent);
+                return true;
+            }
         } else
             return super.onOptionsItemSelected(item);
     }
