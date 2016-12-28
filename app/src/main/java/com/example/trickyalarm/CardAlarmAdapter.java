@@ -116,10 +116,11 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
                 alarm.setEnable(b);
                 if (b)
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_on), Toast.LENGTH_SHORT);
-                else
+                else {
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_off), Toast.LENGTH_SHORT);
-                AlarmReceiver receiver = new AlarmReceiver(mContext);
-                receiver.cancelAlarm(mContext, alarm);
+                    AlarmReceiver receiver = new AlarmReceiver(mContext);
+                    receiver.cancelAlarm(mContext, alarm);
+                }
                 repo.updateAlarm(alarm);
             }
         });
