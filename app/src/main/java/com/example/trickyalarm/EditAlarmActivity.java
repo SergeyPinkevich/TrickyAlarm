@@ -126,7 +126,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         alarm = repo.getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION));
         calendar = alarm.getTime();
         lblTime = (TextView) findViewById(R.id.lblTime);
-        lblTextTime = (TextView) findViewById(R.id.lblTextTime);
         lblBias = (TextView) findViewById(R.id.lblBias);
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
         weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);

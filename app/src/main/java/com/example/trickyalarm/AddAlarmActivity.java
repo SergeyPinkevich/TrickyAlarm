@@ -122,7 +122,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
         lblTime = (TextView) findViewById(R.id.lblTime);
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
-        lblTextTime = (TextView) findViewById(R.id.lblTextTime);
         lblBias = (TextView) findViewById(R.id.lblBias);
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
         lblWeekly = (TextView) findViewById(R.id.lblWeekly);
