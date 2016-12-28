@@ -242,7 +242,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         builder.setSingleChoiceItems(ringtones[0], -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+ringtones[0][which], Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "Selected: " + ringtones[0][which], Toast.LENGTH_SHORT);
                 toast.show();
                 whichRingtone = which;
                 ringtone.stop();
