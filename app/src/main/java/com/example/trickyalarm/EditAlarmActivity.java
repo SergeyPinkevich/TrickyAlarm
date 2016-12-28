@@ -33,10 +33,8 @@ import com.example.trickyalarm.database.ColorRepo;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Random;
 
 /**
  * Created by nicholas on 25/12/2016.
@@ -55,7 +53,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     //text views:
     private TextView mToolbarTitle;
     private Typeface mCustomFont;
-    private TextView lblTextTime;
     private TextView lblBias;
     private TextView lblRepeat;
     private TextView lblWeekly;
@@ -159,7 +156,6 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
      * set fonts of all labels to Exo2-Light
      */
     public void setTypeFace() {
-        lblTextTime.setTypeface(mCustomFont);
         lblTime.setTypeface(mCustomFont);
         lblBias.setTypeface(mCustomFont);
         lblRepeat.setTypeface(mCustomFont);
