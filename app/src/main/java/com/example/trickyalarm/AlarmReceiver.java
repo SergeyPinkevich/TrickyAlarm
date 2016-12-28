@@ -28,8 +28,18 @@ public class AlarmReceiver extends BroadcastReceiver {
     boolean first = true;
     Context context1;
 
+    /**
+     * AlarmReceiver constructor.
+     * @param applicationContext
+     */
     public AlarmReceiver(Context applicationContext) {
         context1 = applicationContext;
+    }
+
+    /**
+     * Empty constructor.
+     */
+    public AlarmReceiver() {
     }
 
     /**
@@ -55,7 +65,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     /**
-     * Method that change calendar of alarm.
+     * Method that change calendar of alarm to next alarm.
      * @param alarm
      */
     public void nextAlarmTime(Alarm alarm){
