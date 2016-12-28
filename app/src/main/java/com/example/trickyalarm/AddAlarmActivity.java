@@ -296,6 +296,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
         update();
     }
 
@@ -393,7 +394,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         MainActivity.colorList.remove(randomPosition);
         mColorRepo.deleteColor(backgroundColor);
 
-        AlarmReceiver alarmReceiver = new AlarmReceiver();
+        AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
         alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
     }
 
