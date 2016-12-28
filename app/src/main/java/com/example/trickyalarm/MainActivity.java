@@ -12,9 +12,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.trickyalarm.database.AlarmRepo;
+import com.example.trickyalarm.database.ColorRepo;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,28 +28,30 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Alarm> alarms;
 
     private AlarmRepo repo;
+    private ColorRepo mColorRepo;
 
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
+
+    public static ArrayList<Integer> colorList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //AlarmReceiver alarmReceiver = new AlarmReceiver();
-        //alarmReceiver.setAlarm(this.getApplicationContext(), (int) (System.currentTimeMillis() + 10 * 1000));
-
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         customizeToolbar();
+        mColorRepo = new ColorRepo(this);
+        colorList = mColorRepo.getColorList();
 
         repo = new AlarmRepo(this);
         alarms = repo.getAlarmsList();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
 
-        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, this);
+        mAdapter = new CardAlarmAdapter(alarms, mCustomFont, getApplicationContext());
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    mColorRepo.addColor(alarms.get(position).getColor());
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
+                                    mColorRepo.addColor(alarms.get(position).getColor());
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
@@ -103,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
     }
 
+    /**
+     * Show toast when alarm is being deleted
+     * User gets appropriate toast in both cases: if alarm was deleted and was not.
+     * @param value
+     */
     public void showDeleteMessage(int value) {
         if (value > 0)
             Toast.makeText(getApplicationContext(), R.string.successful_deletion, Toast.LENGTH_SHORT).show();
@@ -130,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_alarm) {
             Intent intent = new Intent(MainActivity.this, AddAlarmActivity.class);
-
             startActivity(intent);
             return true;
         } else
