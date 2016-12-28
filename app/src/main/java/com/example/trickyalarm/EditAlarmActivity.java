@@ -2,6 +2,7 @@ package com.example.trickyalarm;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.graphics.Typeface;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -26,6 +28,7 @@ import android.widget.ToggleButton;
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
 import com.example.trickyalarm.database.AlarmRepo;
+import com.example.trickyalarm.database.ColorRepo;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -33,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Random;
 
 /**
  * Created by nicholas on 25/12/2016.
@@ -44,10 +48,11 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private static final String ALARM_LIST_POSITION = "position";
 
     private AlarmRepo repo;
-
+    private ColorRepo mColorRepo;
     private Alarm alarm;
 
     private Toolbar mActionBarToolbar;
+    //text views:
     private TextView mToolbarTitle;
     private Typeface mCustomFont;
     private TextView lblTextTime;
@@ -59,12 +64,14 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private TextView lblVibration;
     private TextView lblSound;
     private TextView soundSelector;
+    private TextView lblTime;
 
-    private AlertDialog soundList;
-
+    private AlertDialog ringtoneialog;
+    private AlertDialog.Builder builder;
     private boolean[] daysConditions = new boolean[7];
-    private String[] sounds;
-
+    private String[][] ringtones;
+    int whichRingtone;
+    //buttons:
     private Button onMonday;
     private Button onTuesday;
     private Button onWednesday;
@@ -83,113 +90,55 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
 
-    private TextView lblTime;
+
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
 
-    private RingtoneManager ringtoneManager;
-    private Ringtone ringtone;
 
     private int backgroundColor;
+
+    private Ringtone ringtone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ringtoneManager = new RingtoneManager(this);
-
         setContentView(R.layout.activity_edit_alarm);
+        initializeFields();
+        setBackground();
+        formRingtoneDialog();
+        setTypeFace();
+        animateRepeat();
+        setOnClick();
+        setFromAlarm();
+        volume.setMax(10);
+        bias.setMax(60);
+        interval.setMax(60);
+        customizeToolbar();
+        update();
+    }
 
+    /**
+     * initialize all required fields
+     */
+    public void initializeFields()  {
+        timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
         repo = new AlarmRepo(this);
         alarm = repo.getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION));
-
-        containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
-        backgroundColor = alarm.getColor();
-        int color = getResources().getColor(backgroundColor);
-        containerLayout.setBackgroundColor(color);
-
         calendar = alarm.getTime();
-        timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
-
         lblTime = (TextView) findViewById(R.id.lblTime);
-
-        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
-
         lblTextTime = (TextView) findViewById(R.id.lblTextTime);
-        lblTextTime.setTypeface(mCustomFont);
-
-        lblTime.setTypeface(mCustomFont);
-
-        lblTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openTimePicker();
-            }
-        });
-
         lblBias = (TextView) findViewById(R.id.lblBias);
-        lblBias.setTypeface(mCustomFont);
-
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
-        lblRepeat.setTypeface(mCustomFont);
-
         weekdaysLayout = (LinearLayout) findViewById(R.id.weekdays_layout);
-
         lblWeekly = (TextView) findViewById(R.id.lblWeekly);
-        lblWeekly.setTypeface(mCustomFont);
-
+        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
         lblInterval = (TextView) findViewById(R.id.lblInterval);
-        lblInterval.setTypeface(mCustomFont);
-
-        lblVolume = (TextView)  findViewById(R.id.lblVolume);
-        lblVolume.setTypeface(mCustomFont);
-
         lblVibration = (TextView) findViewById(R.id.lblVibration);
-        lblVibration.setTypeface(mCustomFont);
-
+        lblVolume = (TextView)  findViewById(R.id.lblVolume);
         lblSound = (TextView) findViewById(R.id.lblSound);
-        lblSound.setTypeface(mCustomFont);
-
         soundSelector = (TextView) findViewById(R.id.soundSelector);
-        soundSelector.setTypeface(mCustomFont);
-        soundSelector.setOnClickListener(this);
-
-        sounds = getRingtonesTitels();
+        ringtones = getRingtones();
         ringtone = getRingtone(0);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditAlarmActivity.this);
-        builder.setTitle(R.string.title_sound_selector);
-        builder.setCancelable(false);
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ringtone.stop();
-                dialog.cancel();
-            }
-        });
-
-        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ringtone.stop();
-            }
-        });
-
-        builder.setSingleChoiceItems(sounds, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+sounds[which], Toast.LENGTH_SHORT);
-                toast.show();
-                ringtone.stop();
-                ringtone = getRingtone(which);
-                ringtone.play();
-                soundSelector.setText(sounds[which]);
-            }
-        });
-
-        builder.setCancelable(false);
-        soundList = builder.create();
-
         onMonday = (Button) findViewById(R.id.monday_letter);
         onTuesday = (Button) findViewById(R.id.tuesday_letter);
         onWednesday = (Button) findViewById(R.id.wednesday_letter);
@@ -197,16 +146,43 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         onFriday = (Button) findViewById(R.id.friday_letter);
         onSaturday = (Button) findViewById(R.id.saturday_letter);
         onSunday = (Button) findViewById(R.id.sunday_letter);
-
+        confirm = (Button) findViewById(R.id.add_alarm_confirm);
         repeat = (ToggleButton) findViewById(R.id.toggle_button);
-        repeat.setChecked(alarm.isRepeated());
+        vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
+        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+        bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
+        volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
+        interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+        builder = new AlertDialog.Builder(EditAlarmActivity.this);
+    }
+
+    /**
+     * set fonts of all labels to Exo2-Light
+     */
+    public void setTypeFace() {
+        lblTextTime.setTypeface(mCustomFont);
+        lblTime.setTypeface(mCustomFont);
+        lblBias.setTypeface(mCustomFont);
+        lblRepeat.setTypeface(mCustomFont);
+        lblWeekly.setTypeface(mCustomFont);
+        lblInterval.setTypeface(mCustomFont);
+        lblVolume.setTypeface(mCustomFont);
+        lblVibration.setTypeface(mCustomFont);
+        lblSound.setTypeface(mCustomFont);
+        soundSelector.setTypeface(mCustomFont);
+    }
+
+    /**
+     * make repeat field animated
+     */
+    public void animateRepeat() {
         lblRepeat.setAlpha(0.0f);
         weekdaysLayout.setAlpha(0.0f);
 
         lblRepeat.setVisibility(View.GONE);
         weekdaysLayout.setVisibility(View.GONE);
 
-        repeat = (ToggleButton) findViewById(R.id.toggle_button);
+
         repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -220,42 +196,18 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             }
         });
 
-        vibrate = (ToggleButton) findViewById(R.id.toggle_button_vibration);
-        vibrate.setChecked(alarm.isVibrated());
-
-        bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
-        bias.setMax(60);
-        bias.setProgress(alarm.getBias());
-
-        interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
-        interval.setMax(60);
-        interval.setProgress(alarm.getRepeatInterval());
-
-        volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
-        volume.setProgress(alarm.getVolume());
-
-        confirm = (Button) findViewById(R.id.add_alarm_confirm);
-
-        onMonday.setOnClickListener(this);
-        setTextColor(onMonday, alarm.isOnMonday(), 0);
-        onTuesday.setOnClickListener(this);
-        setTextColor(onTuesday, alarm.isOnTuesday(), 1);
-        onWednesday.setOnClickListener(this);
-        setTextColor(onWednesday, alarm.isOnWednesday(), 2);
-        onThursday.setOnClickListener(this);
-        setTextColor(onThursday, alarm.isOnThursday(), 3);
-        onFriday.setOnClickListener(this);
-        setTextColor(onFriday, alarm.isOnFriday(), 4);
-        onSaturday.setOnClickListener(this);
-        setTextColor(onSaturday, alarm.isOnSaturday(), 5);
-        onSunday.setOnClickListener(this);
-        setTextColor(onSunday, alarm.isOnSunday(), 6);
-        confirm.setOnClickListener(this);
-
-        customizeToolbar();
-
-        update();
     }
+
+    /**
+     *  set the color of background to a random one
+     */
+    public void setBackground() {
+        containerLayout = (RelativeLayout) findViewById(R.id.activity_add_alarm);
+        backgroundColor = alarm.getColor();
+        int color = getResources().getColor(backgroundColor);
+        containerLayout.setBackgroundColor(color);
+    }
+
 
     public void fadeInAnimation(final View view) {
         view.animate()
@@ -281,6 +233,78 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
                         view.setVisibility(View.GONE);
                     }
                 });
+    }
+
+    /**
+     * implement organization of the ringtone dialog
+     */
+    public void formRingtoneDialog() {
+        builder.setTitle(R.string.title_sound_selector);
+        builder.setCancelable(false);
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtone.stop();
+                dialog.cancel();
+            }
+        });
+
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ringtone.stop();
+            }
+        });
+
+        builder.setSingleChoiceItems(ringtones[0], -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Selected: "+ringtones[0][which], Toast.LENGTH_SHORT);
+                toast.show();
+                whichRingtone = which;
+                ringtone.stop();
+                ringtone = getRingtone(which);
+                ringtone.play();
+                soundSelector.setText(ringtones[0][which]);
+            }
+        });
+        ringtoneialog = builder.create();
+    }
+
+    /**
+     * set onClickListeners to most of the buttons and labels where required
+     */
+    public void setOnClick() {
+        lblTime.setOnClickListener(this);
+        soundSelector.setOnClickListener(this);
+        vibrate.setOnClickListener(this);
+        onMonday.setOnClickListener(this);
+        onTuesday.setOnClickListener(this);
+        onWednesday.setOnClickListener(this);
+        onThursday.setOnClickListener(this);
+        onFriday.setOnClickListener(this);
+        onSaturday.setOnClickListener(this);
+        onSunday.setOnClickListener(this);
+        confirm.setOnClickListener(this);
+    }
+
+    /**
+     * set states of fields according to alarm
+     */
+    public void setFromAlarm() {
+        soundSelector.setText(getRingtoneTitle(alarm.getSound()));
+        repeat.setChecked(alarm.isRepeated());
+        bias.setProgress(alarm.getBias());
+        chooseButton(onMonday, alarm.isOnMonday(), 0);
+        chooseButton(onTuesday, alarm.isOnTuesday(), 1);
+        chooseButton(onWednesday, alarm.isOnWednesday(), 2);
+        chooseButton(onThursday, alarm.isOnThursday(), 3);
+        chooseButton(onFriday, alarm.isOnFriday(), 4);
+        chooseButton(onSaturday, alarm.isOnSaturday(), 5);
+        chooseButton(onSunday, alarm.isOnSunday(), 6);
+        interval.setProgress(alarm.getRepeatInterval());
+        volume.setProgress(alarm.getVolume());
+        vibrate.setChecked(alarm.isVibrated());
     }
 
     private void update() {
@@ -324,28 +348,37 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.monday_letter:
-                setTextColor(onMonday, 0);
+                chooseButton(onMonday, 0);
                 break;
             case R.id.tuesday_letter:
-                setTextColor(onTuesday, 1);
+                chooseButton(onTuesday, 1);
                 break;
             case R.id.wednesday_letter:
-                setTextColor(onWednesday, 2);
+                chooseButton(onWednesday, 2);
                 break;
             case R.id.thursday_letter:
-                setTextColor(onThursday, 3);
+                chooseButton(onThursday, 3);
                 break;
             case R.id.friday_letter:
-                setTextColor(onFriday, 4);
+                chooseButton(onFriday, 4);
                 break;
             case R.id.saturday_letter:
-                setTextColor(onSaturday, 5);
+                chooseButton(onSaturday, 5);
                 break;
             case R.id.sunday_letter:
-                setTextColor(onSunday, 6);
+                chooseButton(onSunday, 6);
                 break;
             case R.id.soundSelector:
-                soundList.show();
+                ringtoneialog.show();
+                break;
+            case R.id.lblTime:
+                openTimePicker();
+                break;
+            case R.id.toggle_button_vibration:
+                if(vibrate.isChecked()){
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v.vibrate(400);
+                }
                 break;
             case R.id.add_alarm_confirm:
                 updateAlarm();
@@ -355,7 +388,12 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         }
     }
 
-    public void setTextColor(Button button, int number) {
+    /**
+     *set color of button according to its state
+     * @param button
+     * @param number - number of button
+     */
+    public void chooseButton(Button button, int number) {
         daysConditions[number] = !daysConditions[number];
         if (daysConditions[number])
             button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
@@ -363,7 +401,13 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
 
-    public void setTextColor(Button button, boolean turned, int number) {
+    /**
+     * set color of button according to its state
+     * @param button - number of button
+     * @param turned - is button turned or not
+     * @param number
+     */
+    public void chooseButton(Button button, boolean turned, int number) {
         if (turned) {
             button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
             daysConditions[number] = true;
@@ -372,26 +416,24 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             button.setTextColor(ContextCompat.getColor(this, R.color.semi_transparent));
     }
 
-
+    /**
+     * update alarm to data base with its new parameters selected by user
+     */
     public void updateAlarm() {
         final String ID = new AlarmRepo(this).getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION)).getID();
         Alarm alarm;
         if (repeat.isChecked())
             alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
         else
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), getSoundAddress(1), backgroundColor);
+            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
         repo.updateAlarm(alarm);
     }
 
 
     /**
-     * return address of a selected sound
+     * @return array of addresses of ringtones
      */
-    private String getSoundAddress(int item) {
-        return getRingtonesUri()[item].getPath();
-    }
-
     public Uri[] getRingtonesUri() {
         RingtoneManager ringtoneMgr = new RingtoneManager(this);
         ringtoneMgr.setType(RingtoneManager.TYPE_RINGTONE);
@@ -409,17 +451,47 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         return ringtones;
     }
 
-    public String[] getRingtonesTitels() {
+    /**
+     * @return array with titles of ringtones in column 0 and their
+     * addresses in column 1
+     */
+    public String[][] getRingtones() {
         int i = 0;
-        Uri[] ringtones = getRingtonesUri();
-        String[] titles = new String[ringtones.length];
-        for (Uri ringtone :ringtones) {
-            titles[i] = RingtoneManager.getRingtone(this, ringtone).getTitle(this);
-            i += 1;
+        Uri[] ringtonesUri = getRingtonesUri();
+        String[][] ringtones = new String[2][ringtonesUri.length];
+        RingtoneManager ringtoneMgr = new RingtoneManager(this);
+        ringtoneMgr.setType(RingtoneManager.TYPE_RINGTONE);
+        Cursor cursor = ringtoneMgr.getCursor();
+
+        while (cursor.moveToNext()) {
+            String notificationTitle = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX);
+            ringtones[0][i] = notificationTitle;
+            ringtones[1][i] = ringtonesUri[i].toString();
+            i++;
         }
-        return titles;
+
+        return ringtones;
     }
+
+    /**
+     * @param item number of ringtone
+     * @return the ringtone at position item
+     */
     public Ringtone getRingtone(int item) {
         return RingtoneManager.getRingtone(this, getRingtonesUri()[item]);
+    }
+
+    /**
+     * find ringtone's title according to its address
+     * @param path - address of ringtone
+     * @return ringtone's title
+     */
+    public String getRingtoneTitle(String path) {
+        String title = "";
+        for (int i = 0; i < ringtones[0].length; i++) {
+            if (ringtones[1][i].equals(path))
+                title = ringtones[0][i];
+        }
+        return title;
     }
 }

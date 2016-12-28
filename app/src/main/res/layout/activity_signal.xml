@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_signal"
     android:layout_width="match_parent"
@@ -8,42 +9,100 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:keepScreenOn="true"
-    tools:context="com.example.trickyalarm.SignalActivity">
+    tools:context="com.example.trickyalarm.SignalActivity"
+    android:background="@color/colorPrimary">
 
     <TextView
-        android:text="Alarm is on!!!"
-        android:textSize="100px"
+        android:text="Time to wake up!"
         android:textColor="@color/black_overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp"
         android:layout_marginTop="23dp"
-        android:id="@+id/textView" />
+        android:id="@+id/timeToWakeUpView"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="80px" />
 
-    <Button
-        android:text="Turn off"
+    <ImageView
+        app:srcCompat="@drawable/alarm_clock_icon"
+        android:layout_below="@+id/timeToWakeUpView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:id="@+id/imageClockView"
+        android:layout_width="160dp"
+        android:layout_height="160dp" />
+
+    <TextView
+        android:text="07:15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="101dp"
-        android:id="@+id/button"
-        android:onClick="turnOffAlarm"/>
+        android:layout_below="@+id/imageClockView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:id="@+id/TimetextView"
+        android:textSize="65sp"
+        android:textColor="@color/white_color" />
 
-    <Button
-        android:text="Put off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:onClick="putOffAlarm"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/cross"
+        android:layout_below="@+id/TimetextView"
+        android:layout_toLeftOf="@+id/timeToWakeUpView"
+        android:layout_toStartOf="@+id/timeToWakeUpView"
+        android:layout_marginTop="45dp"
+        android:id="@+id/crossImageView" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/arrow_right"
+        android:layout_alignBottom="@+id/crossImageView"
+        android:layout_toRightOf="@+id/crossImageView"
+        android:layout_toEndOf="@+id/crossImageView"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/arrow1ImageView" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/arrow_right"
+        android:layout_alignBottom="@+id/arrow1ImageView"
+        android:layout_toRightOf="@+id/crossImageView"
+        android:layout_toEndOf="@+id/crossImageView"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:id="@+id/arrow2imageView" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/refresh"
+        android:id="@+id/repeatImageView"
+        android:layout_alignTop="@+id/crossImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/arrow_back"
+        android:layout_alignBottom="@+id/arrow2imageView"
+        android:layout_toLeftOf="@+id/repeatImageView"
+        android:layout_toStartOf="@+id/repeatImageView"
+        android:id="@+id/arrow3imageView"
+        android:layout_width="40dp" />
+
+    <ImageView
+
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/arrow_back"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:id="@+id/arrow4imageView"
+        android:layout_alignTop="@+id/arrow3imageView"
+        android:layout_toLeftOf="@+id/repeatImageView"
+        android:layout_toStartOf="@+id/repeatImageView" />
+
 </RelativeLayout>
