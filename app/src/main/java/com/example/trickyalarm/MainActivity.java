@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     mColorRepo.addColor(alarms.get(position).getColor());
+                                    AlarmReceiver receiver = new AlarmReceiver(getApplicationContext());
+                                    receiver.cancelAlarm(getApplicationContext(), alarms.get(position));
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions){
                                     mColorRepo.addColor(alarms.get(position).getColor());
+                                    AlarmReceiver receiver = new AlarmReceiver(getApplicationContext());
+                                    receiver.cancelAlarm(getApplicationContext(), alarms.get(position));
                                     int deleted = repo.deleteAlarm(alarms.get(position));
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
