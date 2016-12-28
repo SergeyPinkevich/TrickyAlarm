@@ -27,10 +27,10 @@ public class SignalActivity extends AppCompatActivity {
 
     }
 
-    // Put off alarm for 15 seconds.
+    // Put off alarm for 10 minute.
     public void putOffAlarm(View view){
-        AlarmReceiver alarmReceiver = new AlarmReceiver();
-        alarmReceiver.setAlarm(this.getApplicationContext(), (long) (System.currentTimeMillis() + 15 * 1000));
+        AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
+        alarmReceiver.setAlarm(this.getApplicationContext(), (long) (System.currentTimeMillis() + 10 * 60000));
         finish();
     }
 
