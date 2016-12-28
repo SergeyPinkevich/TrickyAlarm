@@ -31,21 +31,7 @@
                 android:layout_below="@+id/toolbar">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/lblTextTime"
-                    style="@style/DTP"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/time"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:textSize="24dp" />
-
-                <TextView
                     android:layout_width="match_parent"
-                    android:layout_below="@+id/lblTextTime"
                     android:layout_marginTop="30dp"
                     android:id="@+id/lblTime"
                     style="@style/DTP.Label"
@@ -227,7 +213,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/IntervalConteiner">
+                android:layout_marginTop="5dp"
+                android:id="@+id/IntervalContainer">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -262,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/VolumeConteiner"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -296,7 +283,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -322,7 +309,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="15dp"
                 android:id="@+id/soundContainer">
 
                 <TextView
@@ -346,11 +333,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp" />
-
             </RelativeLayout>
-
-
-
 
             <Button
                 android:layout_gravity="center"
