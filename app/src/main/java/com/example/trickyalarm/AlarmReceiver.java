@@ -57,7 +57,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent1.putExtra(id, intent.getStringExtra(id));
         AlarmRepo alarmRepo = new AlarmRepo(context);
-        if (!intent.getStringExtra(id).isEmpty() && alarmRepo.getAlarmById(intent.getStringExtra(id)).isRepeated()) {
+        if (intent.getStringExtra(id) != null & alarmRepo.getAlarmById(intent.getStringExtra(id)).isRepeated()) {
             first = false;
             setAlarm(context, alarmRepo.getAlarmById(intent.getStringExtra(id)));
         }
