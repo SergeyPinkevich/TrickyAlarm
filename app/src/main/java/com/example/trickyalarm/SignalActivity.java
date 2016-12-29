@@ -55,10 +55,10 @@ public class SignalActivity extends AppCompatActivity {
         }
     }
 
-    // Put off alarm for 10 minute.
+    // Put off alarm for interval time.
     public void putOffAlarm(View view){
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
-        alarmReceiver.setAlarm(this.getApplicationContext(), (long) (System.currentTimeMillis() + 10 * 60000));
+        alarmReceiver.setAlarm(this.getApplicationContext(), alarm.getRepeatInterval());
         stopRingtone();
         finish();
     }

@@ -125,10 +125,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         if(alarm.getBias() != 0)
             randomTime = (long) random.nextInt(alarm.getBias() * 60000) + timeWithBias;
 
-        if(alarm.getRepeatInterval() == 0)
-            alarmManager.set(AlarmManager.RTC_WAKEUP, randomTime, pendingIntent);
-        else
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, randomTime, alarm.getRepeatInterval() * 60000, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, randomTime, pendingIntent);
     }
 
     /**
