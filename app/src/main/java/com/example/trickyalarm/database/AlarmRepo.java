@@ -88,7 +88,8 @@ public class AlarmRepo {
                 cursor.getInt(cursor.getColumnIndex(Alarm.KEY_volume)),
                 cursor.getInt(cursor.getColumnIndex(Alarm.KEY_vibrated)) > 0,
                 cursor.getString(cursor.getColumnIndex(Alarm.KEY_sound)),
-                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_color)));
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_color)),
+                cursor.getInt(cursor.getColumnIndex(Alarm.KEY_notification_time)));
         return alarm;
     }
 
@@ -142,6 +143,7 @@ public class AlarmRepo {
         alarmValues.put(Alarm.KEY_vibrated, alarmDatabase.getIsVibrated());
         alarmValues.put(Alarm.KEY_sound, alarmDatabase.getSound());
         alarmValues.put(Alarm.KEY_color, alarmDatabase.getColor());
+        alarmValues.put(Alarm.KEY_notification_time, alarmDatabase.getNotificationTime());
 
         return alarmValues;
     }

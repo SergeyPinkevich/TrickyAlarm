@@ -66,7 +66,8 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                     + Alarm.KEY_volume + " INTEGER, "
                     + Alarm.KEY_vibrated + " INTEGER, "
                     + Alarm.KEY_sound + " TEXT, "
-                    + Alarm.KEY_color + " INTEGER);";
+                    + Alarm.KEY_color + " INTEGER, "
+                    + Alarm.KEY_notification_time + " INTEGER);";
 
             String CREATE_TABLE_COLORS = "CREATE TABLE " + ColorRepo.TABLE + " ("
                     +  "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
