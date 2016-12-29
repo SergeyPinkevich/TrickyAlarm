@@ -13,18 +13,27 @@
     <color name="black_overlay">#ffffff</color>
 
     <!-- Colors for cards -->
-    <color name="card_color_01">#128C84</color>
+    <color name="card_color_01">#dce775</color>
     <color name="card_color_02">#BEBEBE</color>
     <color name="card_color_03">#040B3E</color>
-    <color name="card_color_04">#035943</color>
+    <color name="card_color_04">#ce93d8</color>
     <color name="card_color_05">#9AADBF</color>
     <color name="card_color_06">#6d95ba</color>
     <color name="card_color_07">#B58292</color>
-    <color name="card_color_08">#026492</color>
+    <color name="card_color_08">#ffab91</color>
     <color name="card_color_09">#926FC3</color>
     <color name="card_color_10">#3C4068</color>
     <color name="card_color_11">#683C4C</color>
     <color name="card_color_12">#562F52</color>
+    <color name="card_color_13">#b39ddb</color>
+    <color name="card_color_14">#90a4ae</color>
+    <color name="card_color_15">#ffcc80</color>
+    <color name="card_color_16">#9e9e9e</color>
+    <color name="card_color_17">#a1887f</color>
+    <color name="card_color_18">#9fa8da</color>
+    <color name="card_color_19">#ffe082</color>
+    <color name="card_color_20">#90caf9</color>
+
 
     <!-- Cards colors array-->
     <integer-array name="randomColors">
@@ -40,5 +49,15 @@
         <item>@color/card_color_10</item>
         <item>@color/card_color_11</item>
         <item>@color/card_color_12</item>
+        <item>@color/card_color_13</item>
+        <item>@color/card_color_14</item>
+        <item>@color/card_color_15</item>
+        <item>@color/card_color_16</item>
+        <item>@color/card_color_17</item>
+        <item>@color/card_color_18</item>
+        <item>@color/card_color_19</item>
+        <item>@color/card_color_20</item>
+
+
     </integer-array>
 </resources>

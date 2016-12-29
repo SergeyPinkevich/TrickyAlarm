@@ -34,7 +34,6 @@
         android:layout_height="160dp" />
 
     <TextView
-        android:text="07:15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageClockView"
@@ -42,6 +41,7 @@
         android:layout_marginTop="31dp"
         android:id="@+id/TimetextView"
         android:textSize="65sp"
+        android:text=""
         android:textColor="@color/white_color" />
 
     <ImageView
@@ -52,6 +52,8 @@
         android:layout_toLeftOf="@+id/timeToWakeUpView"
         android:layout_toStartOf="@+id/timeToWakeUpView"
         android:layout_marginTop="45dp"
+        android:clickable="true"
+        android:onClick="turnOffAlarm"
         android:id="@+id/crossImageView" />
 
     <ImageView
@@ -80,7 +82,9 @@
         android:layout_height="60dp"
         app:srcCompat="@drawable/refresh"
         android:id="@+id/repeatImageView"
+        android:onClick="putOffAlarm"
         android:layout_alignTop="@+id/crossImageView"
+        android:clickable="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
