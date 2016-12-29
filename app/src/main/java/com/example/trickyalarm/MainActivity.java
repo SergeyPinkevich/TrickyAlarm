@@ -2,6 +2,7 @@ package com.example.trickyalarm;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private CardAlarmAdapter mAdapter;
 
+    private ImageView arrow;
+
     public static ArrayList<Integer> colorList;
 
     @Override
@@ -46,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
         handFont = Typeface.createFromAsset(getAssets(), "fonts/4425.ttf");
 
         hint = (TextView) findViewById(R.id.hint);
-
         hint.setTypeface(handFont);
+
+        arrow = (ImageView) findViewById(R.id.arrow);
 
         customizeToolbar();
         mColorRepo = new ColorRepo(this);
@@ -64,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
+
+        hideHint();
 
         if (getIntent() != null)
             mAdapter.notifyDataSetChanged();
@@ -101,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
                                     showDeleteMessage(deleted);
+                                    hideHint();
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -115,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                     alarms.remove(position);
                                     mAdapter.notifyItemRemoved(position);
                                     showDeleteMessage(deleted);
+                                    hideHint();
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -179,5 +190,19 @@ public class MainActivity extends AppCompatActivity {
         mToolbarTitle.setTypeface(mCustomFont);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    /**
+     * makes hint and arrow visible or not depending on recycler view
+     */
+    public void hideHint() {
+        if (alarms.size() > 0) {
+            arrow.setVisibility(View.GONE);
+            hint.setVisibility(View.GONE);
+        }
+        else {
+            arrow.setVisibility(View.VISIBLE);
+            hint.setVisibility(View.VISIBLE);
+        }
     }
 }
