@@ -25,6 +25,7 @@ public class AlarmDatabase {
     private int isVibrated;
     private String sound;
     private int color;
+    private int notificationTime;
 
     public AlarmDatabase(Alarm alarm) {
         this.id = alarm.getID();
@@ -44,6 +45,7 @@ public class AlarmDatabase {
         this.isVibrated = booleanToInt(alarm.isVibrated());
         this.sound = alarm.getSound();
         this.color = alarm.getColor();
+        this.notificationTime = alarm.getNotificationTime();
     }
 
     public String getId() {
@@ -184,5 +186,13 @@ public class AlarmDatabase {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getNotificationTime() {
+        return notificationTime;
+    }
+
+    public void setNotificationTime(int notificationTime) {
+        this.notificationTime = notificationTime;
     }
 }

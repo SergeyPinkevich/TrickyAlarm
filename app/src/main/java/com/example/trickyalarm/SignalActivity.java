@@ -69,7 +69,7 @@ public class SignalActivity extends AppCompatActivity {
     }
 
     // Turn off alarm.
-    public void turnOffAlarm(View view){
+    public void turnOffAlarm(View view) {
         stopRingtone();
         finish();
     }

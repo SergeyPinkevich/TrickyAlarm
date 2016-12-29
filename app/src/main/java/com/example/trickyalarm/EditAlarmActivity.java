@@ -62,6 +62,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private TextView lblSound;
     private TextView soundSelector;
     private TextView lblTime;
+    private TextView lblNotification;
+    private TextView lblExplainNotification;
 
     private AlertDialog ringtoneialog;
     private AlertDialog.Builder builder;
@@ -84,6 +86,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
+    private DiscreteSeekBar notification;
 
     private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
@@ -151,6 +154,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         bias = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarBias);
         volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
+        lblNotification = (TextView) findViewById(R.id.lblNotification) ;
+        lblExplainNotification= (TextView) findViewById(R.id.explainNotification);
+        notification = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarNontifcation);
         builder = new AlertDialog.Builder(EditAlarmActivity.this);
     }
 
@@ -167,6 +173,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         lblVibration.setTypeface(mCustomFont);
         lblSound.setTypeface(mCustomFont);
         soundSelector.setTypeface(mCustomFont);
+        lblExplainNotification.setTypeface(mCustomFont);
+        lblNotification.setTypeface(mCustomFont);
     }
 
     /**
@@ -303,6 +311,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         volume.setProgress(alarm.getVolume());
         vibrate.setChecked(alarm.isVibrated());
         turn.setChecked(alarm.isEnable());
+        notification.setProgress(alarm.getNotificationTime());
     }
 
     private void update() {
@@ -422,9 +431,9 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         Alarm alarm;
         if (repeat.isChecked())
             alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
         else
-            alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+            alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
 
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());

@@ -30,6 +30,7 @@ public class Alarm {
     public static final String KEY_vibrated = "vibrated";
     public static final String KEY_sound = "sound";
     public static final String KEY_color = "color";
+    public static final String KEY_notification_time = "notification_time";
 
     private String ID; // ID (time of creation in milliseconds)
     private boolean isEnable; // ON or OFF
@@ -48,9 +49,10 @@ public class Alarm {
     private boolean isVibrated;
     private String sound; // path to the sound file on the device
     private int color;
+    private int notificationTime;
 
     public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean isRepeated, int repeatInterval,
-                 int volume, boolean isVibrated, String sound, int color) {
+                 int volume, boolean isVibrated, String sound, int color, int notificationTime) {
         this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
@@ -68,12 +70,13 @@ public class Alarm {
         this.isVibrated = isVibrated;
         this.sound = sound;
         this.color = color;
+        this.notificationTime = notificationTime;
     }
 
     public Alarm(String ID, boolean isEnable, Calendar time, int bias, boolean onMonday, boolean onTuesday,
                  boolean onWednesday, boolean onThursday, boolean onFriday, boolean onSaturday,
                  boolean onSunday, boolean isRepeated, int repeatInterval, int volume, boolean isVibrated,
-                 String sound, int color) {
+                 String sound, int color, int notificationTime) {
         this.ID = ID;
         this.isEnable = isEnable;
         this.time = time;
@@ -91,6 +94,7 @@ public class Alarm {
         this.isVibrated = isVibrated;
         this.sound = sound;
         this.color = color;
+        this.notificationTime = notificationTime;
     }
 
     public String getID() {
@@ -227,5 +231,13 @@ public class Alarm {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getNotificationTime() {
+        return notificationTime;
+    }
+
+    public void setNotificationTime(int notificationTime) {
+        this.notificationTime = notificationTime;
     }
 }
