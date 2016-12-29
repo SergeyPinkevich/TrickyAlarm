@@ -422,7 +422,13 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
         else
             alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+
+
+        AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
+        alarmReceiver.cancelAlarm(this.getApplicationContext(), alarm);
         repo.updateAlarm(alarm);
+        alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
+
     }
 
 

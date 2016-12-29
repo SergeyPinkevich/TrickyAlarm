@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.trickyalarm.database.AlarmRepo;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Calendar;
 
 public class SignalActivity extends AppCompatActivity {
 
@@ -26,14 +28,20 @@ public class SignalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signal);
 
         AlarmRepo alarmRepo = new AlarmRepo(this.getApplicationContext());
         alarm = alarmRepo.getAlarmById(getIntent().getStringExtra("id"));
+        TextView clock = (TextView) findViewById(R.id.TimetextView);
+        clock.setText(String.valueOf(alarm.getTime().get(Calendar.HOUR_OF_DAY)) + ":"
+                + String.valueOf(alarm.getTime().get(Calendar.MINUTE)));
+
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        setVolume(alarm.getVolume());
         try {
             playRingtone();
         } catch (IOException e) {
@@ -61,8 +69,8 @@ public class SignalActivity extends AppCompatActivity {
      */
     public void setVolume (int currVolume) {
         int maxVolume = 10;
-        float log1=(float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));
-        mediaPlayer.setVolume(1-log1, 1-log1);
+        float volume = (float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));
+        mediaPlayer.setVolume(1-volume, 1-volume);
     }
 
     /**
@@ -97,7 +105,7 @@ public class SignalActivity extends AppCompatActivity {
         Uri ringtone = ringtoneMgr.getRingtoneUri(0);
         while(!ringtoneCursor.isAfterLast() && ringtoneCursor.moveToNext()) {
             int currentPosition = ringtoneCursor.getPosition();
-            if (ringtoneMgr.getRingtoneUri(currentPosition).getPath().equals(path))
+            if (ringtoneMgr.getRingtoneUri(currentPosition).toString().equals(path))
                 ringtone = ringtoneMgr.getRingtoneUri(currentPosition);
         }
         ringtoneCursor.close();
