@@ -192,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+    /**
+     * makes hint and arrow visible or not depending on recycler view
+     */
     public void hideHint() {
         if (alarms.size() > 0) {
             arrow.setVisibility(View.GONE);
