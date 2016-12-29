@@ -31,6 +31,7 @@ import com.example.trickyalarm.database.AlarmRepo;
 import com.example.trickyalarm.database.ColorRepo;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+import org.adw.library.widgets.discreteseekbar.internal.compat.SeekBarCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,6 +61,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView lblSound;
     private TextView soundSelector;
     private TextView lblTime;
+    private TextView lblNotification;
+    private TextView lblExplainNotification;
 
     private AlertDialog ringtoneialog;
     private AlertDialog.Builder builder;
@@ -81,6 +84,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
+    private DiscreteSeekBar notification;
 
     private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
@@ -108,6 +112,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         volume.setMax(10);
         bias.setMax(60);
         interval.setMax(60);
+        notification.setMax(24);
         customizeToolbar();
         update();
     }
@@ -145,6 +150,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         interval = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarInterval);
         volume = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarVolume);
         confirm = (Button) findViewById(R.id.add_alarm_confirm);
+        lblNotification = (TextView) findViewById(R.id.lblNotification) ;
+        lblExplainNotification= (TextView) findViewById(R.id.explainNotification);
+        notification = (DiscreteSeekBar) findViewById(R.id.discreteSeekBarNontifcation);
         ringtone = getRingtone(0);
     }
 
@@ -161,6 +169,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         lblVibration.setTypeface(mCustomFont);
         lblSound.setTypeface(mCustomFont);
         soundSelector.setTypeface(mCustomFont);
+        lblExplainNotification.setTypeface(mCustomFont);
+        lblNotification.setTypeface(mCustomFont);
     }
 
     /**
@@ -383,9 +393,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         if (repeat.isChecked())
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
-                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+                    daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
         else
-            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+            alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
         repo.addAlarm(alarm);
 
