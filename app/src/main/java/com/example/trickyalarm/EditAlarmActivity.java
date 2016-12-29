@@ -80,6 +80,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
     private ToggleButton repeat;
     private ToggleButton vibrate;
+    private ToggleButton turn;
     private DiscreteSeekBar bias;
     private DiscreteSeekBar interval;
     private DiscreteSeekBar volume;
@@ -122,6 +123,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         repo = new AlarmRepo(this);
         alarm = repo.getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION));
         calendar = alarm.getTime();
+        turn = (ToggleButton) findViewById(R.id.toggle_button_turn);
         lblTime = (TextView) findViewById(R.id.lblTime);
         lblBias = (TextView) findViewById(R.id.lblBias);
         lblRepeat = (TextView) findViewById(R.id.lblRepeat);
@@ -300,6 +302,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         interval.setProgress(alarm.getRepeatInterval());
         volume.setProgress(alarm.getVolume());
         vibrate.setChecked(alarm.isVibrated());
+        turn.setChecked(alarm.isEnable());
     }
 
     private void update() {
@@ -418,10 +421,10 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         final String ID = new AlarmRepo(this).getAlarmsList().get(getIntent().getExtras().getInt(ALARM_LIST_POSITION)).getID();
         Alarm alarm;
         if (repeat.isChecked())
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
+            alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), daysConditions[0], daysConditions[1], daysConditions[2],
                     daysConditions[3], daysConditions[4], daysConditions[5], daysConditions[6], true, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
         else
-            alarm = new Alarm(ID, true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
+            alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor);
 
 
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
