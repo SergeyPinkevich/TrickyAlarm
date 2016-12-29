@@ -9,12 +9,67 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79a70a79-d50d-4b64-a000-477e1bb90502" name="Default" comment="">
+    <list default="true" id="6be97efc-821e-4381-b8cd-1a991e181964" name="Default" comment="Merge branch 'development' of https://github.com/SergeyPinkevich/TrickyAlarm into Serg&#10;&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/SignalActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/SignalActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="TrickyAlarm.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="C:\Users\dns\AndroidStudioProjects\TrickyAlarm\.idea\shelf/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/classes/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/assets/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/blame/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/classes/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/dependency-cache/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-core/2.2.2/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-idling-resource/2.2.2/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/exposed-instrumentation-api-publish/0.5/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.5/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support.test/runner/0.5/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.1.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.brnunes/swipeablerecyclerview/1.0.2/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.citux/datetimepicker/0.2.0/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/exploded-aar/org.adw.library/discrete-seekbar/1.0.1/jars/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/incremental-classes/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/incremental-safeguard/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/instant-run-resources/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/instant-run-support/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/jniLibs/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/manifests/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/reload-dex/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/restart-dex/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/shaders/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/transforms/" />
+    <ignored path="$PROJECT_DIR$/app/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/app/build/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +79,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="C:\Users\dns\AndroidStudioProjects\TrickyAlarm" />
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -52,21 +107,11 @@
       <file leaf-file-name="AddAlarmActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AddAlarmActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="352" column="20" selection-start-line="352" selection-start-column="20" selection-end-line="353" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlarmReceiver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
               <folding>
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#966#967#0" expanded="true" />
+                <element signature="e#8218#8405#0" expanded="true" />
+                <element signature="e#8404#8405#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,95 +120,54 @@
       <file leaf-file-name="SignalActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/SignalActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="52" column="47" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
+            <state relative-caret-position="1080">
+              <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Alarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/Alarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-929">
+              <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
               <folding>
-                <element signature="e#1466#1467#0" expanded="true" />
-                <element signature="e#1490#1491#0" expanded="true" />
+                <element signature="e#3680#3681#0" expanded="true" />
+                <element signature="e#3705#3706#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_add_alarm.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_alarm.xml">
+      <file leaf-file-name="alarm_card.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alarm_card.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CardAlarmAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/CardAlarmAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
-              <caret line="351" column="0" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
+            <state relative-caret-position="1620">
+              <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditAlarmActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/EditAlarmActivity.java">
+      <file leaf-file-name="AlarmReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="450" column="28" selection-start-line="450" selection-start-column="28" selection-end-line="450" selection-end-column="28" />
-              <folding>
-                <element signature="e#8595#8782#0" expanded="true" />
-                <element signature="e#8781#8782#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_edit_alarm.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_alarm.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#726#750#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+            <state relative-caret-position="127">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1659,7 +1663,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4448298539000" />
+        <entry key="$PROJECT_DIR$" value="4448228635650" />
         <entry key="C:\Users\Almaz\AndroidStudioProjects\TrickyAlarm" value="4447488515707" />
         <entry key="C:\Users\Nastya\AndroidStudioProjects\TrickyAlarm" value="4448866146165" />
         <entry key="C:\Users\Sergey\AndroidStudioProjects\TrickyAlarm" value="4443645652199" />
@@ -1866,7 +1870,6 @@
       <list>
         <option value="$PROJECT_DIR$/Nick.txt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/alarm_card.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -1895,27 +1898,26 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java" />
+        <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/SignalActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="500" />
-    <option name="width" value="1420" />
-    <option name="height" value="1200" />
+    <option name="x" value="61" />
+    <option name="y" value="24" />
+    <option name="width" value="1305" />
+    <option name="height" value="744" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
-  </component>
-  <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
@@ -1932,6 +1934,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -1965,10 +1968,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1985,64 +1984,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrickyAlarm" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrickyAlarm" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrickyAlarm" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fonts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2077,23 +2018,16 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrickyAlarm" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane />
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="device.picker.selection" value="192.168.56.101:5555" />
+    <property name="device.picker.selection" value="L91HVCP4245YN" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -2119,7 +2053,6 @@
     <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="98" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.SHOW" value="false" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2131,117 +2064,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/assets/fonts" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/values/strings.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -2551,7 +2373,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="79a70a79-d50d-4b64-a000-477e1bb90502" name="Default" comment="" />
+      <changelist id="6be97efc-821e-4381-b8cd-1a991e181964" name="Default" comment="Merge branch 'development' of https://github.com/SergeyPinkevich/TrickyAlarm into Serg&#10;&#10;" />
       <created>1477835775617</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -2843,40 +2665,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="500" y="0" width="1420" height="1200" extended-state="0" />
+    <frame x="61" y="24" width="1305" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3964968" sideWeight="0.55186063" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5040064" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.49784946" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40389973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33411488" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32747602" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13509749" sideWeight="0.49599358" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11030742" sideWeight="0.49679488" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5700637" sideWeight="0.44813934" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69745225" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43312103" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32620922" sideWeight="0.5032051" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2467344" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21298495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18630573" sideWeight="0.49722883" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="134" y="150" width="1105" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2884,33 +2707,34 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5040064" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.49784946" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5111465" sideWeight="0.5027712" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39742085" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270809" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49722883" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="134" y="122" width="1105" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7703349" sideWeight="0.49599358" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20892018" sideWeight="0.49679488" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32620922" sideWeight="0.5032051" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18152525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21298495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2988,12 +2812,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alarm_card.xml" />
-    <entry file="file://$PROJECT_DIR$/local.properties">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alarm_card.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/app/LoadedApk.java" />
@@ -3010,13 +2837,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_signal.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/database/AlarmDatabase.java">
@@ -3043,14 +2870,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://D:/Android/sdk/sources/android-21/android/database/sqlite/SQLiteOpenHelper.java" />
@@ -3064,81 +2891,6 @@
       </provider>
     </entry>
     <entry file="file://D:/Android/sdk/sources/android-21/android/app/Instrumentation.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/Alarm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
-          <folding>
-            <element signature="e#3741#3742#0" expanded="false" />
-            <element signature="e#3769#3770#0" expanded="false" />
-            <element signature="e#3802#3803#0" expanded="false" />
-            <element signature="e#3833#3834#0" expanded="false" />
-            <element signature="e#3878#3879#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="false" />
-            <element signature="e#3944#3945#0" expanded="false" />
-            <element signature="e#3971#3972#0" expanded="false" />
-            <element signature="e#4013#4014#0" expanded="false" />
-            <element signature="e#4045#4046#0" expanded="false" />
-            <element signature="e#4073#4074#0" expanded="false" />
-            <element signature="e#4100#4101#0" expanded="false" />
-            <element signature="e#4137#4138#0" expanded="false" />
-            <element signature="e#4169#4170#0" expanded="false" />
-            <element signature="e#4204#4205#0" expanded="false" />
-            <element signature="e#4235#4236#0" expanded="false" />
-            <element signature="e#4284#4285#0" expanded="false" />
-            <element signature="e#4324#4325#0" expanded="false" />
-            <element signature="e#4360#4361#0" expanded="false" />
-            <element signature="e#4392#4393#0" expanded="false" />
-            <element signature="e#4443#4444#0" expanded="false" />
-            <element signature="e#4485#4486#0" expanded="false" />
-            <element signature="e#4523#4524#0" expanded="false" />
-            <element signature="e#4557#4558#0" expanded="false" />
-            <element signature="e#4612#4613#0" expanded="false" />
-            <element signature="e#4658#4659#0" expanded="false" />
-            <element signature="e#4695#4696#0" expanded="false" />
-            <element signature="e#4728#4729#0" expanded="false" />
-            <element signature="e#4781#4782#0" expanded="false" />
-            <element signature="e#4825#4826#0" expanded="false" />
-            <element signature="e#4860#4861#0" expanded="false" />
-            <element signature="e#4891#4892#0" expanded="false" />
-            <element signature="e#4940#4941#0" expanded="false" />
-            <element signature="e#4980#4981#0" expanded="false" />
-            <element signature="e#5017#5018#0" expanded="false" />
-            <element signature="e#5050#5051#0" expanded="false" />
-            <element signature="e#5103#5104#0" expanded="false" />
-            <element signature="e#5147#5148#0" expanded="false" />
-            <element signature="e#5182#5183#0" expanded="false" />
-            <element signature="e#5213#5214#0" expanded="false" />
-            <element signature="e#5262#5263#0" expanded="false" />
-            <element signature="e#5302#5303#0" expanded="false" />
-            <element signature="e#5337#5338#0" expanded="false" />
-            <element signature="e#5370#5371#0" expanded="false" />
-            <element signature="e#5419#5420#0" expanded="false" />
-            <element signature="e#5456#5457#0" expanded="false" />
-            <element signature="e#5494#5495#0" expanded="false" />
-            <element signature="e#5531#5532#0" expanded="false" />
-            <element signature="e#5588#5589#0" expanded="false" />
-            <element signature="e#5640#5641#0" expanded="false" />
-            <element signature="e#5670#5671#0" expanded="false" />
-            <element signature="e#5699#5700#0" expanded="false" />
-            <element signature="e#5740#5741#0" expanded="false" />
-            <element signature="e#5776#5777#0" expanded="false" />
-            <element signature="e#5811#5812#0" expanded="false" />
-            <element signature="e#5844#5845#0" expanded="false" />
-            <element signature="e#5893#5894#0" expanded="false" />
-            <element signature="e#5930#5931#0" expanded="false" />
-            <element signature="e#5962#5963#0" expanded="false" />
-            <element signature="e#5990#5991#0" expanded="false" />
-            <element signature="e#6032#6033#0" expanded="false" />
-            <element signature="e#6066#6067#0" expanded="false" />
-            <element signature="e#6095#6096#0" expanded="false" />
-            <element signature="e#6123#6124#0" expanded="false" />
-            <element signature="e#6162#6163#0" expanded="false" />
-            <element signature="e#6196#6197#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/database/AlarmRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -3154,13 +2906,9 @@
     <entry file="file://D:/Android/sdk/sources/android-21/android/database/sqlite/SQLiteCursor.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/CardAlarmAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="114" column="52" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#7010#7011#0" expanded="false" />
-            <element signature="e#7047#7048#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="1620">
+          <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3173,25 +2921,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_alarm.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="897">
           <caret line="351" column="0" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_alarm.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_alarm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -3211,27 +2959,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#726#750#0" expanded="true" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-          <folding>
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#966#967#0" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/EditAlarmActivity.java">
@@ -3245,14 +2979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AddAlarmActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="352" column="20" selection-start-line="352" selection-start-column="20" selection-end-line="353" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -3261,14 +2987,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AlarmReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/AddAlarmActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+          <folding>
+            <element signature="e#8218#8405#0" expanded="true" />
+            <element signature="e#8404#8405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/Alarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-929">
+          <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+          <folding>
+            <element signature="e#3680#3681#0" expanded="true" />
+            <element signature="e#3705#3706#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/trickyalarm/SignalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="52" column="47" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
-          <folding>
-            <element signature="e#1466#1467#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1080">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
