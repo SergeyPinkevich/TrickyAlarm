@@ -23,7 +23,7 @@
     <string name="vibrated">Vibration:</string>
     <string name="sound">Sound:</string>
 
-
+    <string name="hint_add_alarm">Tap here to add new alarm</string>
     <string name="successful_deletion">Alarm was deleted</string>
     <string name="unsuccessful_deletion">Alarm was not deleted</string>
     <string name="alarm_on">Alarm is switched on</string>

@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mActionBarToolbar;
     private TextView mToolbarTitle;
     private Typeface mCustomFont;
+    private Typeface handFont;
+    private TextView hint;
 
     private ArrayList<Alarm> alarms;
 
@@ -41,10 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
+        handFont = Typeface.createFromAsset(getAssets(), "fonts/4425.ttf");
+
+        hint = (TextView) findViewById(R.id.hint);
+
+        hint.setTypeface(handFont);
 
         customizeToolbar();
         mColorRepo = new ColorRepo(this);
         colorList = mColorRepo.getColorList();
+
+
 
         repo = new AlarmRepo(this);
         alarms = repo.getAlarmsList();
