@@ -40,9 +40,14 @@ public class SignalActivity extends AppCompatActivity {
 
         AlarmRepo alarmRepo = new AlarmRepo(this.getApplicationContext());
         alarm = alarmRepo.getAlarmById(getIntent().getStringExtra("id"));
+        String hours = String.valueOf(alarm.getTime().get(Calendar.HOUR_OF_DAY));
+        String minutes = String.valueOf(alarm.getTime().get(Calendar.MINUTE));
+        if(hours.length() == 1)
+            hours = '0' + hours;
+        if(minutes.length() == 1)
+            minutes = '0' + minutes;
         TextView clock = (TextView) findViewById(R.id.TimetextView);
-        clock.setText(String.valueOf(alarm.getTime().get(Calendar.HOUR_OF_DAY)) + ":"
-                + String.valueOf(alarm.getTime().get(Calendar.MINUTE)));
+        clock.setText(hours + ":" + minutes);
 
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
