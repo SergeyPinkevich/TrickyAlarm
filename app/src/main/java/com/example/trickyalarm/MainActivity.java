@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
         mColorRepo = new ColorRepo(this);
         colorList = mColorRepo.getColorList();
 
-
-
         repo = new AlarmRepo(this);
         alarms = repo.getAlarmsList();
 
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new CardAlarmAdapter(alarms, mCustomFont, getApplicationContext());
 
         mRecyclerView.setAdapter(mAdapter);
-
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
