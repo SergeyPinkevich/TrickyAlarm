@@ -233,7 +233,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
 
                     app:dsb_indicatorColor="@color/white_color"
                     app:dsb_progressColor="@color/white_color"
@@ -243,7 +242,8 @@
                     android:theme="@style/AppTheme.Base"
                     android:layout_toRightOf="@+id/lblInterval"
                     android:layout_toEndOf="@+id/lblInterval"
-                    android:fadingEdge="horizontal"/>
+                    android:fadingEdge="horizontal"
+                    android:layout_alignParentTop="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -268,7 +268,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
 
                     app:dsb_indicatorColor="@color/white_color"
                     app:dsb_progressColor="@color/white_color"
@@ -278,7 +277,8 @@
                     android:theme="@style/AppTheme.Base"
                     android:layout_toRightOf="@+id/lblVolume"
                     android:layout_toEndOf="@+id/lblVolume"
-                    android:fadingEdge="horizontal"/>
+                    android:fadingEdge="horizontal"
+                    android:layout_alignParentTop="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -335,6 +335,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -372,6 +373,8 @@
                     android:id="@+id/explainNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_below="@+id/lblNotification"
                     android:text="@string/reminder_explain"
                     android:layout_alignParentBottom="true"

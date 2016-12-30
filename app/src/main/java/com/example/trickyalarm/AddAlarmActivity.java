@@ -44,6 +44,7 @@ import java.util.Random;
 public class AddAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
     private static final String TIME_PATTERN = "HH:mm";
+    public static final String NOTIFICATION_TIME = "notification_time";
 
     private AlarmRepo repo;
     private ColorRepo mColorRepo;
@@ -398,6 +399,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
         repo.addAlarm(alarm);
+
+        // Create notification
+        Intent intent = new Intent(this, DelayedMessageService.class);
+        intent.putExtra(NOTIFICATION_TIME, notification.getProgress());
+        intent.putExtra(DelayedMessageService.EXTRA_MESSAGE, getString(R.string.go_bed));
+        startService(intent);
 
         MainActivity.colorList.remove(randomPosition);
         mColorRepo.deleteColor(backgroundColor);
