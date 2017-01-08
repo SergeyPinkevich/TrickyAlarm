@@ -376,6 +376,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_below="@+id/lblNotification"
                     android:text="@string/reminder_explain"
+                    android:paddingRight="10dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
