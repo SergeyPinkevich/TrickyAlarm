@@ -424,7 +424,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         // Create and setup notification
         Notification noti = getNotification(notificationText);
-        scheduleNotification(noti, alarm, notification.getProgress());
+        if (notification.getProgress() > 0)
+            scheduleNotification(noti, alarm, notification.getProgress());
     }
 
     private void scheduleNotification(Notification notification, Alarm alarm, int timeForNotification) {

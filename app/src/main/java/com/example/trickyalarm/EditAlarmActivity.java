@@ -435,14 +435,15 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         else
             alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
-
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
         alarmReceiver.cancelAlarm(this.getApplicationContext(), alarm);
         repo.updateAlarm(alarm);
         alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
-
     }
 
+    private int getNotificationId(String id) {
+        return (int)(Long.valueOf(id) % Integer.MAX_VALUE);
+    }
 
     /**
      * @return array of addresses of ringtones
