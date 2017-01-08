@@ -5,24 +5,24 @@
     <string name="p1">"@drawable/p3"</string>
 
     <!-- Weekday's letters -->
-    <string name="monday_letter">Пон</string>
-    <string name="tuesday_letter">Втр</string>
-    <string name="wednesday_letter">Срд</string>
-    <string name="thursday_letter">Чтв</string>
-    <string name="friday_letter">Птн</string>
-    <string name="saturday_letter">Сбт</string>
-    <string name="sunday_letter">Вск</string>
+    <string name="monday_letter">Пн</string>
+    <string name="tuesday_letter">Вт</string>
+    <string name="wednesday_letter">Ср</string>
+    <string name="thursday_letter">Чт</string>
+    <string name="friday_letter">Пт</string>
+    <string name="saturday_letter">Сб</string>
+    <string name="sunday_letter">Вс</string>
 
     <!-- Alarm's fields -->
     <string name="new_alarm">Новый будильник</string>
-    <string name="time">Время:</string>
-    <string name="repeat_on">Повторять:</string>
-    <string name="bias">Bias:</string>
-    <string name="repeat">Repeat:</string>
-    <string name="interval">Интервал:</string>
-    <string name="volume">Громкость:</string>
-    <string name="vibrated">Вибрация:</string>
-    <string name="sound">Мелодия:</string>
+    <string name="time">Время</string>
+    <string name="repeat_on">Повторять по:</string>
+    <string name="bias">Отступ</string>
+    <string name="repeat">Повтор</string>
+    <string name="interval">Интервал</string>
+    <string name="volume">Громкость</string>
+    <string name="vibrated">Вибрация</string>
+    <string name="sound">Мелодия</string>
     <string name="reminder">Уведомление</string>
     <string name="reminder_explain">За сколько часов до срабатывания будильника Вы хотите получить напоминание об этом</string>
 

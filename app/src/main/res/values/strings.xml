@@ -14,14 +14,14 @@
 
     <!-- Alarm's fields -->
     <string name="new_alarm">New alarm</string>
-    <string name="time">Time:</string>
+    <string name="time">Time</string>
     <string name="repeat_on">Repeat on:</string>
-    <string name="bias">Bias:</string>
+    <string name="bias">Bias</string>
     <string name="repeat">Repeat:</string>
-    <string name="interval">Interval:</string>
-    <string name="volume">Volume:</string>
-    <string name="vibrated">Vibration:</string>
-    <string name="sound">Sound:</string>
+    <string name="interval">Interval</string>
+    <string name="volume">Volume</string>
+    <string name="vibrated">Vibration</string>
+    <string name="sound">Sound</string>
     <string name="reminder">Notification</string>
     <string name="reminder_explain">In how many hours you want to be notified to go to bed</string>
 

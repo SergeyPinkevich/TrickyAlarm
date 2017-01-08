@@ -339,8 +339,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -377,6 +376,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_below="@+id/lblNotification"
                     android:text="@string/reminder_explain"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     />
