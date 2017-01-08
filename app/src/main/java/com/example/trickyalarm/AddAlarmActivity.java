@@ -417,6 +417,10 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         mColorRepo.deleteColor(backgroundColor);
     }
 
+    /**
+     * Create text for notification
+     * @param alarm
+     */
     private void createNotification(Alarm alarm) {
         // Create String from string.xml file
         String notificationText = getString(R.string.go_bed) + " " +
@@ -428,6 +432,12 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
             scheduleNotification(noti, alarm, notification.getProgress());
     }
 
+    /**
+     *
+     * @param notification notification, which was created
+     * @param alarm Alarm which is added to alarm list
+     * @param timeForNotification number of hours where notification should be shown. If 0 it isn't been shown
+     */
     private void scheduleNotification(Notification notification, Alarm alarm, int timeForNotification) {
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -442,10 +452,20 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, cal.getTimeInMillis(), pendingIntent);
     }
 
+    /**
+     * Return id for notification which is module of long id of alarm and MAX int value
+     * @param id - Alarm id (time of alarm's creation in milliseconds)
+     * @return
+     */
     private int getNotificationId(String id) {
         return (int)(Long.valueOf(id) % Integer.MAX_VALUE);
     }
 
+    /**
+     * Return the notification
+     * @param content text which is shown for user
+     * @return
+     */
     private Notification getNotification(String content) {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Tricky Alarm");
