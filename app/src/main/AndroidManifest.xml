@@ -26,6 +26,7 @@
         <activity android:name=".SignalActivity"/>
 
         <receiver android:name=".AlarmReceiver" />
+        <receiver android:name=".NotificationPublisher" />
     </application>
 
 </manifest>

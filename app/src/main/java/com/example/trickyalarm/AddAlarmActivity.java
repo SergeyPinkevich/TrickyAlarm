@@ -2,6 +2,9 @@ package com.example.trickyalarm;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +13,7 @@ import android.graphics.Typeface;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
@@ -31,13 +35,10 @@ import com.example.trickyalarm.database.AlarmRepo;
 import com.example.trickyalarm.database.ColorRepo;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
-import org.adw.library.widgets.discreteseekbar.internal.compat.SeekBarCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
 
@@ -45,6 +46,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
     private static final String TIME_PATTERN = "HH:mm";
     public static final String NOTIFICATION_TIME = "notification_time";
+    public static final String ALARM_ID = "alarm_id";
 
     private AlarmRepo repo;
     private ColorRepo mColorRepo;
@@ -65,7 +67,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private TextView lblNotification;
     private TextView lblExplainNotification;
 
-    private AlertDialog ringtoneialog;
+    private AlertDialog ringtoneDialog;
     private AlertDialog.Builder builder;
     private boolean[] daysConditions = new boolean[7];
     private String[][] ringtones;
@@ -111,6 +113,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         formRingtoneDialog();
         animateRepeat();
         volume.setMax(10);
+        volume.setProgress(5);
         bias.setMax(60);
         interval.setMax(60);
         notification.setMax(24);
@@ -262,7 +265,7 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
                 soundSelector.setText(ringtones[0][which]);
             }
         });
-        ringtoneialog = builder.create();
+        ringtoneDialog = builder.create();
     }
 
     public void fadeInAnimation(final View view) {
@@ -333,28 +336,28 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.monday_letter:
-                chooseBotton(onMonday, 0);
+                chooseButton(onMonday, 0);
                 break;
             case R.id.tuesday_letter:
-                chooseBotton(onTuesday, 1);
+                chooseButton(onTuesday, 1);
                 break;
             case R.id.wednesday_letter:
-                chooseBotton(onWednesday, 2);
+                chooseButton(onWednesday, 2);
                 break;
             case R.id.thursday_letter:
-                chooseBotton(onThursday, 3);
+                chooseButton(onThursday, 3);
                 break;
             case R.id.friday_letter:
-                chooseBotton(onFriday, 4);
+                chooseButton(onFriday, 4);
                 break;
             case R.id.saturday_letter:
-                chooseBotton(onSaturday, 5);
+                chooseButton(onSaturday, 5);
                 break;
             case R.id.sunday_letter:
-                chooseBotton(onSunday, 6);
+                chooseButton(onSunday, 6);
                 break;
             case R.id.soundSelector:
-                ringtoneialog.show();
+                ringtoneDialog.show();
                 break;
             case R.id.lblTime:
                 openTimePicker();
@@ -374,11 +377,11 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     }
 
     /**
-     *set color of button according to its state
+     * set color of button according to its state
      * @param button
      * @param number - number of button
      */
-    public void chooseBotton(Button button, int number) {
+    public void chooseButton(Button button, int number) {
         daysConditions[number] = !daysConditions[number];
         if (daysConditions[number])
             button.setTextColor(ContextCompat.getColor(this, R.color.white_color));
@@ -398,19 +401,56 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         else
             alarm = new Alarm(generateId(), true, calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
+        // Add alarm to Database
         repo.addAlarm(alarm);
 
-        // Create notification
-        Intent intent = new Intent(this, DelayedMessageService.class);
-        intent.putExtra(NOTIFICATION_TIME, notification.getProgress());
-        intent.putExtra(DelayedMessageService.EXTRA_MESSAGE, getString(R.string.go_bed));
-        startService(intent);
+        removeColorFromPossibleColorsList();
 
-        MainActivity.colorList.remove(randomPosition);
-        mColorRepo.deleteColor(backgroundColor);
+        createNotification(alarm);
 
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
         alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
+    }
+
+    private void removeColorFromPossibleColorsList() {
+        MainActivity.colorList.remove(randomPosition);
+        mColorRepo.deleteColor(backgroundColor);
+    }
+
+    private void createNotification(Alarm alarm) {
+        // Create String from string.xml file
+        String notificationText = getString(R.string.go_bed) + " " +
+                String.valueOf(notification.getProgress()) + " " + getString(R.string.hours);
+
+        // Create and setup notification
+        Notification noti = getNotification(notificationText);
+        scheduleNotification(noti, alarm, notification.getProgress());
+    }
+
+    private void scheduleNotification(Notification notification, Alarm alarm, int timeForNotification) {
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(alarm.getTime().getTimeInMillis() - (3600000 * timeForNotification));
+
+        int id = getNotificationId(alarm.getID());
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, id);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+    }
+
+    private int getNotificationId(String id) {
+        return (int)(Long.valueOf(id) % Integer.MAX_VALUE);
+    }
+
+    private Notification getNotification(String content) {
+        Notification.Builder builder = new Notification.Builder(this);
+        builder.setContentTitle("Tricky Alarm");
+        builder.setContentText(content);
+        builder.setSmallIcon(android.R.drawable.ic_lock_idle_alarm);
+        return builder.build();
     }
 
     /**
