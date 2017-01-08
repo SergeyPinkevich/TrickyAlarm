@@ -17,7 +17,7 @@
     <string name="new_alarm">Новый будильник</string>
     <string name="time">Время</string>
     <string name="repeat_on">Повторять по:</string>
-    <string name="bias">Отступ</string>
+    <string name="bias">Запас</string>
     <string name="repeat">Повтор</string>
     <string name="interval">Интервал</string>
     <string name="volume">Громкость</string>
