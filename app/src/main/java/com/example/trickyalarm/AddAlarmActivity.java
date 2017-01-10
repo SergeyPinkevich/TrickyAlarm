@@ -440,16 +440,19 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
      */
     private void scheduleNotification(Notification notification, Alarm alarm, int timeForNotification) {
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(alarm.getTime().getTimeInMillis() - (3600000 * timeForNotification));
-
         int id = NotificationPublisher.getNotificationId(alarm.getID());
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, id);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
 
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarm.getID().hashCode(), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(alarm.getTime().getTimeInMillis() - (3600000 * timeForNotification));
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= 19)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+        else
+            alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
     }
 
     /**

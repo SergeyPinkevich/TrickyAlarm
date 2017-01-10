@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
-        handFont = Typeface.createFromAsset(getAssets(), "fonts/4425.ttf");
+        handFont = Typeface.createFromAsset(getAssets(), "fonts/birch.ttf");
 
         hint = (TextView) findViewById(R.id.hint);
         hint.setTypeface(handFont);

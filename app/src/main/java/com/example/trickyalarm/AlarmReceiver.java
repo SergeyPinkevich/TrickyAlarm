@@ -125,7 +125,14 @@ public class AlarmReceiver extends BroadcastReceiver {
         if(alarm.getBias() != 0)
             randomTime = (long) random.nextInt(alarm.getBias() * 60000) + timeWithBias;
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, randomTime, pendingIntent);
+        setAlarmManager(alarmManager, randomTime, pendingIntent);
+    }
+
+    public void setAlarmManager(AlarmManager alarmManager, long time, PendingIntent pendingIntent) {
+        if (android.os.Build.VERSION.SDK_INT >= 19)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        else
+            alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
     }
 
     /**
@@ -137,7 +144,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, -1, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        setAlarmManager(alarmManager, time, pendingIntent);
     }
 
     /**

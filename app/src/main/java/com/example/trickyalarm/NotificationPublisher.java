@@ -1,7 +1,9 @@
 package com.example.trickyalarm;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +30,12 @@ public class NotificationPublisher extends BroadcastReceiver {
         return (int)(Long.valueOf(alarmId) % Integer.MAX_VALUE);
     }
 
-    public void cancelNotification(Context context, int notificationId) {
+    public void cancelNotification(Context context, int notificationId, Alarm alarm) {
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent sender = PendingIntent.getBroadcast(context, alarm.getID().hashCode(), intent, 0);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(sender);
+
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(notificationId);
     }

@@ -436,7 +436,7 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
             alarm = new Alarm(ID, turn.isChecked(), calendar, bias.getProgress(), false, interval.getProgress(), volume.getProgress(), vibrate.isChecked(), ringtones[1][whichRingtone], backgroundColor, notification.getProgress());
 
         if (!turn.isChecked()) {
-            cancelNotification(alarm.getID());
+            cancelNotification();
         }
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
         alarmReceiver.cancelAlarm(this.getApplicationContext(), alarm);
@@ -444,10 +444,10 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
         alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
     }
 
-    public void cancelNotification(String id) {
+    public void cancelNotification() {
         NotificationPublisher publisher = new NotificationPublisher();
         int notificationId = NotificationPublisher.getNotificationId(alarm.getID());
-        publisher.cancelNotification(this, notificationId);
+        publisher.cancelNotification(this, notificationId, alarm);
     }
 
     /**
