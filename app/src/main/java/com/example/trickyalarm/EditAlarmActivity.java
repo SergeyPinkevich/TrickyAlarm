@@ -446,12 +446,8 @@ public class EditAlarmActivity extends AppCompatActivity implements TimePickerDi
 
     public void cancelNotification(String id) {
         NotificationPublisher publisher = new NotificationPublisher();
-        int notificationId = getNotificationId(id);
+        int notificationId = NotificationPublisher.getNotificationId(alarm.getID());
         publisher.cancelNotification(this, notificationId);
-    }
-
-    private int getNotificationId(String id) {
-        return (int)(Long.valueOf(id) % Integer.MAX_VALUE);
     }
 
     /**

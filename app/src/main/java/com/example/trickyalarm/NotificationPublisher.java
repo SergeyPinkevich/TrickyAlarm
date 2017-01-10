@@ -24,6 +24,10 @@ public class NotificationPublisher extends BroadcastReceiver {
         notificationManager.notify(id, notification);
     }
 
+    public static int getNotificationId(String alarmId) {
+        return (int)(Long.valueOf(alarmId) % Integer.MAX_VALUE);
+    }
+
     public void cancelNotification(Context context, int notificationId) {
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(notificationId);

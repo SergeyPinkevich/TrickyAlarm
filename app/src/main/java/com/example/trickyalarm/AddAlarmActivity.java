@@ -445,20 +445,11 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(alarm.getTime().getTimeInMillis() - (3600000 * timeForNotification));
 
-        int id = getNotificationId(alarm.getID());
+        int id = NotificationPublisher.getNotificationId(alarm.getID());
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, id);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
 
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-    }
-
-    /**
-     * Return id for notification which is module of long id of alarm and MAX int value
-     * @param id - Alarm id (time of alarm's creation in milliseconds)
-     * @return
-     */
-    private int getNotificationId(String id) {
-        return (int)(Long.valueOf(id) % Integer.MAX_VALUE);
     }
 
     /**
