@@ -31,11 +31,13 @@ public class NotificationPublisher extends BroadcastReceiver {
     }
 
     public void cancelNotification(Context context, int notificationId, Alarm alarm) {
+        // Cancel launch the notification
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(context, alarm.getID().hashCode(), intent, 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(sender);
 
+        // Clear notification in Status Bar, if it exists there
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(notificationId);
     }

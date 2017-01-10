@@ -114,12 +114,15 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Alarm alarm = mAlarms.get(position);
                 alarm.setEnable(b);
-                if (b)
+                if (b) {
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_on), Toast.LENGTH_SHORT);
+
+                }
                 else {
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_off), Toast.LENGTH_SHORT);
                     AlarmReceiver receiver = new AlarmReceiver(mContext);
                     receiver.cancelAlarm(mContext, alarm);
+                    cancelNotification(alarm);
                 }
                 repo.updateAlarm(alarm);
             }
@@ -132,6 +135,12 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
         else
             biasTime.setText("");
         biasTime.setTypeface(mFontForText);
+    }
+
+    public void cancelNotification(Alarm alarm) {
+        NotificationPublisher publisher = new NotificationPublisher();
+        int notificationId = NotificationPublisher.getNotificationId(alarm.getID());
+        publisher.cancelNotification(mContext, notificationId, alarm);
     }
 
     @Override
