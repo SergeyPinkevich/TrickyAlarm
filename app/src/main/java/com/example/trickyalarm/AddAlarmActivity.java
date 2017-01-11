@@ -406,7 +406,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         removeColorFromPossibleColorsList();
 
-        createNotification(alarm);
+        // Create NotificationPublisher object and set notification time
+        NotificationPublisher publisher = new NotificationPublisher(this);
+        publisher.createNotification(alarm);
 
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
         alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
@@ -415,57 +417,6 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private void removeColorFromPossibleColorsList() {
         MainActivity.colorList.remove(randomPosition);
         mColorRepo.deleteColor(backgroundColor);
-    }
-
-    /**
-     * Create text for notification
-     * @param alarm
-     */
-    private void createNotification(Alarm alarm) {
-        // Create String from string.xml file
-        String notificationText = getString(R.string.go_bed) + " " +
-                String.valueOf(notification.getProgress()) + " " + getString(R.string.hours);
-
-        // Create and setup notification
-        Notification noti = getNotification(notificationText);
-        if (notification.getProgress() > 0)
-            scheduleNotification(noti, alarm, notification.getProgress());
-    }
-
-    /**
-     *
-     * @param notification notification, which was created
-     * @param alarm Alarm which is added to alarm list
-     * @param timeForNotification number of hours where notification should be shown. If 0 it isn't been shown
-     */
-    private void scheduleNotification(Notification notification, Alarm alarm, int timeForNotification) {
-        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
-        int id = NotificationPublisher.getNotificationId(alarm.getID());
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, id);
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarm.getID().hashCode(), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(alarm.getTime().getTimeInMillis() - (3600000 * timeForNotification));
-
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        if (android.os.Build.VERSION.SDK_INT >= 19)
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        else
-            alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-    }
-
-    /**
-     * Return the notification
-     * @param content text which is shown for user
-     * @return
-     */
-    private Notification getNotification(String content) {
-        Notification.Builder builder = new Notification.Builder(this);
-        builder.setContentTitle("Tricky Alarm");
-        builder.setContentText(content);
-        builder.setSmallIcon(android.R.drawable.ic_lock_idle_alarm);
-        return builder.build();
     }
 
     /**

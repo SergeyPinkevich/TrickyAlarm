@@ -86,7 +86,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
             }
         });
 
-        TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
+        final TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
         String time = calendarToString(mAlarms.get(position).getTime());
         alarmTime.setText(time);
         alarmTime.setTypeface(mFontForText);
@@ -116,7 +116,8 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
                 alarm.setEnable(b);
                 if (b) {
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_on), Toast.LENGTH_SHORT);
-
+                    NotificationPublisher publisher = new NotificationPublisher(mContext);
+                    publisher.createNotification(alarm);
                 }
                 else {
                     Toast.makeText(mContext, mContext.getString(R.string.alarm_off), Toast.LENGTH_SHORT);
@@ -138,7 +139,7 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
     }
 
     public void cancelNotification(Alarm alarm) {
-        NotificationPublisher publisher = new NotificationPublisher();
+        NotificationPublisher publisher = new NotificationPublisher(mContext);
         int notificationId = NotificationPublisher.getNotificationId(alarm.getID());
         publisher.cancelNotification(mContext, notificationId, alarm);
     }
