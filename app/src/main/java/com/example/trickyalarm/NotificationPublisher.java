@@ -20,6 +20,8 @@ public class NotificationPublisher extends BroadcastReceiver {
     public static String NOTIFICATION_ID = "notification_id";
     public static String NOTIFICATION = "notification";
 
+    public NotificationPublisher() {}
+
     public NotificationPublisher(Context context) {
         mContext = context;
     }
