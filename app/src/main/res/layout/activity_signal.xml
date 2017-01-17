@@ -49,20 +49,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:srcCompat="@drawable/cross"
-            android:clickable="true"
-            android:onClick="turnOffAlarm"
-            android:id="@+id/crossImageView" />
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:srcCompat="@drawable/refresh"
             android:id="@+id/repeatImageView"
-            android:onClick="putOffAlarm"
             android:clickable="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
@@ -72,8 +64,7 @@
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/arrow_back"
             android:layout_toLeftOf="@+id/repeatImageView"
-            android:layout_toStartOf="@+id/repeatImageView"
-            android:id="@+id/arrow3imageView"
+            android:id="@+id/arrow3ImageView"
             android:layout_width="40dp" />
 
         <ImageView
@@ -91,7 +82,7 @@
             app:srcCompat="@drawable/arrow_right"
             android:layout_marginLeft="17dp"
             android:layout_marginStart="17dp"
-            android:id="@+id/arrow2imageView"
+            android:id="@+id/arrow2ImageView"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/crossImageView"
             android:layout_toEndOf="@+id/crossImageView" />
@@ -103,10 +94,21 @@
             app:srcCompat="@drawable/arrow_back"
             android:layout_marginRight="17dp"
             android:layout_marginEnd="17dp"
-            android:id="@+id/arrow4imageView"
+            android:id="@+id/arrow4ImageView"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/repeatImageView"
             android:layout_toStartOf="@+id/repeatImageView" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/cross"
+            android:clickable="true"
+
+            android:id="@+id/crossImageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
