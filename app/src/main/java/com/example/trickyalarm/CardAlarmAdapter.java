@@ -25,14 +25,18 @@ import com.example.trickyalarm.database.AlarmRepo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
     //Предоставляет ссылку на представления, используемые в RecyclerView
     private static final String ALARM_LIST_POSITION = "position";
+    private static final String TIME_PATTERN = "HH:mm";
 
     private ArrayList<Alarm> mAlarms;
     private Typeface mFontForText;
     private Context mContext;
+
+    private SimpleDateFormat timeFormat;
 
     private AlarmRepo repo;
 
@@ -86,9 +90,10 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
             }
         });
 
+        timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
+
         final TextView alarmTime = (TextView) cardView.findViewById(R.id.alarm_time);
-        String time = calendarToString(mAlarms.get(position).getTime());
-        alarmTime.setText(time);
+        alarmTime.setText(timeFormat.format(mAlarms.get(position).getTime().getTime()));
         alarmTime.setTypeface(mFontForText);
 
         onMonday = (Button) cardView.findViewById(R.id.monday_letter);

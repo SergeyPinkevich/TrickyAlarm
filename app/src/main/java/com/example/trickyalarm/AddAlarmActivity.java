@@ -92,10 +92,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
     private RelativeLayout containerLayout;
     private LinearLayout weekdaysLayout;
 
-
     private Calendar calendar;
     private SimpleDateFormat timeFormat;
-
 
     private int backgroundColor;
     private int randomPosition;
@@ -114,8 +112,9 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         animateRepeat();
         volume.setMax(10);
         volume.setProgress(5);
-        bias.setMax(60);
         interval.setMax(60);
+        interval.setProgress(5);
+        bias.setMax(60);
         notification.setMax(24);
         customizeToolbar();
         update();

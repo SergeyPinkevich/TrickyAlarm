@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
-    final public static String id = "id";
+    final public static String ALARM_ID = "id";
     boolean first = true;
     Context context1;
 
@@ -55,11 +55,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         wakeLock.acquire();
         Intent intent1 = new Intent(context, SignalActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent1.putExtra(id, intent.getStringExtra(id));
+        intent1.putExtra(ALARM_ID, intent.getStringExtra(ALARM_ID));
         AlarmRepo alarmRepo = new AlarmRepo(context);
-        if (intent.getStringExtra(id) != null && alarmRepo.getAlarmById(intent.getStringExtra(id)).isRepeated()) {
+        if (intent.getStringExtra(ALARM_ID) != null && alarmRepo.getAlarmById(intent.getStringExtra(ALARM_ID)).isRepeated()) {
             first = false;
-            setAlarm(context, alarmRepo.getAlarmById(intent.getStringExtra(id)));
+            setAlarm(context, alarmRepo.getAlarmById(intent.getStringExtra(ALARM_ID)));
         }
         context.startActivity(intent1);
         wakeLock.release();
@@ -106,12 +106,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra(id, alarm.getID());
+        intent.putExtra(ALARM_ID, alarm.getID());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarm.getID().hashCode(), intent, 0);
 
-        if(alarm.isRepeated()){
+        if (alarm.isRepeated())
             nextAlarmTime(alarm);
-        }
 
         Calendar calendar = alarm.getTime();
         AlarmRepo alarmRepo = new AlarmRepo(context1);
@@ -122,7 +121,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Random random = new Random(System.currentTimeMillis());
         long randomTime = time;
 
-        if(alarm.getBias() != 0)
+        if (alarm.getBias() != 0)
             randomTime = (long) random.nextInt(alarm.getBias() * 60000) + timeWithBias;
 
         setAlarmManager(alarmManager, randomTime, pendingIntent);

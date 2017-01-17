@@ -30,7 +30,6 @@ public class SignalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         // remove title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,7 +37,7 @@ public class SignalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signal);
 
         AlarmRepo alarmRepo = new AlarmRepo(this.getApplicationContext());
-        alarm = alarmRepo.getAlarmById(getIntent().getStringExtra("id"));
+        alarm = alarmRepo.getAlarmById(getIntent().getStringExtra(AlarmReceiver.ALARM_ID));
         String hours = String.valueOf(alarm.getTime().get(Calendar.HOUR_OF_DAY));
         String minutes = String.valueOf(alarm.getTime().get(Calendar.MINUTE));
         if(hours.length() == 1)
