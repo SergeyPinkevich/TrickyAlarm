@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.trickyalarm.database.AlarmRepo;
 
@@ -87,9 +88,17 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
     // Put off alarm for interval time.
     public void putOffAlarm(){
         AlarmReceiver alarmReceiver = new AlarmReceiver(this.getApplicationContext());
-        alarmReceiver.setAlarm(this.getApplicationContext(), alarm.getRepeatInterval());
-        stopRingtone();
-        finish();
+        if (alarm.getRepeatInterval() > 0) {
+            long futureAlarm = alarm.getTime().getTimeInMillis() + alarm.getRepeatInterval() * 60000;
+            Calendar alarmNext = Calendar.getInstance();
+            alarmNext.setTimeInMillis(futureAlarm);
+            alarm.setTime(alarmNext);
+            alarmReceiver.setAlarm(this.getApplicationContext(), alarm);
+            stopRingtone();
+            finish();
+        } else {
+            Toast.makeText(this.getApplicationContext(), R.string.cannot_repeat, Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Turn off alarm.

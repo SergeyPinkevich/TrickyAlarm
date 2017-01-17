@@ -135,18 +135,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     /**
-     * Function that set a new alarm.
-     * @param context
-     * @param time in which alarm should work.
-     */
-    public void setAlarm(Context context, long time) {
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, -1, intent, 0);
-        setAlarmManager(alarmManager, time, pendingIntent);
-    }
-
-    /**
      * Function that cancel alarm.
      * @param context
      */

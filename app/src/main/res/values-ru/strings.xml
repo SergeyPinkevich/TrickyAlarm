@@ -34,6 +34,7 @@
     <string name="alarms_much">Будильников слишком много. Пожалуйста, удалите несколько</string>
     <string name="go_bed">Время засыпать! Будильник зазвонит через</string>
     <string name="hours">часов</string>
+    <string name="cannot_repeat">Интервал повторения равен 0. Будильник будет выключен</string>
 
     <string name="title_activity_signal">SignalActivity</string>
     <string name="title_sound_selector">Sound</string>
