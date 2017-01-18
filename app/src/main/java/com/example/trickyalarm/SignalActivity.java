@@ -83,6 +83,8 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
         curveArrow = (ImageView) findViewById(R.id.repeatImageView);
         curveArrow.setOnTouchListener(this);
 
+        hideRepeat();
+
     }
 
     // Put off alarm for interval time.
@@ -228,6 +230,14 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
         view.animate()
                 .alpha(0.0f)
                 .setDuration(100);
+    }
+
+    public void hideRepeat() {
+        if (alarm.getRepeatInterval() == 0){
+            arrow3.setVisibility(View.GONE);
+            arrow4.setVisibility(View.GONE);
+            curveArrow.setVisibility(View.GONE);
+        }
     }
 
 
