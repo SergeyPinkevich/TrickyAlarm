@@ -26,7 +26,7 @@
     <string name="reminder">Уведомление</string>
     <string name="reminder_explain">За сколько часов до срабатывания будильника Вы хотите получить напоминание об этом</string>
 
-    <string name="hint_add_alarm">Нажмите здесь, чтобы добавить новый будильник</string>
+    <string name="hint_add_alarm">Добавить новый будильник</string>
     <string name="successful_deletion">Будильник был удалён</string>
     <string name="unsuccessful_deletion">Будильник не был удалён</string>
     <string name="alarm_on">Будильник включён</string>
