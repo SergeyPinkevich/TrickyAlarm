@@ -6,7 +6,7 @@ import java.util.Calendar;
  * Created by Сергей Пинкевич on 09.11.2016.
  */
 
-public class Alarm {
+public class Alarm implements Comparable<Alarm>{
 
     // Label table name
     public static final String TABLE = "alarms";
@@ -239,5 +239,14 @@ public class Alarm {
 
     public void setNotificationTime(int notificationTime) {
         this.notificationTime = notificationTime;
+    }
+
+    @Override
+    public int compareTo(Alarm o) {
+        if (this.time.getTimeInMillis() < (o.getTime().getTimeInMillis()))
+            return -1;
+        else if (this.time.getTimeInMillis() < (o.getTime().getTimeInMillis()))
+            return 1;
+        else return 0;
     }
 }

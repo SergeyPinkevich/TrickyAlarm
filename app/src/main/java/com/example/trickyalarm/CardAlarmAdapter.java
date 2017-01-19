@@ -24,7 +24,9 @@ import com.example.trickyalarm.database.AlarmRepo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Locale;
 
 class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder> implements View.OnClickListener{
@@ -62,9 +64,14 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
 
     public CardAlarmAdapter (ArrayList<Alarm> alarms, Typeface typeface, Context context){
         this.mAlarms = alarms;
+        sortingByTime();
         mFontForText = typeface;
         mContext = context;
         repo = new AlarmRepo(mContext);
+    }
+
+    public void sortingByTime() {
+        Collections.sort(mAlarms);
     }
 
     @Override
@@ -189,11 +196,6 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
             button.setTextColor(ContextCompat.getColor(mContext, R.color.white_color));
         else
             button.setTextColor(ContextCompat.getColor(mContext, R.color.semi_transparent));
-    }
-
-    public String calendarToString(Calendar time) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
-        return dateFormat.format(time.getTime());
     }
 
     @Override public int getItemCount()
