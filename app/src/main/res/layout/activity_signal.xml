@@ -13,7 +13,7 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:text="Time to wake up!"
+        android:text="@string/wake_up"
         android:textColor="@color/black_overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="80px" />
+        android:textSize="45sp" />
 
     <ImageView
         app:srcCompat="@drawable/alarm_clock_icon"
@@ -30,8 +30,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
         android:id="@+id/imageClockView"
-        android:layout_width="160dp"
-        android:layout_height="160dp" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +40,6 @@
         android:layout_centerInParent="true"
         android:id="@+id/TimetextView"
         android:textSize="65sp"
-        android:text=""
         android:textColor="@color/white_color" />
 
     <RelativeLayout

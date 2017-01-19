@@ -34,6 +34,7 @@
     <string name="go_bed">It is time for bed! You have to wake up in</string>
     <string name="hours">hours</string>
     <string name="cannot_repeat">Repeat interval is equal 0. Alarm will be turn off.</string>
+    <string name="wake_up">Time to wake up!</string>
 
     <string name="title_activity_signal">SignalActivity</string>
     <string name="title_sound_selector">Sound</string>

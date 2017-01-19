@@ -11,8 +11,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/toolbar_size"
-        >
+        android:layout_marginTop="@dimen/toolbar_size">
+
         <ImageView
             android:layout_width="200dp"
             android:layout_height="150dp"
@@ -20,17 +20,18 @@
             android:layout_marginRight="56dp"
             android:id="@+id/arrow"
             android:background="@drawable/pointing_arrow"/>
+
         <TextView
             android:layout_below="@+id/arrow"
             android:id="@+id/hint"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/hint_add_alarm"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:textSize="51dp"/>
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="46dp"/>
 
     </RelativeLayout>
 
