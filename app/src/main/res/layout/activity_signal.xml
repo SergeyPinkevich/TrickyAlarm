@@ -22,7 +22,7 @@
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="45sp" />
+        android:textSize="43sp" />
 
     <ImageView
         app:srcCompat="@drawable/alarm_clock_icon"
@@ -87,7 +87,6 @@
             android:layout_toEndOf="@+id/crossImageView" />
 
         <ImageView
-
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:srcCompat="@drawable/arrow_back"
@@ -103,7 +102,6 @@
             android:layout_height="60dp"
             app:srcCompat="@drawable/cross"
             android:clickable="true"
-
             android:id="@+id/crossImageView"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
