@@ -103,7 +103,6 @@ public class AlarmReceiver extends BroadcastReceiver {
      * @param alarm which should work.
      */
     public void setAlarm(Context context, Alarm alarm) {
-
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.putExtra(ALARM_ID, alarm.getID());

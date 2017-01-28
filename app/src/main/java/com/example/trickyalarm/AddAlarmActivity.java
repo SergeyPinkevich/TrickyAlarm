@@ -308,6 +308,8 @@ public class AddAlarmActivity extends AppCompatActivity implements TimePickerDia
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
+        if (calendar.getTimeInMillis() < System.currentTimeMillis())
+            calendar.setTimeInMillis(calendar.getTimeInMillis() + 86400000);
         update();
     }
 
