@@ -43,6 +43,7 @@
         android:textColor="@color/white_color" />
 
     <RelativeLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -109,5 +110,14 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/time_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/white_color"
+        android:layout_above="@id/bottom_layout"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
