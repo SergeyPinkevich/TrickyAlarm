@@ -20,6 +20,7 @@ import com.example.trickyalarm.database.ColorRepo;
 import com.github.brnunes.swipeablerecyclerview.SwipeableRecyclerViewTouchListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -103,36 +100,31 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                                for (int position : reverseSortedPositions) {
-                                    mColorRepo.addColor(alarms.get(position).getColor());
-                                    AlarmReceiver receiver = new AlarmReceiver(getApplicationContext());
-                                    receiver.cancelAlarm(getApplicationContext(), alarms.get(position));
-                                    int deleted = repo.deleteAlarm(alarms.get(position));
-                                    alarms.remove(position);
-                                    mAdapter.notifyItemRemoved(position);
-                                    showDeleteMessage(deleted);
-                                    hideHint();
-                                }
+                                for (int position : reverseSortedPositions)
+                                    deleteAlarm(position);
                                 mAdapter.notifyDataSetChanged();
                             }
 
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                                for (int position : reverseSortedPositions){
-                                    mColorRepo.addColor(alarms.get(position).getColor());
-                                    AlarmReceiver receiver = new AlarmReceiver(getApplicationContext());
-                                    receiver.cancelAlarm(getApplicationContext(), alarms.get(position));
-                                    int deleted = repo.deleteAlarm(alarms.get(position));
-                                    alarms.remove(position);
-                                    mAdapter.notifyItemRemoved(position);
-                                    showDeleteMessage(deleted);
-                                    hideHint();
-                                }
+                                for (int position : reverseSortedPositions)
+                                    deleteAlarm(position);
                                 mAdapter.notifyDataSetChanged();
                             }
                         });
 
         mRecyclerView.addOnItemTouchListener(swipeTouchListener);
+    }
+
+    public void deleteAlarm(int position) {
+        mColorRepo.addColor(alarms.get(position).getColor());
+        AlarmReceiver receiver = new AlarmReceiver(getApplicationContext());
+        receiver.cancelAlarm(getApplicationContext(), alarms.get(position));
+        int deleted = repo.deleteAlarm(alarms.get(position));
+        alarms.remove(position);
+        mAdapter.notifyItemRemoved(position);
+        showDeleteMessage(deleted);
+        hideHint();
     }
 
     /**

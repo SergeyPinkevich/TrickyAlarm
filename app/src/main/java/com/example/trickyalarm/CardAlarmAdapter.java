@@ -64,14 +64,9 @@ class CardAlarmAdapter extends RecyclerView.Adapter<CardAlarmAdapter.ViewHolder>
 
     public CardAlarmAdapter (ArrayList<Alarm> alarms, Typeface typeface, Context context){
         this.mAlarms = alarms;
-        sortingByTime();
         mFontForText = typeface;
         mContext = context;
         repo = new AlarmRepo(mContext);
-    }
-
-    public void sortingByTime() {
-        Collections.sort(mAlarms);
     }
 
     @Override

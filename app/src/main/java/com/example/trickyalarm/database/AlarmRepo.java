@@ -9,6 +9,7 @@ import com.example.trickyalarm.Alarm;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 /**
  * Created by Сергей Пинкевич on 24.12.2016.
@@ -111,8 +112,11 @@ public class AlarmRepo {
         }
         cursor.close();
         database.close();
+        Collections.sort(alarms);
         return alarms;
     }
+
+
 
     /**
      * This method returns all necessary ContentValues. It uses supporting class AlarmDatabase,
