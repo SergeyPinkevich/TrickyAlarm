@@ -36,6 +36,7 @@
     <string name="hours">часов</string>
     <string name="cannot_repeat">Интервал повторения равен 0. Будильник будет выключен</string>
     <string name="wake_up">Время вставать!</string>
+    <string name="minutes">мин</string>
 
     <string name="title_activity_signal">SignalActivity</string>
     <string name="title_sound_selector">Sound</string>

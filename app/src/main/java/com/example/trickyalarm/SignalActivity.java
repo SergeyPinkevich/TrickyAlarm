@@ -1,10 +1,8 @@
 package com.example.trickyalarm;
 
-
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
@@ -29,6 +27,8 @@ import java.util.Calendar;
 
 public class SignalActivity extends AppCompatActivity implements View.OnTouchListener {
 
+    private Typeface mCustomFont;
+    private TextView repeatTimeText;
     private MediaPlayer mediaPlayer;
     private Alarm alarm;
     private Ringtone ringtone;
@@ -49,6 +49,8 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signal);
+
+        mCustomFont = Typeface.createFromAsset(getAssets(), "fonts/Exo2-Light.ttf");
 
         view = findViewById(R.id.activity_signal);
         AlarmRepo alarmRepo = new AlarmRepo(this.getApplicationContext());
@@ -72,6 +74,11 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
             e.printStackTrace();
         }
 
+        repeatTimeText = (TextView) findViewById(R.id.time_repeat);
+        repeatTimeText.setTypeface(mCustomFont);
+        if (alarm.getRepeatInterval() > 0)
+            repeatTimeText.setText(String.valueOf(alarm.getRepeatInterval()) + " " + this.getString(R.string.minutes));
+
         arrow1 = (ImageView) findViewById(R.id.arrow1ImageView);
         arrow2 = (ImageView) findViewById(R.id.arrow2ImageView);
         arrow3 = (ImageView) findViewById(R.id.arrow3ImageView);
@@ -84,7 +91,6 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
         curveArrow.setOnTouchListener(this);
 
         hideRepeat();
-
     }
 
     // Put off alarm for interval time.
@@ -200,6 +206,7 @@ public class SignalActivity extends AppCompatActivity implements View.OnTouchLis
                     break;
                 case MotionEvent.ACTION_MOVE:
                     curveArrow.setX(event.getRawX() - curveArrow.getWidth()/1.5f);
+                    repeatTimeText.setX(event.getRawX() - repeatTimeText.getWidth()/1.5f);
                     break;
                 case MotionEvent.ACTION_UP:
                     if (curveArrow.getX() < view.getWidth()/2) {
