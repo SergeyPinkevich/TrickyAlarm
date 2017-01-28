@@ -198,4 +198,5 @@ public class MainActivity extends AppCompatActivity {
             hint.setVisibility(View.VISIBLE);
         }
     }
+
 }

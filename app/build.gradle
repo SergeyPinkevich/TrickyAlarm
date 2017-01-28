@@ -32,5 +32,6 @@ dependencies {
     compile 'com.github.brnunes:swipeablerecyclerview:1.0.2'
     compile 'com.github.citux:datetimepicker:0.2.0'
     compile 'org.adw.library:discrete-seekbar:1.0.1'
+    compile 'za.co.riggaroo:materialhelptutorial:1.+'
 
 }
