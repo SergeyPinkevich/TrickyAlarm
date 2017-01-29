@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#242834</color>
+    <color name="colorPrimaryDark">#181b23</color>
+    <color name="colorAccent">#DEC3BE</color>
+
+    <color name="main_background">#395e7a</color>
+    <color name="card_background">#899ebc</color>
+    <color name="white_color">#ffffff</color>
+    <color name="toolbar_title">#828692</color>
+    <color name="semi_transparent">#64FFFFFF</color>
+
+    <color name="black_overlay">#ffffff</color>
+
+    <!-- Colors for cards -->
+    <color name="card_color_01">#dce775</color>
+    <color name="card_color_02">#BEBEBE</color>
+    <color name="card_color_03">#F7BCB9</color>
+    <color name="card_color_04">#ce93d8</color>
+    <color name="card_color_05">#9AADBF</color>
+    <color name="card_color_06">#6d95ba</color>
+    <color name="card_color_07">#B58292</color>
+    <color name="card_color_08">#9E7C57</color>
+    <color name="card_color_09">#926FC3</color>
+    <color name="card_color_10">#3C4068</color>
+    <color name="card_color_11">#683C4C</color>
+    <color name="card_color_12">#613653</color>
+    <color name="card_color_13">#b39ddb</color>
+    <color name="card_color_14">#90a4ae</color>
+    <color name="card_color_15">#ffcc80</color>
+    <color name="card_color_16">#9e9e9e</color>
+    <color name="card_color_17">#a1887f</color>
+    <color name="card_color_18">#9fa8da</color>
+    <color name="card_color_19">#ffe082</color>
+    <color name="card_color_20">#b36272</color>
+    <color name="card_color_21">#9999FF</color>
+
+
+    <!-- Cards colors array-->
+    <integer-array name="randomColors">
+        <item>@color/card_color_01</item>
+        <item>@color/card_color_02</item>
+        <item>@color/card_color_03</item>
+        <item>@color/card_color_04</item>
+        <item>@color/card_color_05</item>
+        <item>@color/card_color_06</item>
+        <item>@color/card_color_07</item>
+        <item>@color/card_color_08</item>
+        <item>@color/card_color_09</item>
+        <item>@color/card_color_10</item>
+        <item>@color/card_color_11</item>
+        <item>@color/card_color_12</item>
+        <item>@color/card_color_13</item>
+        <item>@color/card_color_14</item>
+        <item>@color/card_color_15</item>
+        <item>@color/card_color_16</item>
+        <item>@color/card_color_17</item>
+        <item>@color/card_color_18</item>
+        <item>@color/card_color_19</item>
+        <item>@color/card_color_20</item>
+        <item>@color/card_color_21</item>
+
+
+    </integer-array>
 </resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.trickyalarm.SignalActivity"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:text="@string/wake_up"
+        android:textColor="@color/black_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/timeToWakeUpView"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="36sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageClockView"
+        android:layout_centerInParent="true"
+        android:id="@+id/TimetextView"
+        android:textSize="65sp"
+        android:textColor="@color/white_color" />
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/refresh"
+            android:id="@+id/repeatImageView"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/arrow_back"
+            android:layout_toLeftOf="@+id/repeatImageView"
+            android:id="@+id/arrow3ImageView"
+            android:layout_width="40dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/arrow_right"
+            android:id="@+id/arrow1ImageView"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/crossImageView"
+            android:layout_toEndOf="@+id/crossImageView" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/arrow_right"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:id="@+id/arrow2ImageView"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/crossImageView"
+            android:layout_toEndOf="@+id/crossImageView" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/arrow_back"
+            android:layout_marginRight="17dp"
+            android:layout_marginEnd="17dp"
+            android:id="@+id/arrow4ImageView"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/repeatImageView"
+            android:layout_toStartOf="@+id/repeatImageView" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/cross"
+            android:clickable="true"
+            android:id="@+id/crossImageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <ImageView
+        app:srcCompat="@drawable/alarm_clock_icon"
+        android:layout_marginTop="59dp"
+        android:id="@+id/imageClockView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/timeToWakeUpView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/time_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/white_color"
+        android:layout_above="@id/bottom_layout"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>

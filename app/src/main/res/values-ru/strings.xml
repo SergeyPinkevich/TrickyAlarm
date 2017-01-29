@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tricky Alarm</string>
+    <string name="action_add_alarm">Добавить будильник</string>
+    <string name="p1">"@drawable/p3"</string>
+
+    <!-- Weekday's letters -->
+    <string name="monday_letter">Пн</string>
+    <string name="tuesday_letter">Вт</string>
+    <string name="wednesday_letter">Ср</string>
+    <string name="thursday_letter">Чт</string>
+    <string name="friday_letter">Пт</string>
+    <string name="saturday_letter">Сб</string>
+    <string name="sunday_letter">Вс</string>
+
+    <!-- Alarm's fields -->
+    <string name="new_alarm">Новый будильник</string>
+    <string name="time">Время</string>
+    <string name="repeat_on">Повторять по:</string>
+    <string name="bias">Запас</string>
+    <string name="repeat">Повтор</string>
+    <string name="interval">Интервал</string>
+    <string name="volume">Громкость</string>
+    <string name="vibrated">Вибрация</string>
+    <string name="sound">Мелодия</string>
+    <string name="reminder">Уведомление</string>
+    <string name="reminder_explain">За сколько часов до срабатывания будильника Вы хотите получить напоминание об этом</string>
+
+    <string name="hint_add_alarm">Добавить новый будильник</string>
+    <string name="successful_deletion">Будильник был удалён</string>
+    <string name="unsuccessful_deletion">Будильник не был удалён</string>
+    <string name="alarm_on">Будильник включён</string>
+    <string name="alarm_off">Будильник выключен</string>
+    <string name="alarms_much">Будильников слишком много. Пожалуйста, удалите несколько</string>
+    <string name="go_bed">Время засыпать! Будильник зазвонит через</string>
+    <string name="hours">часов</string>
+    <string name="cannot_repeat">Интервал повторения равен 0. Будильник будет выключен</string>
+    <string name="wake_up">Время вставать!</string>
+    <string name="minutes">мин</string>
+
+    <string name="title_activity_signal">SignalActivity</string>
+    <string name="title_sound_selector">Sound</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
